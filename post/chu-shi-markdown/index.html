@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>初识MarkDown | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556357801367">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556357801367" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">初识MarkDown</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2016-10-10</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/BztMmd1cX">
+                    Markdown
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>​    MarkDown简洁美观，入门简单，加之越来越多的网站都支持MarkDown语法，故记录下MarkDown的简略语法，更详细的教程请移步<a href="http://www.markdown.cn/">官网</a>。</p>
+<h2 id="-more-概述"><!-- more -->
+概述</h2>
+<h3 id="简介">简介</h3>
+<p>Markdown是一种轻量级标记语言，排版语法简洁，让人们更多地关注内容本身而非排版。它使用易读易写的纯文本格式编写文档，可与HTML混编，可导出HTML、PDF 以及本身的 .md格式的文件。因简洁、高效、易读、易写，Markdown被大量使用，如Github、Wikipedia等网站，如各大博客平台：WordPress、Drupal、简书等。</p>
+<h3 id="官方文档">官方文档</h3>
+<blockquote>
+<p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown: Syntax</a></p>
+<p><a href="http://wowubuntu.com/markdown/">Markdown 语法说明 (简体中文版)</a></p>
+</blockquote>
+<h3 id="markdown编辑器">Markdown编辑器</h3>
+<ul>
+<li>
+<p>在线编辑器</p>
+<ul>
+<li>
+<p><a href="http://dillinger.io/">dillinger</a>------漂亮强大，支持md, html,
+pdf 文件导出。</p>
+<p><img src="http://www.williamlong.info/upload/4319_1.jpg" alt="dillinger"></p>
+</li>
+<li>
+<p><a href="http://www.jianshu.com/">简书</a>------非常漂亮的博客平台，可以自动备份，直接拖入图片。</p>
+<p><img src="http://www.williamlong.info/upload/4319_3.jpg" alt="简书"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Windows</p>
+<ul>
+<li>
+<p><a href="http://www.markdownpad.com/">MarkdownPad</a>------一款全功能的编辑器，被很多人称赞为windows
+平台最好用的markdown编辑器。</p>
+<p><img src="http://www.williamlong.info/upload/4319_10.jpg" alt="MarkdownPad"></p>
+</li>
+<li>
+<p><a href="http://code52.org/DownmarkerWPF/">MarkPad</a>------开源软件，可以直接在你的博客或者
+GitHub 中打开、保存文档，直接将图片粘贴到 Markdown 文档中。</p>
+<p><img src="http://code52.org/DownmarkerWPF/screenshot.png" alt="MarkPad"></p>
+</li>
+<li>
+<p><a href="https://www.zybuluo.com/cmd/">Cmd
+Markdown</a>------作业部落出品，全平台并支持Web端</p>
+<p><img src="http://www.williamlong.info/upload/4319_6.jpg" alt="Cmd Markdown"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Mac</p>
+<ul>
+<li>
+<p><a href="http://25.io/mou/">Mou</a>------简洁优雅，免费又好用，中文兼容性好。</p>
+<p><img src="http://www.williamlong.info/upload/4319_14.jpg" alt="Mou"></p>
+</li>
+<li>
+<p><a href="https://typora.io/">Typora</a>------极致简洁，自定义皮肤。</p>
+<p><img src="http://www.williamlong.info/upload/4319_15.jpg" alt="Typora"></p>
+</li>
+<li>
+<p><a href="https://macdown.uranusjr.com/">MacDown</a>------简洁优雅，开源免费。</p>
+<p><img src="http://www.williamlong.info/upload/4319_16.jpg" alt="MacDown"></p>
+</li>
+<li>
+<p><a href="https://www.ulyssesapp.com/">Ulysses</a>------文字写作推荐。</p>
+<p><img src="http://www.williamlong.info/upload/4319_19.jpg" alt="Ulysses"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>多平台</p>
+<ul>
+<li>
+<p><a href="https://atom.io/">Atom</a>------github出的编辑器，支持各种编程语言，可装Markdown插件。</p>
+<p><img src="http://www.williamlong.info/upload/4319_9.jpg" alt="img"></p>
+</li>
+<li>
+<p><a href="http://www.sublimetext.com/">sublimetext</a>------专业编辑器，支持各种编程语言。</p>
+<p><img src="http://www.williamlong.info/upload/4319_8.jpg" alt="img"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="初级语法">初级语法</h2>
+<h3 id="标题">标题</h3>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/8920776.jpg" alt="标题"></p>
+<p>Markdown 支持两种标题的语法，类 Atx 和类 Setext 形式。</p>
+<ul>
+<li>
+<p>Atx（注意<code>#</code>后面有个空格）</p>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+</code></pre>
+</li>
+<li>
+<p>Setext（<code>-</code>与<code>=</code>数目任意，最好三个及以上，比较直观）</p>
+<pre><code>一级标题
+======
+
+二级标题
+------
+</code></pre>
+</li>
+</ul>
+<h3 id="粗体和斜体">粗体和斜体</h3>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/40569596.jpg" alt="标记.jpeg"></p>
+<ul>
+<li>
+<p>粗体</p>
+<pre><code>**这是粗体**
+
+__这是粗体__
+</code></pre>
+</li>
+<li>
+<p>斜体</p>
+<pre><code>*这是斜体*
+
+_这是斜体_
+</code></pre>
+</li>
+</ul>
+<h3 id="段落和换行">段落和换行</h3>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/paragraph.jpg" alt="paragraph"></p>
+<ul>
+<li>
+<p>第一种写法（上图的<code>这是第一段</code>），直接敲两个回车键即可</p>
+<pre><code>这是第一段
+
+这是第二段
+</code></pre>
+</li>
+<li>
+<p>第二种写法（上图的<code>这是第二段</code>），在写完一段后敲两个空格，然后回车写下一段</p>
+<pre><code>这是第二段  
+这是第三段
+</code></pre>
+</li>
+<li>
+<p>第三种写法（上图的<code>这是第三段</code>），在写完一段后用HTML的语法：<code>&lt;br /&gt;</code>作为换行，然后写下一段</p>
+<pre><code>这是第三段&lt;br /&gt;这是第四段
+
+这是第三段&lt;br /&gt;
+这是第四段
+</code></pre>
+</li>
+</ul>
+<h3 id="分隔线">分隔线</h3>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/25455375.jpg" alt="hr"></p>
+<p>可以在一行中用三个及以上的星号、减号、等于号、底线来建立分隔线，行内不能有除空格外的其他东西，注意莫被打脸。
+(≖ ‿ ≖)✧</p>
+<pre><code>***
+---
+===
+___
+</code></pre>
+<h3 id="引言">引言</h3>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/41858745.jpg" alt="blockquote"></p>
+<pre><code>&gt; 我想只用一个 “&gt;” 号来写一个多行的引用，所以在扯鸡巴蛋地码字占空间，好像差不多了吧，嗯嗯~
+
+---
+
+&gt; 还有一种写法就是每一行都用一个 “&gt;” 号
+&gt; 这样写比较美观一点
+
+---
+
+&gt; &gt; 另外一种就是嵌套引用，就像我一样，用两个“&gt;”
+</code></pre>
+<h3 id="列表">列表</h3>
+<h4 id="无序列表">无序列表</h4>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/disorderlist.jpg" alt="disorderlist"></p>
+<p>无序列表可以在每行开头用星号、加号、减号来表示，也可以三者混合一起，推荐使用相同的字符，避免混乱。</p>
+<pre><code>* 一朵百合花
+* 两朵百合花
+* 三朵百合花
+</code></pre>
+<h4 id="有序列表">有序列表</h4>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/orderlist.jpg" alt="orderlist"></p>
+<p>有序列表用数字接着一个英文句点来表示，数字可无序，但还是推荐使用<code>1.</code>、<code>2.</code>，避免混乱。</p>
+<pre><code>1. 一朵百合花
+2. 两朵百合花
+3. 三朵百合花
+</code></pre>
+<h3 id="代码">代码</h3>
+<h4 id="行内代码块">行内代码块</h4>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/linecode.jpg" alt="linecode"></p>
+<pre><code>I am a `code`
+I am a `` ` ``
+</code></pre>
+<h4 id="段落代码块">段落代码块</h4>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/paragraphcode.jpg" alt="paragraphcode"></p>
+<pre><code>#### 第一种
+
+    int main()
+    {
+        printf(&quot;我是个段落代码块&quot;);
+        return 0;
+    }
+</code></pre>
+<p>另外，可以用三个反引号和语言名，作为标记代码所使用的语言</p>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/26187550.jpg" alt="paragraphcode2"></p>
+<h3 id="链接">链接</h3>
+<h4 id="网址链接">网址链接</h4>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/urllink.jpg" alt="urllink"></p>
+<p>网址链接有两种形式：<strong>行内式</strong>、<strong>参考式</strong>。</p>
+<p>不管是哪一种，链接文字都是用 [方括号]
+来标记，双引号<code>&quot;&quot;</code>的<code>title</code>可写可不写。</p>
+<ul>
+<li>
+<p>行内式</p>
+<pre><code>[huihut](https://wangqunsong.github.io/)
+
+[huihut](https://wangqunsong.github.io/ &quot;huihut&quot;)
+
+[huihut](https://wangqunsong.github.io/ 'huihut')
+</code></pre>
+</li>
+<li>
+<p>参考式</p>
+<ul>
+<li>一般写法</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<pre><code>[huihut][1]
+[1]: https://wangqunsong.github.io/
+</code></pre>
+<ul>
+<li>隐式链接标记------可省略id，只需要[text]与下面[方括号]内容相同即可</li>
+</ul>
+<!-- -->
+<pre><code>[Google][]
+[Google]: http://google.com/
+</code></pre>
+<ul>
+<li>
+<p>拓展</p>
+<ul>
+<li>
+<p>这里的链接辨别标签可以有字母、数字、空白和标点符号，但是并不区分大小写，因此下面两个链接是一样的：</p>
+<pre><code>[text][a]
+[text][A]
+</code></pre>
+</li>
+<li>
+<p>链接 title
+可以用双引号、单引号、圆括号包起来，因此，下面这三种链接的定义都是相同：</p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<pre><code>[1]: https://wangqunsong.github.io/  &quot;title&quot;
+[1]: https://wangqunsong.github.io/  'title'
+[1]: https://wangqunsong.github.io/  (title)
+</code></pre>
+<p><strong>特别注意</strong>：Markdown.pl 1.0.1 会忽略单引号包起来的链接 title</p>
+<h4 id="图片链接">图片链接</h4>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/picturelink.jpg" alt="picturelink"></p>
+<p>图片链接与上面的网址链接类似，同样有两种形式：行内式和参考式，只不过图片链接在前面加上一个感叹号<code>!</code>，在此不做累述。</p>
+<ul>
+<li>
+<p>行内式</p>
+<pre><code>![huihut](http://ojlsgreog.bkt.clouddn.com/H_ya.png)
+</code></pre>
+</li>
+<li>
+<p>参考式</p>
+<pre><code>![谷歌][1]
+</code></pre>
+</li>
+</ul>
+<!-- -->
+<pre><code>[1]: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png &quot;Google&quot;
+</code></pre>
+<h5 id="指定图片宽高">指定图片宽高</h5>
+<ul>
+<li>
+<p>Markdown 一般不支持指定图片的宽高，若要指定宽高可以使用普通的
+<code>&lt;img&gt;</code> 标签</p>
+<pre><code>&lt;img src=&quot;./xxx.png&quot; width = &quot;100&quot; height = &quot;100&quot; alt=&quot;title&quot; align=center /&gt;
+</code></pre>
+<p>如果需要居中可以在外围包围<code>div</code>标签</p>
+<pre><code>&lt;div  align=&quot;center&quot;&gt;    
+&lt;img src=&quot;xxx.png&quot; width = &quot;100&quot; height = &quot;100&quot; alt=&quot;title&quot; align=center /&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>
+<p>使用支持指定图片大小的 Markdown 编辑器，如 Mou</p>
+<pre><code>![](xxx.png =100x100)
+</code></pre>
+</li>
+</ul>
+<h5 id="用图床获取外链">用图床获取外链</h5>
+<p>网上有许多图床，这里推荐两个 <strong>七牛图床</strong> 和 <strong>极简图床</strong>。</p>
+<ul>
+<li>
+<p><a href="https://www.qiniu.com/">七牛图床</a></p>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/qiniutuchuang.jpg" alt="img"></p>
+</li>
+<li>
+<p><a href="https://yotuku.cn/">极简图床</a></p>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/jijiantuchuang.jpg" alt="img"></p>
+</li>
+</ul>
+<h2 id="进阶语法">进阶语法</h2>
+<h3 id="标签">标签</h3>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/label.jpg" alt="label"></p>
+<ul>
+<li>
+<p>方法一</p>
+<pre><code>title: Markdown 使用手册
+date: 2018-05-02 1:45:50
+tags: Markdown
+categories: 技术
+</code></pre>
+</li>
+<li>
+<p>方法三</p>
+<pre><code>tags:
+- Markdown
+- 语言
+categories:
+- 技术
+</code></pre>
+</li>
+<li>
+<p>方法三</p>
+<pre><code>tags: [Markdown,语言]
+categories: [技术]
+</code></pre>
+</li>
+</ul>
+<h3 id="目录">目录</h3>
+<ul>
+<li>
+<p>方法一</p>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/content.jpg" alt="img"></p>
+<p>这种目录其实是用 <strong>HTML</strong> 加 <strong>Markdown的链接</strong>
+实现，分为两个部分，<strong>目录部分</strong>和<strong>标题部分</strong>。</p>
+<ul>
+<li>
+<p>目录部分------实质是链接，链接的<code>[地址]</code>填需要跳转到的标题的<code>id</code>属性（自定义）。</p>
+<pre><code>[跳到标题一](#title1)
+</code></pre>
+</li>
+<li>
+<p>标题部分------实质是HTML的标题标签，标签里面的<code>id</code>属性等于待跳转的目录的<code>[地址]</code>。</p>
+<pre><code>&lt;h1 id=&quot;title1&quot;&gt;标题一&lt;/h1&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>方法二</p>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/content2.jpg" alt="content2"></p>
+<p>这种方法非常简单，就是直接添加
+<code>[TOC]</code>，标题1~6样式的内容会被提取出来作为目录，然而有些编辑器不能使用这功能，如
+Mou 不能使用。我是在有道云笔记的 Markdown 中截图的。</p>
+<pre><code>[TOC]
+
+# 标题一
+……
+## 标题二
+……
+### 标题三
+</code></pre>
+<p>这里有个jQuery插件，貌似可以让Markdown生成目录：</p>
+<p><a href="https://github.com/i5ting/i5ting_ztree_toc">https://github.com/i5ting/i5ting_ztree_toc</a></p>
+</li>
+</ul>
+<h3 id="表格">表格</h3>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/table.jpg" alt="table"></p>
+<ul>
+<li>
+<p>表格一般这样子写，这应该是最简单的写法了</p>
+<pre><code>id    |   name   |   score
+---   |   ---    |   ---
+001   |   Mark   |   90
+002   |   Ford   |   80
+003   |   Alan   |   95
+</code></pre>
+</li>
+<li>
+<p>还有就是对齐了，用<code>:</code>对齐，<code>:</code>写在在<code>---</code>的左边就是左对齐，右边就是右对齐，两边都写就是居中。</p>
+<pre><code>|long_long_id|long_long_name|long_long_score|
+|    ---     |    :---:     |     ---:      |
+|    001     |     Mark     |      90       |
+|    002     |     Ford     |      80       |
+|    003     |     Alan     |      95       |
+</code></pre>
+</li>
+</ul>
+<h3 id="脚注">脚注</h3>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/footnote.jpg" alt="footnote"></p>
+<pre><code>这是脚注一[^1]
+
+[^1]: 脚注一
+</code></pre>
+<h3 id="公式">公式</h3>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/19214528.jpg" alt="formula"></p>
+<ul>
+<li>
+<p>方法一：使用Google Chart</p>
+<pre><code>&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}&quot; style=&quot;border:none;&quot;&gt;
+</code></pre>
+</li>
+<li>
+<p>方法二：使用forkosh</p>
+<pre><code>&lt;img src=&quot;http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}&quot; style=&quot;border:none;&quot;&gt;
+</code></pre>
+</li>
+<li>
+<p>方法三：使用codecogs</p>
+<pre><code>&lt;a href=&quot;https://www.codecogs.com/eqnedit.php?latex=x=\frac{-b\pm&amp;space;\sqrt{b^{2}-4ac}}{2a}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://latex.codecogs.com/gif.latex?x=\frac{-b\pm&amp;space;\sqrt{b^{2}-4ac}}{2a}&quot; title=&quot;x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}&quot; /&gt;&lt;/a&gt;
+</code></pre>
+</li>
+<li>
+<p>方法四：使用MathJax引擎------先加载脚本<code>&lt;script&gt;</code>，后解析公式。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
+
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+</code></pre>
+</li>
+</ul>
+<h3 id="流程图">流程图</h3>
+<p><img src="http://cdn2.wiz.cn/wp-content/uploads/2015/11/QQ20151123-0.png" alt="flowsheet"></p>
+<p>像流程图这种复杂的功能不推荐在 Markdown
+中使用，因为很多编辑器都不支持，我使用了几个编辑器都不能生成流程图，所以上图是在为知笔记官方
+Markdown 新手指南中找到的。</p>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/flowsheetcode.jpg" alt="flowsheetcode"></p>
+<p>更多关于流程图的语法说明：</p>
+<p><a href="https://github.com/adrai/flowchart.js">https://github.com/adrai/flowchart.js</a></p>
+<h3 id="序列图">序列图</h3>
+<p><img src="http://cdn2.wiz.cn/wp-content/uploads/2015/11/QQ20151123-1.png" alt="sequencemap"></p>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/sequencemapcode.jpg" alt="sequencemapcode"></p>
+<p>更多关于时序图的语法说明：</p>
+<p><a href="https://github.com/bramp/js-sequence-diagrams">https://github.com/bramp/js-sequence-diagrams</a></p>
+<h2 id="其他语法">其他语法</h2>
+<h3 id="兼容html">兼容HTML</h3>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/html.jpg" alt="html"></p>
+<p>Markdown 可以和 HTML 混编，甚至可以完全用 HTML 语法来写。要注意在 HTML
+标签中的 Markdown 代码是不起作用的。</p>
+<pre><code>&lt;font color='blue' style='font-size:30px'&gt;蓝色&lt;/font&gt;
+
+&lt;div&gt;
+# HTML 标签里面的 Markdown 语法不起作用
+**你看我没有变粗**
+&lt;/div&gt;
+</code></pre>
+<h3 id="特殊字符自动转换">特殊字符自动转换</h3>
+<ul>
+<li>HTML 语法------在 HTML 中所有<code>&lt;</code>和<code>&amp;</code>都要转换，包括链接（URL）
+<ul>
+<li>用 <code>&amp;lt;</code> 表示 <code>&lt;</code>------起始标签</li>
+<li>用 <code>&amp;amp;</code> 表示 <code>&amp;</code> ------标记 HTML 实体</li>
+</ul>
+</li>
+<li>Markdown 语法------Markdown 则会自动转换</li>
+</ul>
+<h3 id="反斜杠">反斜杠</h3>
+<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号。如：</p>
+<p><em>literal asterisks</em></p>
+<p>可用</p>
+<pre><code>\*literal asterisks\*
+</code></pre>
+<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
+<pre><code>\   反斜线
+`   反引号
+*   星号
+_   底线
+{}  花括号
+[]  方括号
+()  括弧
+#   井字号
++   加号
+-   减号
+.   英文句点
+!   惊叹号
+</code></pre>
+<h3 id="自动链接">自动链接</h3>
+<p><img src="http://ojlsgreog.bkt.clouddn.com/autolink.jpg" alt="autolink"></p>
+<ul>
+<li>
+<p>网址自动链接</p>
+<pre><code>&lt;https://wangqunsong.github.io/&gt;
+</code></pre>
+</li>
+<li>
+<p>电子邮件自动链接</p>
+<pre><code>&lt;wangqunsong@hotmail.com&gt;
+</code></pre>
+</li>
+</ul>
+
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
