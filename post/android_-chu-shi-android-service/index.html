@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Android_初识Android Service | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Android_初识Android Service</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-11-24</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/4RNdnWg1u">
+                    Android
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Android_初识Android Service</strong>
+<a href="https://developer.android.com/guide/components/services.html">安卓开发者中心</a></p>
+<h4 id="序">序</h4>
+<p>先放一张<code>Google</code>的<code>service</code>生命周期图：</p>
+<p><img src="https://i.loli.net/2019/04/01/5ca1cd02dea92.png" alt="service生命周期"></p>
+<h4 id="service的生命周期解释">Service的生命周期解释</h4>
+<pre><code class="language-shell">#1.onCreate()
+    首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用 onStartCommand()或 onBind()之前）。如果服务已在运行，则不会调用此方法。
+#2.onStartCommand()
+    当另一个组件（如 Activity）通过调用 startService()请求启动服务时，系统将调用此方法。一旦执行此方法，服务即会启动并可在后台无限期运行。 如果您实现此方法，则在服务工作完成后，需要由您通过调用 stopSelf()或 stopService()来停止服务。（如果您只想提供绑定，则无需实现此方法。）
+#3.onDestroy()
+    当服务不再使用且将被销毁时，系统将调用此方法。服务应该实现此方法来清理所有资源，如线程、注册的侦听器、接收器等。 这是服务接收的最后一个调用。
+#4.onBind()
+    当另一个组件想通过调用 bindService()与服务绑定（例如执行 RPC）时，系统将调用此方法.
+#5. onUnBind()
+    解除组件与服务的绑定，对于绑定服务，有效生命周期在 onUnbind() 返回时结束
+</code></pre>
+<h4 id="什么是service">什么是Service?</h4>
+<p><code>Service</code> 是一个可以在后台执行长时间运行操作而不提供用户界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。</p>
+<p>服务基本上分为两种形式：</p>
+<ul>
+<li>启动（started）</li>
+</ul>
+<p>​        当应用组件（如 Activity）通过调用 <code>startService()</code> 启动服务时，服务即处于“启动”状态。一旦启动，服务即可在后台无限期运行，即使启动服务的组件已被销毁也不受影响。</p>
+<ul>
+<li>绑定</li>
+</ul>
+<p>​        当应用组件通过调用 <code>bindService()</code> 绑定到服务时，服务即处于“绑定”状态。绑定服务提供了一个客户端-服务器接口，允许组件与服务进行交互、发送请求、获取结果。仅当与另一个应用组件绑定时，绑定服务才会运行。 多个组件可以同时绑定到该服务，但全部取消绑定后，该服务即会被销毁。</p>
+<h4 id="startservice与bindservice区别">startService()与bindService()区别</h4>
+<ul>
+<li>started service（启动服务）是由其他组件调用startService()方法启动的，这导致服务的onStartCommand()方法被调用。当服务是started状态时，其生命周期与启动它的组件无关，并且可以在后台无限期运行，即使启动服务的组件已经被销毁。因此，服务需要在完成任务后调用stopSelf()方法停止，或者由其他组件调用stopService()方法停止。</li>
+<li>使用bindService()方法启用服务，调用者与服务绑定在了一起，调用者一旦退出，服务也就终止，大有“不求同时生，必须同时死”的特点。</li>
+</ul>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/android_-chu-shi-android-activity-de-sheng-ming-zhou-qi">
+              <h3 class="post-title">
+                下一篇：Android_初识Android Activity的生命周期
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>Markdown | 小小王的后花园</title>
+<title>在命令行下处理 YAML | 小小王的后花园</title>
 <meta name="description" content="小小王的后花园">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -77,49 +77,52 @@
 
 
       <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">在命令行下处理 YAML</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-05-02</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/eH19MB6sE">
+                    yaml
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>在命令行下处理 YAML</strong></p>
+<!-- more --> 
+<h4 id="项目地址">项目地址</h4>
+<p><a href="https://github.com/0k/shyaml">项目Github</a></p>
+<p>​      最近使用Jenkins基于分支构建时，需要使用shell脚本来读取yml配置文件，使用了<a href="https://github.com/0k/shyaml">shyaml</a>，这是一个可以通过命令行读取yml配置文件的工具，使用方法可访问项目地址。</p>
+<p>​     这里仅记录下使用过程中碰到的问题：</p>
+<h4 id="碰到的问题">碰到的问题</h4>
+<p>1.<strong>安装完成后找不到shyaml命令(-bash: shyaml: command not found)</strong></p>
+<p><strong>原因</strong>：说明文档中使用python的pip工具进行安装，问题是这样安装只会将shyaml安装到python安装路径的site-packages目录下，并不能直接在shell脚本中使用</p>
+<p><strong>解决办法</strong>：将项目中的shyaml文件拷贝到/usr/bin目录下（注意没有后缀名），bi并使用chmod增加必要的权限，此时即可正常使用：</p>
+<p><img src="https://i.loli.net/2019/03/14/5c8a21809d895.png" alt="shyaml"></p>
 
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> Markdown
-          </h2> 
+          </div>
         </div>
 
         
-<section class="post-item">
-    <div class="content">
-      <a href="http://wangqunsong.top/post/chu-shi-markdown">
-        <h2 class="post-title">初识MarkDown</h2>
-      </a>
-      <div class="post-abstract">
-        <p>​    MarkDown简洁美观，入门简单，加之越来越多的网站都支持MarkDown语法，故记录下MarkDown的简略语法，更详细的教程请移步<a href="http://www.markdown.cn/">官网</a>。</p>
-
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">
+              <h3 class="post-title">
+                下一篇：Python 2.7.x 与 Python 3.x 的主要差异「转]
+              </h3>
+            </a>
+          </div>
+          
       </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2016-10-10</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="http://wangqunsong.top/tag/BztMmd1cX">
-                Markdown
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
 
-
-<div class="pagination-container">
-  
-  
-</div>
-
-
-      </div>
+      
 
       <div class="site-footer">
   <div class="slogan">小小王的后花园</div>

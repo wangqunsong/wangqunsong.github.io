@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>持续集成05_分层自动化测试 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">持续集成05_分层自动化测试</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-10-10</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/AZvxNNEdR">
+                    CI/CD
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成05_分层自动化测试</strong></p>
+<!-- more --> 
+<h5 id="写在前面">写在前面</h5>
+<blockquote>
+<p>更新：新的项目使用了一个非常好的开源接口自动化框架<a href="https://github.com/HttpRunner/HttpRunner"><code>HttpRunner</code></a>，该项目由<em>DebugTalk</em>大佬开发，使用抓包并转换为<code>yml</code>或<code>json</code>的方式整理用例，并结合了<code>Locust</code>，同时兼顾了接口测试和性能测试。开发使用文档见<a href="https://cn.httprunner.org/">这里</a>。</p>
+</blockquote>
+<p>刚开始进行接口自动化的时候，并没有找到一个适合的接口自动化框架，初衷是希望能提供<code>command line</code>方便持续集成，最好是用<code>Pyhon</code>编写方便二次开发(菜鸡只懂点Java的基础语法和基本使用)。就自己用<code>Python + unittest + requests + HTMLtestRunner</code>开发了个简单框架，起了个简单的名字叫<code>JYTest</code>，项目结构如下：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c651fd0e19cd.png" alt="JYTest项目结构.png"></p>
+<h5 id="加密-解密和签名">加密、解密和签名</h5>
+<p>公司技术栈为<code>Java</code>，交易接口都需要经过加密和签名，加密和签名的内容如下：</p>
+<pre><code class="language-shell">1.  报文加密算法：DES/CBC/PKCS5Padding
+2.  会话密钥生成：KeyGenerator生成
+3.  会话密钥加密算法：RSA/ECB/PKCS1Padding
+4.  签名算法：SHA1withRSA
+</code></pre>
+<p>最开始的时候使用了<code>Python</code>中的<code>Crypto</code>库以及<code>rsa</code>库进行加解密和签名，也试用了其他库，无奈结果始终和<code>Java</code>版本的不一致，最终发现两种语言的加密实现不一致(可能理解有误)。于是一脸懵逼的开始另寻他法，这个过程中使用过<strong>JPype</strong>进行跨语言调用，但遇到一个很头疼的地方在于，<code>python</code>调用<code>Java</code>时的数据类型转换很麻烦，以及反复重启的<code>JVM</code>性能低下。【<a href="http://wangqunsong.top/2018/05/17/JPype%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/">Jpype使用小结</a>】</p>
+<p>​    最终的办法是，将公司原有的加解密和签名的部分代码，使用<code>Spring Boot</code>简单封装了<code>restful接口</code>，中间使用<code>json</code>进行数据传输，如此就不用考虑数据类型的问题。只是在每次的接口请求之前增加了一次加密的<code>htpp</code>请求，对应的，在断言接口响应之前也需要增加一次<code>http</code>解密请求。</p>
+<h5 id="数据准备">数据准备</h5>
+<p>测试过程中碰到最麻烦的事情就是数据准备，对实际项目中的碰到的数据总结如下：</p>
+<ul>
+<li>1.有固定规则，唯一性：手机号，身份证号等；</li>
+<li>2.唯一性，强关联性：订单号，流水号等；</li>
+<li>3.取值范围固定：性别，客户类型等；</li>
+<li>4.无特别限制：姓名，地址等；</li>
+</ul>
+<p>对应的准备方法如下：</p>
+<ul>
+<li>封装成独立的函数，每次发起请求时调用生成；</li>
+<li>直接调用接口（或者使用SQL插入）</li>
+<li>固定的<code>list(Tuple)</code></li>
+<li>调用第三方库生成（faker库等）</li>
+</ul>
+<p>当然，有大牛提出了更好的解决办法，暂时还在研究中，先放在这里：</p>
+<ul>
+<li>1.搭建数据生成平台，供自动化框架使用；</li>
+<li>2.直接造环境。</li>
+</ul>
+<h5 id="用例管理">用例管理</h5>
+<p>测试用例使用<code>yaml</code>格式管理，每个<code>yml</code>文件为一个<code>testsuite</code>,格式组织如下：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c65228c53545.png" alt="JYTest用例管理.png"></p>
+<h5 id="集成jenkins">集成Jenkins</h5>
+<p><img src="https://i.loli.net/2019/02/14/5c652a27e7b03.png" alt="JYTest_run.png"></p>
+<p>由于<code>JYTest</code>有一个唯一的入口，所有集成Jenkins时就比较方便，直接运行<code>run.py</code>即可。</p>
+<h3 id="ui自动化测试">UI自动化测试</h3>
+<p>在对比了两个很火的自动化测试框架<a href="https://www.seleniumhq.org/">Selenium</a>和<a href="https://macacajs.github.io/zh/">Macaca</a>之后，我选择了<a href="https://robotframework.org/">RobotFramework</a>——O(∩_∩)O。</p>
+<p><code>RobotFramework</code>的确不是一个好的选择，一是原生的RF排错很困难，二是太高度封装了不好二次定制，还有就是当碰到大型项目时很吃力。</p>
+<p>最初考虑的原因一个是成本，因为<code>RF</code>入门简单，适合不怎么熟悉编程的人，另一个是<code>RF</code>用的是<code>Python</code>开发，并且基于的是<code>Selenium2Library库</code>，我可以进行修改和二次定制开发，还有就是一些其他原因。这里UI自动化就不记录了，以后新的项目都应该会用<code>Selenium</code>了，移动端的话是<code>Appium</code>。</p>
+<h3 id="pipeline">PipeLine</h3>
+<pre><code class="language-groovy">stage ('接口自动化测试') {
+    when { expression {return isStage4 }}
+    steps{
+        echo '开始接口自动化测试'
+        script {。
+           timeout(5) {
+               waitUntil {
+                  try {
+                      //检查tomcat服务
+                      sh &quot;nc -z ${serverIP} ${TomcatPort}&quot;
+                      return true
+                  } catch (exception) {
+                      return false
+                      }
+                  }
+              }
+        sh 'python run.py'
+    }
+}
+    
+******************************************【或者】********************************************
+stage('接口自动化测试') {
+    when { expression {return isStage4 }}
+      steps{
+          echo &quot;starting interfaceTest......&quot;
+          script {
+           //为确保jetty启动完成，加了一个判断，确保jetty服务器启动可以访问后再执行接口层测试。
+           timeout(5) {
+               waitUntil {
+                  try {
+                      //确保jetty服务的端口启动成功
+                      sh &quot;nc -z ${serverIP} ${jettyPort}&quot;
+                      //sh &quot;wget -q http://${serverIP}:${jettyPort} -O /dev/null&quot;
+                      return true
+                  } catch (exception) {
+                      return false
+                      }
+                  }
+              }
+          //将参数IP和Port传入到接口测试的job，需要确保接口测试的job参数可注入
+           build job: ITEST_JOBNAME, parameters: [string(name: &quot;dubbourl&quot;, value: &quot;${serverIP}:${params.dubboPort}&quot;)]
+          }
+      }
+  }
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">
+              <h3 class="post-title">
+                下一篇：持续集成04_测试环境部署
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

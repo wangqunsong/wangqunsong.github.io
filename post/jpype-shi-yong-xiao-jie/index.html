@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>JPype使用小结 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">JPype使用小结</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-10-16</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/1sgoPsPP5">
+                    Python
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>JPype使用小结</strong></p>
+<!-- more -->
+<h4 id="概述">概述</h4>
+<p>​        很多人都知道 <strong>Jython（</strong> 也叫<strong>JPython）</strong>，<strong>Jython</strong> 是在 Java 虚拟机(JVM) 上运行 <strong>python</strong> 代码的一种语言（没错，<em>Jython</em>是一种语言），显而易见，<strong>Jython</strong> 是给 <strong>Java程序员</strong> 运行 <strong>Python</strong> 程序用的。</p>
+<p>​      而 <strong>JPype</strong> 是一个库，是给 <strong>python</strong>程序员 运行 <strong>Java</strong> 程序用的，<strong>JPype</strong>提供了<strong>python</strong>访问<strong>Java</strong>代码的能力。用更正式的话来说：</p>
+<!--more-->
+<blockquote>
+<p>JPype 是一个能够让 Python 代码方便地调用 Java 代码的工具，从而克服了 Python 在某些领域（如服务器端编程）中的不足。(引自<a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-jpype/index.html">IBM</a>)</p>
+</blockquote>
+<h4 id="环境">环境</h4>
+<p>​    本文使用的操作系统为windows 10，Java和Python版本如下：</p>
+<h5 id="java版本">JAVA版本</h5>
+<pre><code class="language-java">D:\&gt;java -version
+java version &quot;1.8.0_101&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
+</code></pre>
+<h5 id="python版本">Python版本</h5>
+<pre><code class="language-python">D:\&gt;python3
+Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 25 2016, 22:18:55) [MSC v.1900 64 bit (AMD64)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</code></pre>
+<p>注：本文虽然使用了3.5版本，但<strong>JPype</strong> 可以同时支持 2.7 和 3.5 ，而且在 2.7 上安装 <strong>JPype</strong> 比 3.5 上更方便。</p>
+<h4 id="安装">安装</h4>
+<p>​    在 <strong>Python 3.5</strong> 中，安装 <strong>JPype</strong> 不能直接使用 <strong>pip3</strong> 安装，因为<strong>JPype</strong>开发时Python3还未流行起来，所以<strong>JPype</strong> 默认是为 <strong>Python2</strong> 编写的。不过有大牛为 <strong>Python3</strong> 编写了一个兼容的版本，所以我们需要用源码安装，具体步骤为：</p>
+<pre><code class="language-shell">&gt; git clone https://github.com/tcalmant/jpype-py3.git
+&gt; cd jpype-py3
+&gt; python3 setup.py install
+</code></pre>
+<p>注：若编译出错，请检查一下系统是否缺乏 <code>python3-dev</code> 库，或者是否安装了 <strong>C++</strong> 编译工具。至于为什么需要C++编译工具，因为<strong>JPype</strong>是用<strong>JNI</strong>实现的。</p>
+<blockquote>
+<p>什么是JNI？（源自<a href="https://zh.wikipedia.org/wiki/Java%E6%9C%AC%E5%9C%B0%E6%8E%A5%E5%8F%A3">维基百科</a>）</p>
+</blockquote>
+<h4 id="简单示例">简单示例</h4>
+<p>先看一小段简单代码：</p>
+<pre><code class="language-py">import jpype
+from jpype import *
+
+if __name__ == &quot;__main__&quot;:
+    startJVM(jpype.getDefaultJVMPath())
+    java.lang.System.out.println(&quot;Hello World&quot;)
+    shutdownJVM()
+</code></pre>
+<p>​      代码很简单，开头的 <code>import</code> 导入了JPype，关键代码都在 <code>__main__</code> 里，主要是第一句<code>startJVM</code>和第三句<code>shutdownJVM</code>，其实就是开启和关闭 <strong>JVM</strong> 的执行环境；然后中间这一句输出了<code>hello world.</code>可以看到，除了和在 <strong>Java</strong> 中直接调用 <code>System.out.println</code> 多了前面的包名之外，其他和Java原生代码是一样的。</p>
+<h4 id="不止于helloworld">不止于Hello，World</h4>
+<p>​       输出<code>Hello World</code>并没有什么实际意义，以上只是了解下<em>JPype</em>的工作流程，更常见的，我们要开始调用自己的<em>Java</em>代码。<strong>JPype</strong>调用<strong>Java</strong>代码有两种方式，第一种是直接编译，把所有的东西放在一个文件夹里；第二种是将源代码打包成一个<code>jar</code>包然后调用。这里使用第二种方式介绍。</p>
+<p>​      假设你有一个<strong>JAVA</strong>类如下：</p>
+<pre><code class="language-java">package com.test;
+
+import org.apache.log4j.Logger;
+public class Demo {
+   public static Logger logger =Logger.getLogger(MathDemo.class.getName());
+   public int add(int a, int b) {
+     return a+b;
+   }
+}
+</code></pre>
+<p>以上Demo类中有个一个add方法，并且该类依赖于第三方依赖包<code>log4j-1.2.16.jar</code>。将此源码打包编译为<code>Demo.jar</code>，所在路径为<code>E:/Test/Demo.jar</code>,并将第三方依赖包拷贝到<code>E:/Test/dependent</code>路径下，然后我们用<em>Python</em>调用以上代码如下;</p>
+<pre><code class="language-py">from jpype import *
+import os
+
+jar_path = os.path.join(os.path.abspath('.'), 'E:/Test/Demo.jar')   #源码包路径
+dependent_path = os.path.join(os.path.abspath('.'), 'E:/Test/dependent') #第三方依赖包路径
+startJVM(getDefaultJVMPath(), &quot;-Djava.class.path=&quot; + jar_path,&quot;-Djava.ext.dirs=&quot; + dependent_path)    #当有第三方依赖的jar包时，必须添加-Djava.ext.dirs参数
+if not isJVMStarted():
+    startJVM(getDefaultJVMPath(), &quot;-Djava.class.path=&quot; + jar_path,&quot;-Djava.ext.dirs=&quot; + dependent_path)
+JClass = JClass('com.test.Demo')
+jpype_test = JClass()
+add_result = (jpype_test.add(1, 2))
+print (add_result)
+shutdownJVM()
+</code></pre>
+<p>或者还可以这样：</p>
+<pre><code>from jpype import *
+import os
+
+jar_path = os.path.join(os.path.abspath('.'), 'E:/Test/Demo.jar')   #源码包路径
+dependent_path = os.path.join(os.path.abspath('.'), 'E:/Test/dependent') #第三方依赖包路径
+startJVM(getDefaultJVMPath(), &quot;-Djava.class.path=&quot; + jar_path,&quot;-Djava.ext.dirs=&quot; + dependent_path)    #当有第三方依赖的jar包时，必须添加-Djava.ext.dirs参数
+if not isJVMStarted():
+    startJVM(getDefaultJVMPath(), &quot;-Djava.class.path=&quot; + jar_path,&quot;-Djava.ext.dirs=&quot; + dependent_path)
+JClass = JClass('com.test.Demo')
+jpype_test = JPackage('com').test.Demo
+add_result = (jpype_test.add(1, 2))
+print (add_result)
+shutdownJVM()
+</code></pre>
+<p>​      以上两种方法大部分是一样的，不同的仅仅是一个使用了<code>JClass</code>方法，另一个用了<code>JPackage</code>方法，而<code>JPackage</code>对类的访问也是依靠<code>Jclass</code>，只不过其提供了对包的访问。归根结底，能否找到类还是要依靠_jpype.findClass()这个函数。</p>
+<p><strong>注意事项：</strong></p>
+<p>​    1.运行以上代码可能会出现以下错误：</p>
+<pre><code>jpype._jexception.ExceptionPyRaisable: java.lang.Exception: Class not found
+</code></pre>
+<p>​    这是因为在启动JVM的时候，JPype默认不会把JDK中 “\jre\lib\ext” 下的JAR包引入，所以为了避免调用过程中出现问题，建议将 “\jre\lib\ext” 或者其他依赖的所有jar包, 均放入我们自己的 &quot;dependent&quot; 目录。</p>
+<p>2.我在使用过程中还碰到另一种情况：</p>
+<p>​      即使拷贝了所有的jar包到dependent目录下，运行时还是报以上错误；后来发现可能与jar的打包方式有关，由于原来使用了eclipse的<strong>Fat Jar</strong>打包插件，打包时并没有生成 .class文件，而Python调用时，导入的其实是.class文件，最终用eclipse自带的打包工具重新打包才得以解决。（这里一直有些不大明白，有其他原因希望大牛解答）</p>
+<h4 id="debug">DEBUG</h4>
+<p>​      JPype一个很蛋疼的地方是，绝大部分都只返回<code>Class not found</code>错误，并未给出更多的错误信息。所以这时就需要Debug来进一步分析，具体方法为：</p>
+<pre><code class="language-py">编辑JPype安装目录下的native/common/include/jpype.h文件，第23行
+//#define JPYPE_TRACING_INTERNAL
+被注释掉了，去掉开头的//，然后回到Jpype的目录下，重新编译JPype，执行
+python3 setup.py build -f
+python3 setup.py install -f
+</code></pre>
+<p>再运行你的代码即可看到debug信息。</p>
+<h4 id="性能">性能</h4>
+<p>​        对于跨语言调用，离不开的一个话题就是性能了，对于 <em>JPype</em>来说，因为它底层使用的是<em>JNI</em>：<strong>JNI</strong> 在<code>Java</code> 中被用来和低层的 <code>C/C++</code> 代码进行交互，因此可以发现 JPype 其实不是简单得做了一层转换，实际上是做了两层的转换。</p>
+<p>​        但事实上，在 Python 中使用 Java 代码有点类似于在 Python 中部分用 C 代码一样，不仅不会降低 python 代码的性能，反而会提高 python 代码的性能。既然是跨语言，那么当频繁交互时必然会带来更多开销，如果你经常往 Java 代码中传递相同的对象(例如 String/Object/Array)的话，那么可以使用包装器来预转换，这样多少能提升一些代码的执行速度。</p>
+<h4 id="数据类型">数据类型</h4>
+<p>​        不同的语言支持的数据类型是不一样的，<code>Java</code>中有 int,long,double,float 等类型，而 python 中没有 double ，只有 float，所以如何进行数据转换也是一个问题。以下为Java 类型到 python 类型的转换：</p>
+<table>
+<thead>
+<tr>
+<th><code>Java 类型</code></th>
+<th><code>转换成的 python 类型</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte, short and int</td>
+<td>int</td>
+</tr>
+<tr>
+<td>long</td>
+<td>long</td>
+</tr>
+<tr>
+<td>float and double</td>
+<td>float</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>int of value 1 or 0</td>
+</tr>
+<tr>
+<td>char</td>
+<td><code>unicode of length 1</code></td>
+</tr>
+<tr>
+<td>String</td>
+<td>unicode</td>
+</tr>
+<tr>
+<td>arrays</td>
+<td>JArray</td>
+</tr>
+<tr>
+<td><code>other Java object</code></td>
+<td>JavaObject</td>
+</tr>
+<tr>
+<td>Class</td>
+<td>JavaClass</td>
+</tr>
+<tr>
+<td>array Class</td>
+<td>JavaArrayClass</td>
+</tr>
+</tbody>
+</table>
+<h4 id="java异常处理">Java异常处理</h4>
+<p>​        如果希望在 <strong>Python</strong> 中捕获 <strong>Java</strong> 异常的话，那么 <strong>JPype</strong> 提供有 <code>JavaException</code> 这个类用于捕获所有的 <strong>Java</strong> 异常，通过捕获 <code>JavaException</code> 这个类，你可以使用 <code>message()</code>， <code>stackTrace()</code> 和 <code>javaClass()</code> 这些方法来获得更多的异常信息。这里举个简单的例子：</p>
+<pre><code class="language-java">try :
+    # Code that throws a java.lang.RuntimeException
+except JavaException, ex :
+    if JavaException.javaClass() is java.lang.RuntimeException :
+        print &quot;Caught the runtime exception : &quot;, JavaException.message()
+        print JavaException.stackTrace()
+</code></pre>
+<p>如果你真的想直接捕获<strong>真正</strong>的 <strong>Java</strong> 异常的话，那么你可以使用 <code>JException</code> 这个装饰器，例如：</p>
+<pre><code>try :
+    # Code that throws a java.lang.RuntimeException
+except jpype.JException(java.lang.RuntimeException), ex :
+    print &quot;Caught the runtime exception : &quot;, JavaException.message()
+    print JavaException.stackTrace()
+</code></pre>
+<h4 id="jpype的局限">JPype的局限</h4>
+<h5 id="1不能重启jvm">1.不能重启JVM</h5>
+<p>​       有时我们只会偶尔跑一下 <strong>Java代码</strong>，并不会一直运行着，这时候，为了性能考虑，可能回想在运行完 <strong>Java代码</strong> 之后会关掉 <strong>JVM</strong>，然后在下次运行<strong>Java代码</strong>的时候再启动一次<strong>JVM</strong>。然而，这样并不可行：</p>
+<pre><code class="language-python">import jpype
+from jpype import *
+
+
+if __name__ == &quot;__main__&quot;:
+    print(jpype.getDefaultJVMPath())
+    startJVM(jpype.getDefaultJVMPath())
+    java.lang.System.out.println(&quot;这是第一次运行&quot;)
+    shutdownJVM()
+
+    startJVM(jpype.getDefaultJVMPath())
+    java.lang.System.out.println(&quot;这是第二次运行&quot;)
+    shutdownJVM()
+</code></pre>
+<p>​        执行以上代码，你会发现报错了，没错，在第二次启动 <strong>JVM</strong> 的时候出错了，<strong>JVM</strong>居然启动不起来了！！！这是 BUG，而且是很久的 BUG，更蛋疼的是，作者也并不想修复这个BUG，详细内容可移步<a href="https://github.com/originell/jpype/issues/84">ISSUE 84</a> 。</p>
+<p>​        这个不合理的设计背后，其实是有原因的。 JPype 底层依赖的是 JNI，然后 JNI 的 API 中实现了一个 <code>destroyJVM()</code> 的函数，然而这个函数并不工作，所以当再次调用 <code>startupJVM()</code> 的时候，得到的会是一个异常。</p>
+<h5 id="2依赖于当前类的方法">2.依赖于“当前类”的方法</h5>
+<p>​        在 <strong>Java</strong> 的库中，有很多方法依赖于调用的类来查找信息，所以，当我们在 <strong>Python</strong> 中调用这些方法时，就会出错，因为没有<strong>java 调用类</strong>提供给它，而且 <strong>JNI api</strong> 也没有办法来提供仿真的方法。</p>
+<p>目前遇到过会出现这种问题的函数有：</p>
+<pre><code class="language-java">java.lang.Class.forName(String classname);
+java.sql.DriverManager.getConnection(...);
+</code></pre>
+<p>第一句可以使用这种方式类替换：</p>
+<pre><code class="language-java">Class.forName(classname, True, ClassLoader.getSystemClassLoader())
+</code></pre>
+<p>第二句的话可以先实例化好 driver 对象，然后再传递给 connect 方法了。</p>
+<h4 id="总结">总结</h4>
+<p>​       在使用JPype的过程中，你一定会遇到各种各样的问题，解决这些问题的过程，其实是个最好的学习过程！</p>
+<blockquote>
+<p>声明：转载请注明出处！</p>
+</blockquote>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/liao-liao-linux-san-jian-ke">
+              <h3 class="post-title">
+                下一篇：聊聊Linux三剑客
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

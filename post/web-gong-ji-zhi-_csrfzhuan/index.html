@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>WEB攻击之_CSRF「转] | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">WEB攻击之_CSRF「转]</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-12-05</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/gmqBiNDvl">
+                    安全测试
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>WEB攻击之_CSRF「转]</strong></p>
+<!-- more --> 
+<p>CSRF（Cross-site request forgery，中文为<strong>跨站请求伪造</strong>）是一种利用网站可信用户的权限去执行未授权的命令的一种恶意攻击。通过<strong>伪装可信用户的请求来利用信任该用户的网站</strong>，这种攻击方式虽然不是很流行，但是却难以防范，其危害也不比其他安全漏洞小。</p>
+<!--more-->
+<blockquote>
+<p><a href="https://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html">原文链接</a></p>
+</blockquote>
+<h2 id="初识csrf">初识CSRF</h2>
+<p><strong>一.CSRF是什么？</strong></p>
+<p>CSRF（Cross-site request
+forgery），中文名称：跨站请求伪造，也被称为：one click attack/session
+riding，缩写为：CSRF/XSRF。</p>
+<p><strong>二.CSRF可以做什么？</strong></p>
+<p>你这可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义发送恶意请求。CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账......造成的问题包括：个人隐私泄露以及财产安全。</p>
+<p><strong>三.CSRF的原理</strong></p>
+<p><img src="https://i.loli.net/2019/03/14/5c8a21ebdc4a9.jpg" alt="web-CSRF"></p>
+<p>从上图可以看出，要完成一次CSRF攻击，受害者必须依次完成两个步骤：</p>
+<p>1.登录受信任网站A，并在本地生成Cookie。</p>
+<p>2.在不登出A的情况下，访问危险网站B。</p>
+<p><strong>四.CSRF 攻击示例</strong></p>
+<p>以一个银行转账的操作作为例子（仅仅是例子，实际情况更复杂）</p>
+<p><strong>示例1：</strong></p>
+<p>​ 银行网站A，它以GET请求来完成银行转账的操作，如：</p>
+<pre><code class="language-{.html}">http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000
+</code></pre>
+<p>危险网站B，它里面有一段HTML的代码如下：</p>
+<pre><code class="language-{.html}">&lt;img src=http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000&gt;
+</code></pre>
+<p>首先，你登录了银行网站A，然后访问危险网站B，噢，这时你会发现你的银行账户少了1000块......</p>
+<p>为什么会这样呢？原因是银行网站A违反了HTTP规范，使用GET请求更新资源。在访问危险网站B的之前，你已经登录了银行网站A，而B中的<img>以GET的方式请求第三方资源（这里的第三方就是指银行网站了，原本这是一个合法的请求，但这里被不法分子利用了），所以你的浏览器会带上你的银行网站A的Cookie发出Get请求，去获取资源</p>
+<pre><code class="language-{.html}">http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000
+</code></pre>
+<p>结果银行网站服务器收到请求后，认为这是一个更新资源操作（转账操作），所以就立刻进行转账操作......</p>
+<p><strong>示例2：</strong></p>
+<p>为了杜绝上面的问题，银行决定改用POST请求完成转账操作，银行网站A的WEB表单如下：</p>
+<pre><code class="language-{.html}">　&lt;form action=&quot;Transfer.php&quot; method=&quot;POST&quot;&gt;
+　　　　&lt;p&gt;ToBankId: &lt;input type=&quot;text&quot; name=&quot;toBankId&quot; /&gt;&lt;/p&gt;
+　　　　&lt;p&gt;Money: &lt;input type=&quot;text&quot; name=&quot;money&quot; /&gt;&lt;/p&gt;
+　　　　&lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;Transfer&quot; /&gt;&lt;/p&gt;
+　　&lt;/form&gt;
+</code></pre>
+<p>后台处理页面Transfer.php如下：</p>
+<pre><code class="language-{.php}">&lt;?php
+　　　　session_start();
+　　　　if (isset($_REQUEST['toBankId'] &amp;&amp;　isset($_REQUEST['money']))
+　　　　{
+　　　　    buy_stocks($_REQUEST['toBankId'],　$_REQUEST['money']);
+　　　　}
+　　?&gt;
+</code></pre>
+<p>危险网站B，仍然只是包含那句HTML代码：</p>
+<pre><code class="language-{.htm}">&lt;img src=http://www.mybank.com/Transfer.php?toBankId=11&amp;money=1000&gt;
+</code></pre>
+<p>​
+和示例1中的操作一样，你首先登录了银行网站A，然后访问危险网站B，结果.....和示例1一样，你再次没了1000块～T_T，这次事故的原因是：银行后台使用了REQUEST去获取请求的数据，而REQUEST既可以获取GET请求的数据，也可以获取POST请求的数据，这就造成了在后台处理程序无法区分这到底是GET请求的数据还是POST请求的数据。在PHP中，可以使用GET和POST分别获取GET请求和POST请求的数据。在JAVA中，用于获取请求数据request一样存在不能区分GET请求数据和POST数据的问题。</p>
+<p><strong>示例3：</strong></p>
+<p>​
+经过前面2个惨痛的教训，银行决定把获取请求数据的方法也改了，改用$_POST，只获取POST请求的数据，后台处理页面Transfer.php代码如下：</p>
+<pre><code class="language-{.php}">&lt;?php
+　　　　session_start();
+　　　　if (isset($_POST['toBankId'] &amp;&amp;　isset($_POST['money']))
+　　　　{
+　　　　    buy_stocks($_POST['toBankId'],　$_POST['money']);
+　　　　}
+　　?&gt;
+</code></pre>
+<p>然而，危险网站B与时俱进，它改了一下代码：</p>
+<pre><code class="language-{.php}">&lt;html&gt;
+　　&lt;head&gt;
+　　　　&lt;script type=&quot;text/javascript&quot;&gt;
+　　　　　　function steal()
+　　　　　　{
+          　　　　 iframe = document.frames[&quot;steal&quot;];
+　　     　　      iframe.document.Submit(&quot;transfer&quot;);
+　　　　　　}
+　　　　&lt;/script&gt;
+　　&lt;/head&gt;
+
+　　&lt;body onload=&quot;steal()&quot;&gt;
+　　　　&lt;iframe name=&quot;steal&quot; display=&quot;none&quot;&gt;
+　　　　　　&lt;form method=&quot;POST&quot; name=&quot;transfer&quot;　action=&quot;http://www.myBank.com/Transfer.php&quot;&gt;
+　　　　　　　　&lt;input type=&quot;hidden&quot; name=&quot;toBankId&quot; value=&quot;11&quot;&gt;
+　　　　　　　　&lt;input type=&quot;hidden&quot; name=&quot;money&quot; value=&quot;1000&quot;&gt;
+　　　　　　&lt;/form&gt;
+　　　　&lt;/iframe&gt;
+　　&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>​
+如果用户仍是继续上面的操作，很不幸，结果将会是再次不见1000块......因为这里危险网站B暗地里发送了POST请求到银行!</p>
+<p>总结一下上面3个例子，CSRF主要的攻击模式基本上是以上的3种，其中以第1,2种最为严重，因为触发条件很简单，一个<img>就可以了，而第3种比较麻烦，需要使用JavaScript，所以使用的机会会比前面的少很多，但无论是哪种情况，只要触发了CSRF攻击，后果都有可能很严重。</p>
+<p>理解上面的3种攻击模式，其实可以看出:</p>
+<blockquote>
+<p>CSRF攻击是源于WEB的隐式身份验证机制！WEB的身份验证机制虽然可以保证一个请求是来自于某个用户的浏览器，但却无法保证该请求是用户批准发送的！</p>
+</blockquote>
+<p><strong>五.CSRF 攻击的对象</strong></p>
+<p>​ 在讨论如何抵御 CSRF 之前，先要明确 CSRF
+攻击的对象，也就是要保护的对象。从以上的例子可知，CSRF
+攻击是黑客借助受害者的 cookie（session）
+骗取服务器的信任，但是黑客并不能拿到 cookie，也看不到 cookie
+的内容。另外，对于服务器返回的结果，由于浏览器同源策略的限制，黑客也无法进行解析。因此，黑客无法从返回的结果中得到任何东西，他所能做的就是给服务器发送请求，以执行请求中所描述的命令，在服务器端直接改变数据的值，而非窃取服务器中的数据。所以，我们要保护的对象是那些可以直接产生数据改变的服务，而对于读取数据的服务，则不需要进行
+CSRF 的保护。比如银行系统中转账的请求会直接改变账户的金额，会遭到 CSRF
+攻击，需要保护。而查询余额是对金额的读取操作，不会改变数据，CSRF
+攻击无法解析服务器返回的结果，无需保护。</p>
+<p>故：增删改需要防范CSRF攻击，而读无需防范。</p>
+<h2 id="当前防御-csrf-的几种策略">当前防御 CSRF 的几种策略</h2>
+<p>在业界目前防御 CSRF 攻击主要有四种策略：</p>
+<ol>
+<li>验证 HTTP Referer 字段；</li>
+<li>在请求地址中添加 token 并验证；</li>
+<li>在 HTTP 头中自定义属性并验证；</li>
+<li>Chrome浏览器端启用SameSite cookie</li>
+</ol>
+<p><strong>1、验证 HTTP Referer 字段</strong></p>
+<p>什么是HTTP
+Referer？下面GIF图是由百度跳转到QQ邮箱页面的Referer查看示意：<img src="https://i.loli.net/2019/03/14/5c8a22b11bcb2.gif" alt="referer.gif"></p>
+<p>可以看出Referer为</p>
+<pre><code>Referer：https://www.baidu.com/
+</code></pre>
+<p>​ 根据 HTTP 协议，在 HTTP 头（request 的 header）中有一个字段叫
+Referer，它记录了该 HTTP 请求的来源地址。如果黑客要对银行网站实施 CSRF
+攻击，当用户通过黑客的网站发送请求到银行时，该请求的 Referer
+值是指向黑客的网站而不是用户的网站。因此，要防御 CSRF
+攻击，银行网站只需要对于每一个转账请求验证其 Referer 值，如果是以
+www.bank.example开头的域名，则说明该请求是来自银行网站自己的请求，是合法的。如果
+Referer 是其他网站的话，则有可能是黑客的 CSRF 攻击，拒绝该请求。</p>
+<p>​ 这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心
+CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查
+Referer
+的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑。</p>
+<p>​ 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP
+协议上有明确的要求，但是每个浏览器对于 Referer
+的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer
+值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。事实上，对于某些浏览器，比如
+IE6 或 FF2，目前已经有一些方法可以篡改 Referer 值。如果
+www.bank.example网站支持 IE6 浏览器，黑客完全可以把用户浏览器的 Referer
+值设为以 www.bank.example域名开头的地址，这样就可以通过验证，从而进行
+CSRF 攻击。</p>
+<p>​ 即便是使用最新的浏览器，黑客无法篡改 Referer
+值，这种方法仍然有问题。因为 Referer
+值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心
+Referer
+值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供
+Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是
+CSRF 攻击，拒绝合法用户的访问。</p>
+<p>另外，如果Referer的判断逻辑写的不严密的话，也容易被攻破，例如</p>
+<pre><code>const referer = request.headers.referer;
+if (referer.indexOf('www.bank.example') &gt; -1) {
+  // pass
+}
+</code></pre>
+<p>如果黑客的网站是www.bank.example.hack.com，则referer检查无效。</p>
+<p><strong>2、在请求地址中添加 token 并验证</strong></p>
+<p>​ CSRF
+攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于
+cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户的 cookie
+来通过安全验证。要抵御
+CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于
+cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的
+token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token
+或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。</p>
+<p>​ 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于
+session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的
+token 进行比对，但这种方法的难点在于如何把 token
+以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL
+就变成</p>
+<pre><code>http://url?csrftoken=tokenvalue
+</code></pre>
+<p>而对于 POST 请求来说，要在 form 的最后加上</p>
+<pre><code> &lt;input type=&quot;hidden&quot; name=&quot;csrftoken&quot; value=&quot;tokenvalue&quot;/&gt;
+</code></pre>
+<p>​ 该方法有一个缺点是难以保证 token
+本身的安全。特别是在一些论坛之类支持用户自己发表内容的网站，黑客可以在上面发布自己个人网站的地址。由于系统也会在这个地址后面加上
+token，黑客可以在自己的网站上得到这个 token，并马上就可以发动 CSRF
+攻击。为了避免这一点，系统可以在添加 token
+的时候增加一个判断，如果这个链接是链到自己本站的，就在后面添加
+token，如果是通向外网则不加。不过，即使这个 csrftoken
+不以参数的形式附加在请求之中，黑客的网站也同样可以通过 Referer
+来得到这个 token 值以发动 CSRF 攻击。这也是一些用户喜欢手动关闭浏览器
+Referer 功能的原因。</p>
+<p><strong>3、在 HTTP 头中自定义属性并验证</strong></p>
+<p>​ 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把
+token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP
+头中自定义的属性里。通过 XMLHttpRequest
+这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把
+token 值放入其中。这样解决了上种方法在请求中加入 token
+的不便，同时，通过 XMLHttpRequest
+请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer
+泄露到其他网站中去。</p>
+<p>​ 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax
+方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行
+CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为
+XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+<p><strong>4、Chrome浏览器端启用SameSite cookie</strong></p>
+<p>下面介绍如何启用SameSite cookie的设置，很简单。</p>
+<p>原本的 Cookie 的 header 设置是长这样：</p>
+<pre><code>Set-Cookie: session_id=esadfas325
+</code></pre>
+<p>需要在尾部增加 SameSite 就好：</p>
+<pre><code>Set-Cookie: session_id=esdfas32e5; SameSite
+</code></pre>
+<p>SameSite
+有两种模式，Lax跟Strict模式，默认启用Strict模式，可以自己指定模式：</p>
+<pre><code>Set-Cookie: session_id=esdfas32e5; SameSite=Strict
+Set-Cookie: foo=bar; SameSite=Lax
+</code></pre>
+<p>​ Strict模式规定 cookie 只允许相同的site使用，不应该在任何的 cross site
+request
+被加上去。即a标签、form表单和XMLHttpRequest提交的内容，只要是提交到不同的site去，就不会带上cookie。</p>
+<p>​
+但也存在不便，例如朋友发送过来我已经登陆过的一个页面链接，我点开后，该页面仍然需要重新登录。</p>
+<p>​
+有两种处理办法，第一种是与Amazon一样，准备两组不同的cookie，第一组用于维持登录状态不设定SameSite，第二组针对的是一些敏感操作会用到（例如购买、支付、设定账户等）严格设定SameSite。</p>
+<p>基于这个思路，就产生了 SameSite 的另一一种模式：Lax模式。</p>
+<p>Lax 模式打开了一些限制，例如</p>
+<pre><code>&lt;a&gt;
+&lt;link rel=&quot;prerender&quot;&gt;
+&lt;form method=&quot;GET&quot;&gt;
+</code></pre>
+<p>这些都会带上cookie。但是 POST 方法 的 form，或是只要是 POST, PUT, DELETE
+这些方法，就不会带cookie。</p>
+<p>但一定注意将重要的请求方式改成POST，否则GET仍然会被攻击。</p>
+<p>PS：该方式目前仅Chrome支持。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/web-gong-ji-zhi-_xsszhuan">
+              <h3 class="post-title">
+                下一篇：WEB攻击之_XSS「转]
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

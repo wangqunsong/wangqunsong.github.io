@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>持续集成00_写在前面 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">持续集成00_写在前面</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-07-25</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/AZvxNNEdR">
+                    CI/CD
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成00_写在前面</strong></p>
+<!-- more --> 
+<p>​        学习了<a href="https://testerhome.com/cay">TesterHome@cay</a>大佬写的持续交付的系列文章后，刚好改造了下手头的项目，在此记录下工作的内容，以便后续完善改进，更多内容请观光<a href="https://testerhome.com/cay">@cay</a>的系列文章。</p>
+<h3 id="pipeline">Pipeline</h3>
+<p><strong>Pipeline</strong>和<strong>自动化测试</strong>是持续集成的两驾马车，自从16年4月发布的Jenkins 2.0中引入了<code>Pipeline as Code</code>的概念以后，Jenkins迎来了从CI到CD转变的巨大契机。</p>
+<hr>
+<p><strong>什么是Pipeline?</strong></p>
+<p>简单来说，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂发布流程。Pipeline的实现方式是一套<code>Groovy DSL</code>，任何发布流程都可以表述为一段<code>Groovy</code>脚本，并且Jenkins支持从代码库直接读取脚本，从而实现了<code>Pipeline as Code</code>的理念。</p>
+<hr>
+<p>如果你使用过Jenkins，那么你也许了解pipeline中的几个重要概念：</p>
+<ul>
+<li><strong>Stage：</strong> 一个Pipeline可以划分为若干个Stage，每个Stage代表一组操作。注意，Stage是一个逻辑分组的概念，可以跨多个Node。</li>
+<li><strong>Node:</strong> 一个Node就是一个Jenkins节点，或者是Master，或者是Agent，是执行Step的具体运行期环境。</li>
+<li><strong>Step:</strong> Step是最基本的操作单元，小到创建一个目录，大到构建一个Docker镜像，由各类Jenkins Plugin提供。</li>
+</ul>
+<p>关于Pipeline的相关介绍，可直接访问@cay大神写的文章：</p>
+<ul>
+<li>1.<a href="https://testerhome.com/topics/10003">pipeline使用-快速入门</a></li>
+<li>2.<a href="https://testerhome.com/topics/10033">pipeline使用-语法详解</a></li>
+<li>3.<a href="https://testerhome.com/topics/10010">pipeline使用-项目样例</a></li>
+<li>4.<a href="https://testerhome.com/topics/10146">pipeline使用-Multibranch Pipeline</a></li>
+<li>5.<a href="https://testerhome.com/topics/10782">pipeline使用-Shared Libraries</a></li>
+</ul>
+<h3 id="分层自动化测试">分层自动化测试</h3>
+<p><a href="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/66113362.jpg"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/66113362.jpg" alt="分层自动化测试"></a></p>
+<p>你对上面的图一定不会感到陌生。上图中Unit代表单元测试，Service代表服务集成测试，UI代表页面级的系统测试，并且倡导合理的成本比例为7:2:1，即70%的精力和工作量应花在最底层的单元测试上，20%应花在服务集成测试上，最上层的GUI测试比例最小，仅为10%。</p>
+<h3 id="实际情况">实际情况</h3>
+<p>结合手中的实际项目，持续集成的内容计划为：</p>
+<ul>
+<li>静态代码检查</li>
+<li>单元测试和覆盖率统计</li>
+<li>测试部署</li>
+<li>分层自动化测试（UI自动化测试、接口自动化测试）</li>
+</ul>
+<p>参考连接：</p>
+<p><a href="https://testerhome.com/topics/9977">TesterHome | @cay</a></p>
+<p><a href="https://tech.meituan.com/erp_cd_jenkins_pipeline.html">美团技术团队</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/pipeline-can-kao-shou-ce-zhuan">
+              <h3 class="post-title">
+                下一篇：pipeline参考手册「转]
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Python学习笔记08_令人头疼的字符编码 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/76483530.jpg)')">
+            </div>
+          
+          <h2 class="post-title">Python学习笔记08_令人头疼的字符编码</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2017-02-01</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/1sgoPsPP5">
+                    Python
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python学习笔记08_令人头疼的字符编码</strong></p>
+<!-- more --> 
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/76483530.jpg" alt="编码真让人头大"></p>
+<h4 id="ascii编码">ASCII编码</h4>
+<p>计算机只能处理数字！</p>
+<p>若想要处理文本，就要先把文本转换为数字，早期的计算机在设计时采用8个比特<code>bit</code>作为一个字节<code>byte</code>，并且只有<code>127</code>个字符编码，即：<code>大小写英文字母、数字和一些符号</code>，这些字符被编码表被称为<code>ASCII</code>编码，比如大写字母<code>A</code>的编码是<code>65</code>。问题是，早期的这套编码表只有英文，那中文，日文，韩文怎么办？在多语言的文本中，就会出现乱码。并且要想处理中文，一个字节是不够的，至少需要<code>2</code>个字节。所以<code>Unicode</code>出现了。</p>
+<h4 id="unicode编码">Unicode编码</h4>
+<p><code>Unicode</code>把所有语言都统一到一套编码里，解决了乱码的问题。<code>Unicode</code>编码通常是2个字节表示一个字符。这是虽然乱码的问题解决了，但是又面临一个新的问题：如果文本里全是英文，用<code>Unicode</code>编码比<code>ASCII</code>编码需要多一倍的存储空间，因为<code>Unicode</code>编码通常是2个字节，而<code>ASCII</code>编码只要一个。</p>
+<p>所以，出现了可变长的编码的<code>UTF-8</code>编码。</p>
+<h4 id="utf-8编码">UTF-8编码</h4>
+<p><code>UTF-8</code>编码把一个<code>Unicode</code>字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间。</p>
+<p>还有一点，<code>ASCII</code>编码实际上可以被看成是<code>UTF-8</code>编码的一部分，所以，大量只支持<code>ASCII</code>编码的历史遗留软件可以在<code>UTF-8</code>编码下继续工作。</p>
+<p>同一个字符使用不同编码方式表示如下：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>ASCII</th>
+<th>Unicode</th>
+<th>UTF-8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>01000001</td>
+<td>00000000 01000001</td>
+<td>01000001</td>
+</tr>
+<tr>
+<td>中</td>
+<td>x</td>
+<td>01001110 00101101</td>
+<td>11100100 10111000 10101101</td>
+</tr>
+</tbody>
+</table>
+<h4 id="计算机的字符编码">计算机的字符编码</h4>
+<p>在计算机内存中，统一使用<code>Unicode</code>编码，当需要保存到硬盘或者需要传输的时候，就转换为<code>UTF-8</code>编码。用记事本编辑的时候，从文件读取的<code>UTF-8</code>字符被转换为<code>Unicode</code>字符到内存里，编辑完成后，保存的时候再把<code>Unicode</code>转换为<code>UTF-8</code>保存到文件;浏览网页的时候，服务器会把动态生成的<code>Unicode</code>内容转换为<code>UTF-8</code>再传输到浏览器。</p>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/61540276.jpg" alt="计算机保存文本"></p>
+<hr>
+<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/26996184.jpg" alt="网页编码"></p>
+<h4 id="python3中的编码问题">Python3中的编码问题</h4>
+<p><code>Python 3</code>版本中，字符串是以<code>Unicode</code>编码的，这样就遇到一个问题：上面说过，计算机保存文本到磁盘，或者网络传输时，是用<code>UTF-8</code>编码的，所以，<code>python3</code>写入数据流(文本等)或者在网络上传输时，就需要把<code>str</code>变为以字节为单位的<code>bytes</code>。</p>
+<p>以<code>Unicode</code>表示的<code>str</code>通过<code>encode()</code>方法可以编码为指定的<code>bytes</code>;相反，我们从网络或磁盘上读取了字节流，那么读到的数据就是<code>bytes</code>,要把<code>bytes</code>变为<code>str</code>，就需要用<code>decode()</code>方法。</p>
+<p>参考链接：<a href="https://www.liaoxuefeng.com">廖雪峰的官方网站</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/python-xue-xi-bi-ji-07_io-bian-cheng">
+              <h3 class="post-title">
+                下一篇：Python学习笔记07_IO编程
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

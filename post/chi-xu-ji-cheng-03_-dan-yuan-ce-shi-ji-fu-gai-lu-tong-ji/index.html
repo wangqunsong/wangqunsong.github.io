@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>持续集成03_单元测试及覆盖率统计 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">持续集成03_单元测试及覆盖率统计</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-09-04</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/AZvxNNEdR">
+                    CI/CD
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成03_单元测试及覆盖率统计</strong></p>
+<!-- more --> 
+<h4 id="jacoco概述">JaCoCo概述</h4>
+<p>官网地址：<a href="https://www.jacoco.org/jacoco/">Jacoco</a></p>
+<p>开源项目地址：<a href="https://github.com/jacoco/jacoco">Github</a></p>
+<p><code>JaCoCo</code>是一个针对<code>java</code>的开源覆盖率工具，可以嵌入到<code>Ant、Maven</code>中；也可以作为<code>Eclipse</code>插件，可以使用其<code>JavaAgent</code>技术监控<code>Java</code>程序等等。很多第三方的工具提供了对<code>JaCoCo</code>的集成，如<code>sonar、Jenkins</code>等。</p>
+<p><code>JaCoCo</code>包含了多种覆盖率计数器指标，如指令级覆盖(Instructions,C0coverage)，分支 (Branches,C1coverage)、圈复杂度(CyclomaticComplexity)、行覆盖(Lines)、方法覆盖(non-abstract methods)、类覆盖(classes)等。</p>
+<h4 id="第三方工具支持">第三方工具支持</h4>
+<h5 id="sonarqube">SonarQube</h5>
+<p>https://docs.sonarqube.org/display/PLUG/Usage+of+JaCoCo+with+SonarJava</p>
+<h5 id="java">Java</h5>
+<p><a href="http://www.eclemma.org/jacoco/trunk/doc/api/index.html">http://www.eclemma.org/jacoco/trunk/doc/api/index.html</a></p>
+<h5 id="command-line">Command Line</h5>
+<p><a href="http://www.eclemma.org/jacoco/trunk/doc/agent.html">http://www.eclemma.org/jacoco/trunk/doc/agent.html</a></p>
+<h5 id="ant">Ant</h5>
+<p><a href="http://www.eclemma.org/jacoco/trunk/doc/ant.html">http://www.eclemma.org/jacoco/trunk/doc/ant.html</a></p>
+<h5 id="maven">maven</h5>
+<p><a href="http://www.eclemma.org/jacoco/trunk/doc/maven.html">http://www.eclemma.org/jacoco/trunk/doc/maven.html</a></p>
+<h4 id="pipeline集成jacoco">Pipeline集成Jacoco</h4>
+<pre><code class="language-groovy">                stage ('单元测试') {
+                  //when指令允许Pipeline根据给定的条件确定是否执行该阶段,isStage2为真时，执行单元测试
+                    when { expression {return isStage2 } }
+                    steps {
+                        echo &quot;开始使用jacoco进行单元测试**********&quot;
+                        sh &quot;mvn org.jacoco:jacoco-maven-plugin:prepare-agent  clean  package  -Dautoconfig.skip=true   -Dmaven.test.skip=false  -Dmaven.test.failure.ignore=true&quot;
+                        junit '**/target/surefire-reports/*.xml'
+                        //当代码覆盖率低于70%时，构建失败
+                        jacoco changeBuildStatus: true, maximumLineCoverage:&quot;70&quot;
+                        //注：多项目的工程，需要设置jacoco的destFile属性，合并所有的jacoco.exec报告到多项目工程的ProjectDirectory(根)目录
+
+                    }
+                }
+</code></pre>
+<p><code>maven</code>构建说明：</p>
+<pre><code class="language-shell">mvn org.jacoco:jacoco-maven-plugin:prepare-agent  clean  package  -Dautoconfig.skip=true   -Dmaven.test.skip=false  -Dmaven.test.failure.ignore=true
+
+### 参数说明
+org.jacoco:jacoco-maven-plugin:prepare-agent：命令行引用jacoco-maven-plugin插件，减少对开发源码的依赖。
+-Dmaven.test.skip=false:启用代码中的单元测试，开发代码中一般默认是关闭的。
+-Dmaven.test.failure.ignore=true：忽略失败的单元测试用例继续执行。
+</code></pre>
+<h4 id="jenkins单独集成jacoco">Jenkins单独集成Jacoco</h4>
+<p>1.先安装<code>Jenkins</code>插件<code>Jenkins Jacoco plugin</code>;</p>
+<p>2.在“<code>Addpost-build action</code>中选择<code>Reccord Jacoco coverage report</code>，配置<code>jacoco</code>插件如下：</p>
+<pre><code class="language-shell">#参数说明：
+Path to exec files ：代码覆盖率统计文件位置；
+Path to class directorie：classes文件位置；
+Path to source directories：源码文件位置；
+</code></pre>
+<p><img src="https://i.loli.net/2019/02/14/5c64d3208ca69.png" alt="jenkins配置jacoco.png"></p>
+<p>3.根据需要填写覆盖率要求：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c64d33e7d81c.png" alt="jenkins配置覆盖率要求.png"></p>
+<p>4.查看<code>jacoco</code>覆盖率报告：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c64d3aa06ab0.png" alt="jacoco报告.png"></p>
+<h4 id="sonarqube集成jacoco">SonarQube集成Jacoco</h4>
+<p>1.安装jacoco插件并配置：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c64d73564398.png" alt="SonarQube集成jacoco.png"></p>
+<p>2.统计结果：</p>
+<p><img src="https://i.loli.net/2019/02/14/5c64d8636f363.png" alt="sonarQube的jacoco报告.png"></p>
+<h4 id="踩的坑">踩的坑</h4>
+<h5 id="1no-jacoco-analysis-of-project-coverage-can-be-done-since-there-is-no-class-files">1.No JaCoCo analysis of project coverage can be done since there is no class files.</h5>
+<p>解决办法：增加字节码目录<code>sonar.binaries=target/classes</code>配置，详见jenkins的properties配置说明：<a href="https://docs.sonarqube.org/display/PLUG/Triggering+Analysis+on+Hudson+Job">《Triggering Analysis on Hudson Job》</a></p>
+<h6 id="2针对multi-module-maven项目sonarqube只会检查指定parent-module目录里的jacocoexec">2.针对multi-module maven项目，sonarQube只会检查指定parent module目录里的jacoco.exec</h6>
+<p>解决办法：参照了@cay大佬的方式，设置了jacoco的destFile属性，合并所有的jacoco.exec报告到multiModuleProjectDirectory目录</p>
+<pre><code>&lt;jacoco.destFile&gt;${maven.multiModuleProjectDirectory}/target/jacoco.exec&lt;/jacoco.destFile&gt;
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao">
+              <h3 class="post-title">
+                下一篇：持续集成02_静态代码扫描
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>聊聊Linux三剑客 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556375647041">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556375647041" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="http://wangqunsong.top" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">聊聊Linux三剑客</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-10-12</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/v36euej5h">
+                    Linux
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>聊聊Linux三剑客</strong></p>
+<!-- more -->
+<h4 id="概述">概述</h4>
+<p>Linux使用过程中经常碰到使用Shell脚本来处理文本文件，像检查日志，读取配置文件等；这个过程中最常用的三个命令就是<code>sed，awk和grep</code>，这里就聊聊这“三剑客”。</p>
+<ul>
+<li><code>grep</code>：主要用于文本<strong>内容查找</strong>，支持正则表达式。</li>
+<li><code>awk</code>：主要用于文本内容的<strong>分析处理</strong>，也常用于处理数据生成报告，非常适用于需要<strong>按列</strong>处理的数据。（现在很多Linux使用<code>gawk</code>）</li>
+<li><code>sed</code> : 全称为Stream editor，主要用于文本内容的<strong>编辑</strong>，默认只处理模式空间，不改变原数据，而且<code>sed</code>使用<strong>逐行读取</strong>的方式处理数据。</li>
+</ul>
+<h4 id="1grep">1.grep</h4>
+<p>命令格式如下，使用<code>man grep</code>查看更详细的说明：</p>
+<pre><code class="language-shell">NAME
+       grep, egrep, fgrep - print lines matching a pattern
+SYNOPSIS
+       grep [OPTIONS] PATTERN [FILE...]
+       grep [OPTIONS] [-e PATTERN | -f FILE] [FILE...]
+</code></pre>
+<h5 id="基本用法">基本用法</h5>
+<pre><code class="language-shell">[wangqs@localhost shell_script]$ cat test_data 
+This is first
+This is second
+This is third
+Are you OK?
+[wangqs@localhost shell_script]$ grep 'first' test_data   #默认option为-o,查找出包含'first'的行
+This is first
+[wangqs@localhost shell_script]$ grep -v 'first' test_data  #option为-v
+This is second
+This is third
+Are you OK?
+</code></pre>
+<p><code>grep</code>默认只输出匹配的文本行，当option为<code>-o</code>时，命令行输出匹配的文本，而option为<code>-v</code>时，命令行输出没有匹配的文本行。</p>
+<h4 id="2awk">2.awk</h4>
+<p>​    <code>awk</code>默认使用换行符<code>\n</code>作为分隔符，然后按照分隔符划分域，<code>$0</code>表示所有域，<code>$1</code>表示第一个域，<code>$n</code>表示第n个域</p>
+<h5 id="基本用法-2">基本用法</h5>
+<pre><code class="language-shell">#格式
+$awk 动作 文件名
+
+#示例                     
+[wangqs@localhost shell_script]$ awk '{print $0}' test_data         #test_data为数据文件名
+This is first
+This is second
+This is third
+Are you OK?
+</code></pre>
+<p>示例中，<code>test_data</code>是<code>awk</code>所要处理的文本文件。单引号内部有一个大括号<code>{}</code>，里面是<code>$0</code>为所有域，因此上面命令的执行结果，就是把文件内容全部打印出来。</p>
+<p><code>awk</code>根据空格和制表符进行分割，所以<code>awk</code>在标准输入中同样适用：</p>
+<pre><code class="language-shell">$ echo 'This is a cat' | awk '{ print $0 }'
+This is a cat
+$ echo 'This is a cat' | awk '{ print $1 }'
+This
+$ echo 'This is a cat' | awk '{ print $2 }'
+is
+$ echo 'This is a cat' | awk '{ print $4 }'
+cat
+</code></pre>
+<p>当然，很多情况下，我们需要自定义分割符，例如<code>passwd</code>的内容如下，我们自定义冒号<code>:</code>为分隔符并提取用户名如下：</p>
+<pre><code class="language-shell">[wangqs@localhost ~]$ cat passwd
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+wangqs:x:500:500:centos6.5:/home/wangqs:/bin/bash
+jenkins:x:496:493:Jenkins Automation Server:/var/lib/jenkins:/bin/false
+wangqunsong:x:501:501::/home/wangqunsong:/bin/sh
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash
+sonar:x:502:502::/home/sonar:/bin/bash
+[wangqs@localhost ~]$ awk -F ':' '{ print $1 }' passwd      #使用-F参数指定分隔符
+sshd
+tcpdump
+wangqs
+jenkins
+wangqunsong
+mysql
+sonar
+</code></pre>
+<h5 id="变量">变量</h5>
+<p>变量<code>NF</code>表示有当前行有多少个字域，因此<code>$NF</code>就代表最后一个域，<code>$(NF-1)</code>代表倒数第二个域。</p>
+<pre><code class="language-shell">$ echo &quot;This is a dog&quot; | awk '{ print $NF }'
+dog
+$ awk -F ':' '{ print $NF }' passwd            #$NF就代表最后一个域
+/sbin/nologin
+/sbin/nologin
+/bin/bash
+/bin/false
+/bin/sh
+/bin/bash
+/bin/bash
+$ awk -F ':' '{ print $1, $(NF-1) }' passwd   #$(NF-1)代表倒数第二个域
+sshd /var/empty/sshd
+tcpdump /
+wangqs /home/wangqs
+jenkins /var/lib/jenkins
+wangqunsong /home/wangqunsong
+mysql /var/lib/mysql
+sonar /home/sonar
+$ awk -F ':' '{ print NR &quot;)&quot; $1 }' passwd       # 变量NR表示当前处理的是第几行
+1)sshd
+2)tcpdump
+3)wangqs
+4)jenkins
+5)wangqunsong
+6)mysql
+7)sonar
+</code></pre>
+<p>其他内置变量如下：</p>
+<ul>
+<li><code>FILENAME</code>：当前文件名</li>
+<li><code>FS</code>：字段分隔符，默认是空格和制表符。</li>
+<li><code>RS</code>：行分隔符，用于分割每一行，默认是换行符。</li>
+<li><code>OFS</code>：输出字段的分隔符，用于打印时分隔字段，默认为空格。</li>
+<li><code>ORS</code>：输出记录的分隔符，用于打印时分隔记录，默认为换行符。</li>
+<li><code>OFMT</code>：数字输出的格式，默认为<code>％.6g</code>。</li>
+</ul>
+<h5 id="函数">函数</h5>
+<pre><code class="language-shell">$ awk -F ':' '{ print toupper($1) }' passwd 
+SSHD
+TCPDUMP
+WANGQS
+JENKINS
+WANGQUNSONG
+MYSQL
+SONAR
+</code></pre>
+<p><code>awk</code>提供的内置函数如下，完整列表请查看<a href="https://www.gnu.org/software/gawk/manual/html_node/Built_002din.html#Built_002din">手册</a>。</p>
+<ul>
+<li><code>tolower()</code>：字符转为小写。</li>
+<li><code>toupper()</code>：字符转为大写。</li>
+<li><code>length()</code>：返回字符串长度。</li>
+<li><code>substr()</code>：返回子字符串。</li>
+<li><code>sin()</code>：正弦。</li>
+<li><code>cos()</code>：余弦。</li>
+<li><code>sqrt()</code>：平方根。</li>
+<li><code>rand()</code>：随机数。</li>
+</ul>
+<h5 id="条件和判断">条件和判断</h5>
+<p><code>awk</code>允许指定输出条件并输出：</p>
+<pre><code class="language-shell">$ awk '条件 动作' 文件名
+</code></pre>
+<p>下面的例子，print前面是一个正则表达式，只输出包含<code>wang</code>的行。</p>
+<pre><code class="language-shell">$ awk -F ':' '/wang/ { print $1 }' passwd   #只输出包含wang的行
+wangqs
+wangqunsong
+$ awk -F ':' 'NR&gt;4  { print $1 }' passwd    #输出第4行以后的行
+wangqunsong
+mysql
+sonar
+</code></pre>
+<p><code>awk</code>提供了<code>if</code>结构，用于编写复杂的条件。</p>
+<pre><code class="language-shell">$ awk -F ':' '{ if ($1 &gt; &quot;n&quot;) print $1 }' passwd            #if
+sshd
+tcpdump
+wangqs
+wangqunsong
+sonar
+$ awk -F ':' '{ if ($1&gt;&quot;n&quot;) print $1; else print &quot;***&quot; }' passwd      #if-else
+sshd
+tcpdump
+wangqs
+***
+wangqunsong
+***
+sonar
+</code></pre>
+<h4 id="3sed">3.sed</h4>
+<h5 id="基本用法-3">基本用法</h5>
+<p><code>sed</code>的命令格式为：</p>
+<pre><code class="language-shell">sed [option] 'command' filename
+
+[option]的常用选项有：
+-f：在处理输入时，将file中指定的命令添加到已有的命令中
+-e：直接在命令列模式上进行sed的动作编辑
+-i：直接修改读取的文件内容，而不是输出到终端。
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-shell">$ echo &quot;This is a test&quot; | sed 's/test/big test/'   #替换
+This is a big test
+
+$ cat dada_1
+this is a lazy dog
+this is a lazy dog
+this is a lazy dog
+$ sed -e 's/lazy/big/; s/dog/cat/' data_1   #执行多个命令，用-e参数
+this is a big cat
+this is a big cat
+this is a big cat
+
+$ cat script_1
+s/lazy/big/
+s/dog/cat/
+$ sed -f script_1 data_1   #使用-f参数读取文件中的命令,得到上述相同的效果
+this is a big cat
+this is a big cat
+this is a big cat
+</code></pre>
+<p>命令参数为：</p>
+<pre><code class="language-shell">a：追加，a的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)
+i：插入，i的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)
+d：以行为单位的删除
+c：以行为单位的替换，c的后面可以接字串
+s：在行中搜寻并替换，使用斜线间指定的第二个文本字符串来替换第一个文本字符串
+p：以行为单位的显示，通常p会与参数sed -n一起运行
+</code></pre>
+<h5 id="替换选项">替换选项</h5>
+<p>要记住的是：</p>
+<ul>
+<li>sed不会修改原始数据；</li>
+<li>sed使用<code>s</code>替换时，默认只替换每行中出现的第一个文本，要想对一行中所有文本都起作用，需要使用<strong>替换选项</strong>，有如下几种替换选项：</li>
+</ul>
+<pre><code class="language-shell">  数字，表明新文本将替换第几处模式匹配的地方；
+  g ，表明新文本将会替换所有匹配的文本；
+  p ，表明原先行的内容要打印出来；
+  w file ，将替换的结果写到文件中。
+</code></pre>
+<p>参考文档1：《Linux命令行与Shell脚本编程大全》</p>
+<p>参考文档2：<a href="http://www.ruanyifeng.com/blog/2018/11/awk.html">awk入门教程</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi">
+              <h3 class="post-title">
+                下一篇：持续集成05_分层自动化测试
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
