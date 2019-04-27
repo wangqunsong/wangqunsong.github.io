@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Python学习笔记02_函数式编程 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556358321120">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556358321120" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Python学习笔记02_函数式编程</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2016-11-19</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/1sgoPsPP5">
+                    Python
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python学习笔记02_函数式编程</strong></p>
+<!-- more -->
+<h4 id="1函数及函数参数">1.函数及函数参数</h4>
+<p>函数没有<code>return</code>语句时，自动<code>return None</code>；并且函数可以同时返回多个值，但其实就是一个<code>tuple</code>。</p>
+<h5 id="a必选参数">【a】必选参数</h5>
+<pre><code class="language-python">def power(x, n):
+    s = 1
+    while n &gt; 0:
+        n = n - 1
+        s = s * x
+    return s
+</code></pre>
+<p><code>power(x, n)</code>函数有两个参数：<code>x</code>和<code>n</code>，这两个参数都是必选参数，调用函数时，传入的两个值按照位置顺序依次赋给参数<code>x</code>和<code>n</code>。</p>
+<h5 id="b默认参数">【b】默认参数</h5>
+<pre><code class="language-python">def power(x, n=2):
+    s = 1
+    while n &gt; 0:
+        n = n - 1
+        s = s * x
+    return s
+</code></pre>
+<p><code>power(x, n)</code>函数有两个参数，<code>n</code>即为默认参数，同时<strong>默认参数必须指向不变对象！</strong></p>
+<h5 id="c可变参数">【c】可变参数</h5>
+<pre><code class="language-python">def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+</code></pre>
+<p><code>*numbes</code>即为可变参数，可变参数允许传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个<strong>tuple</strong>。所以在函数内部，参数numbers接收到的是一个<strong>tuple</strong>。</p>
+<pre><code class="language-python">&gt;&gt;&gt; nums = [1, 2, 3]
+&gt;&gt;&gt; calc(*nums)
+14
+</code></pre>
+<p><code>*nums</code>表示把<code>nums</code>这个list的所有元素作为可变参数传进去。</p>
+<h5 id="d关键字参数">【d】关键字参数</h5>
+<pre><code class="language-python">def person(name, age, **kw):
+    print('name:', name, 'age:', age, 'other:', kw)
+    
+person('Adam', 45, gender='M', job='Engineer')
+输出结果：name: Adam age: 45 other: {'gender': 'M', 'job': 'Engineer'}
+</code></pre>
+<p><code>**kw</code>即为关键字参数，关键字参数允许传入0个或任意个<strong>含参数名的参数</strong>，这些关键字参数在函数内部自动组装为一个<strong>dict</strong>。</p>
+<pre><code class="language-python">&gt;&gt;&gt; extra = {'city': 'Beijing', 'job': 'Engineer'}
+&gt;&gt;&gt; person('Jack', 24, **extra)
+name: Jack age: 24 other: {'city': 'Beijing', 'job': 'Engineer'}
+</code></pre>
+<p>和可变参数一样，<code>**extra</code>表示把<code>extra</code>这个dict的所有<code>key-value</code>用关键字参数传入到函数的<code>**kw</code>参数，<code>kw</code>将获得一个<strong>dict</strong>，注意<code>kw</code>获得的dict是<code>extra</code>的一份拷贝，对<code>kw</code>的改动不会影响到函数外的<code>extra</code>。</p>
+<h5 id="e命名关键字参数">【e】命名关键字参数</h5>
+<p><strong>限制关键字参数的名字</strong>，就可以用命名<strong>关键字参数</strong>；和关键字参数<code>**kw</code>不同，命名关键字参数需要一个特殊分隔符<code>*</code>，<code>*</code>后面的参数被视为命名关键字参数。</p>
+<pre><code class="language-python">def person(name, age, *, city, job):
+    print(name, age, city, job)
+</code></pre>
+<p>如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符<code>*</code>了：</p>
+<pre><code>def person(name, age, *args, city, job):
+    print(name, age, args, city, job)
+</code></pre>
+<p>调用方式如下：</p>
+<pre><code>&gt;&gt;&gt; person('Jack', 24, city='Beijing', job='Engineer')
+Jack 24 Beijing Engineer
+</code></pre>
+<p>命名关键字参数<strong>必须传入参数名</strong>，这和位置参数不同。如果没有传入参数名，调用将报错：</p>
+<pre><code>&gt;&gt;&gt; person('Jack', 24, 'Beijing', 'Engineer')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: person() takes 2 positional arguments but 4 were given
+</code></pre>
+<h4 id="2尾递归">2.尾递归</h4>
+<p>一个函数在内部调用自身本身，这个函数就是递归函数，函数调用是通过栈（stack）这种数据结构实现的，每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧。由于栈的大小不是无限的，所以，递归调用的次数过多，会导致栈溢出。</p>
+<p>解决递归调用栈溢出的方法是通过尾递归优化，尾递归是指，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
+<p>但是，大多数编程语言没有针对尾递归做优化，Python解释器也没有做优化。</p>
+<h4 id="3高阶函数">3.高阶函数</h4>
+<h5 id="a定义">【a】定义</h5>
+<p>变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为<code>高阶函数</code>。例：</p>
+<pre><code>def add(x, y, f):
+    return f(x) + f(y)
+
+计算过程为：
+x = -5
+y = 6
+f = abs
+f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
+return 11
+</code></pre>
+<h5 id="bmap-和-reduce">【b】map() 和 reduce()</h5>
+<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>（可迭代对象）Iterable</code>，<code>map()</code>将传入的函数依次作用到<code>（可迭代对象）Iterable</code>的每个元素，并把结果作为新的<code>(迭代器)Iterator</code>返回。如：</p>
+<blockquote>
+<pre><code class="language-python">&gt;&gt;&gt; def f(x):
+...     return x * x
+...
+&gt;&gt;&gt; r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+&gt;&gt;&gt; list(r)
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre>
+</blockquote>
+<p><code>reduce()</code>把一个函数作用在一个序列<code>[x1, x2, x3, ...]</code>上，这个函数必须接收两个参数，<code>reduce</code>把结果继续和序列的下一个元素做相同的计算，如：</p>
+<blockquote>
+<pre><code class="language-python">&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; def fn(x, y):
+...     return x * 10 + y
+...
+&gt;&gt;&gt; reduce(fn, [1, 3, 5, 7, 9])
+13579
+</code></pre>
+</blockquote>
+<h5 id="cfilter">【c】filter</h5>
+<p><code>filter()</code>函数用于过滤序列。和<code>map()</code>类似，<code>filter()</code>也接收一个函数和一个序列。和<code>map()</code>不同的是，<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是<code>True</code>还是<code>False</code>决定保留还是丢弃该元素。</p>
+<pre><code class="language-python">#删除序列中的空字符串
+def not_empty(s):
+    return s and s.strip()
+
+list(filter(not_empty, ['A', '', 'B', None, 'C', '  ']))
+# 结果: ['A', 'B', 'C']
+</code></pre>
+<p>用<code>filter()</code>高阶函数，关键在于正确实现一个“筛选”函数；</p>
+<p>并且注意到<code>filter()</code>函数返回的是一个<code>Iterator</code>，也就是一个惰性序列，所以要强迫<code>filter()</code>完成计算结果，需要用<code>list()</code>函数获得所有结果并返回<code>list</code>。</p>
+<h5 id="dsorted">【d】sorted</h5>
+<p><code>sorted()</code>函数接收一个<code>key</code>函数来实现自定义的排序，key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序。例如，按绝对值大小排序：</p>
+<pre><code>&gt;&gt;&gt; sorted([36, 5, -12, 9, -21], key=abs)
+[5, 9, -12, -21, 36]
+</code></pre>
+<p>又或者：给<code>sorted</code>传入key函数，即可实现字符串忽略大小写的排序：</p>
+<pre><code>&gt;&gt;&gt; sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower)
+['about', 'bob', 'Credit', 'Zoo']
+</code></pre>
+<p>要进行反向排序，不必改动key函数，可以传入第三个参数<code>reverse=True</code>：</p>
+<pre><code>&gt;&gt;&gt; sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True)
+['Zoo', 'Credit', 'bob', 'about']
+</code></pre>
+<h4 id="3返回函数和匿名函数">3.返回函数和匿名函数</h4>
+<h5 id="返回函数">【返回函数】</h5>
+<p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。返回一个函数时，牢记该函数并未执行，返回函数中不要引用任何可能会变化的变量。如：</p>
+<pre><code class="language-python">def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+&gt;&gt;&gt; f = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f
+&lt;function lazy_sum.&lt;locals&gt;.sum at 0x101c6ed90&gt;           #返回的并不是求和结果，而是求和函数
+&gt;&gt;&gt; f()                                                   #调用函数f时，才真正计算求和的结果
+25
+</code></pre>
+<h5 id="匿名函数">【匿名函数】</h5>
+<p>关键字<code>lambda</code>表示匿名函数，冒号前面的<code>x</code>表示函数参数，后面的为函数表达式返回值。</p>
+<p>匿名函数有个限制，就是只能有一个表达式，不用写<code>return</code>，返回值就是该表达式的结果。此外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数：</p>
+<pre><code class="language-python">&gt;&gt;&gt; f = lambda x: x * x
+&gt;&gt;&gt; f
+&lt;function &lt;lambda&gt; at 0x101c6ef28&gt;
+&gt;&gt;&gt; f(5)
+25
+</code></pre>
+<p>同样，也可以把匿名函数作为返回值返回，比如：</p>
+<pre><code>def build(x, y):
+    return lambda: x * x + y * y
+</code></pre>
+<h4 id="4偏函数">4.偏函数</h4>
+<p>当函数的参数个数太多，需要简化时，使用<code>functools.partial</code>可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。</p>
+<pre><code class="language-python">&gt;&gt;&gt; import functools
+&gt;&gt;&gt; int2 = functools.partial(int, base=2)
+&gt;&gt;&gt; int2('1000000')
+64
+&gt;&gt;&gt; int2('1010101')
+85
+</code></pre>
+<p>所以，简单总结<code>functools.partial</code>的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单。</p>
+<p>参考链接1：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">穆雪峰的Python3教程</a></p>
+<p>参考链接2：<a href="https://eastlakeside.gitbooks.io/interpy-zh/content/">Intermediate Python</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/python-xue-xi-bi-ji-01_-ji-ben-shu-ju-jie-gou">
+              <h3 class="post-title">
+                下一篇：Python学习笔记01_基本数据结构
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

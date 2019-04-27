@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Python学习笔记03_闭包和装饰器 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556358321120">
+<link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.top">
+        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556358321120" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.top">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Python学习笔记03_闭包和装饰器</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2016-11-30</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="http://wangqunsong.top/tag/1sgoPsPP5">
+                    Python
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python学习笔记03_闭包和装饰器</strong></p>
+ <!-- more --> 
+<h4 id="1闭包">1.闭包</h4>
+<h5 id="定义">【定义】</h5>
+<p>简单的说，如果在一个内部函数里，对在外边作用域（但不是全局作用域）的变量进行引用，那么内部函数即被认为是闭包（closure）如：</p>
+<pre><code class="language-python">&gt;&gt;&gt;def add_out(x):
+    def add_in(y):
+        return x + y
+    return add_in
+
+&gt;&gt;&gt;c = add_out(8)
+&gt;&gt;&gt;type(c)
+&lt;type 'function'&gt;
+&gt;&gt;&gt; c.__name__
+'add_in'
+&gt;&gt;&gt; c(10)
+18
+</code></pre>
+<p>在函数<code>add_out()</code>中，内部函数<code>add_in()</code>是闭包，因为它除了调用自身的参数<code>y</code>以外，也调用了外部函数<code>add_out()</code>的参数<code>x</code>。</p>
+<h5 id="注意点">【注意点】</h5>
+<ol>
+<li>
+<p>闭包不能修改外部作用域的局部变量。</p>
+<pre><code class="language-python">&gt;&gt;&gt;def foo():
+    a = 1
+    def foo_in():
+        a =2
+        print(a)
+    print(a)
+    foo_in()
+    print(a)
+&gt;&gt;&gt;foo()
+1
+2
+1
+</code></pre>
+<ol>
+<li>
+<p>返回的函数并没有立刻执行，而是直到调用才执行。如：</p>
+<pre><code class="language-python">&gt;&gt;&gt;def count():
+    fs = []
+    for i in range(1,4):
+        def f():
+            return i*i
+        fs.append(f)
+    return fs
+&gt;&gt;&gt;f1,f2,f3 = count()
+&gt;&gt;&gt;f1()          #f1(),f2(),f3()的结果并不是1,4,9，而是9,9,9
+&gt;&gt;&gt;9
+&gt;&gt;&gt;f2()
+&gt;&gt;&gt;9
+&gt;&gt;&gt;f3()
+&gt;&gt;&gt;9
+</code></pre>
+<p>上面的例子，原因就在于返回的函数引用了变量<code>i</code>，但它并非立刻执行。等到3个函数都返回时，它们所引用的变量<code>i</code>已经变成了<code>3</code>，因此最终结果为<code>9</code>。所以 <strong>闭包返回函数不要引用任何循环变量，或者后续会发生变化的变量</strong>。</p>
+<p>如果非要引用循环变量呢？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，已绑定到函数参数的值不变：</p>
+<pre><code class="language-python">&gt;&gt;&gt;def count():
+    def f(j):
+        def g():
+            return j*j
+        return g
+    fs = []
+    for i in range(1, 4):
+        fs.append(f(i))           # f(i)立刻被执行，因此i的当前值被传入f()
+    return fs
+&gt;&gt;&gt; f1, f2, f3 = count()
+&gt;&gt;&gt; f1()
+1
+&gt;&gt;&gt; f2()
+4
+&gt;&gt;&gt; f3()
+9
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2装饰器">2.装饰器</h4>
+<h5 id="定义-2">【定义】</h5>
+<p>由于函数也是一个对象，而且函数对象可以被赋值给变量，所以，通过变量也能调用该函数。</p>
+<pre><code>&gt;&gt;&gt; def now():
+...     print('2017-3-25')
+...
+&gt;&gt;&gt; f = now
+&gt;&gt;&gt; f()
+2017-3-25
+</code></pre>
+<p>函数对象有一个<code>__name__</code>属性，可以拿到函数的名字：</p>
+<pre><code>&gt;&gt;&gt; now.__name__
+'now'
+&gt;&gt;&gt; f.__name__
+'now'
+</code></pre>
+<p>现在，假设我们要增强<code>now()</code>函数的功能，比如，在函数调用前后自动打印日志，但又不希望修改<code>now()</code>函数的定义，这种<strong>在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）</strong>。</p>
+<h5 id="使用">【使用】</h5>
+<p>本质上，<code>装饰器(decorator)</code>就是一个返回函数的高阶函数。所以，我们要定义一个能打印日志的decorator，可以定义如下：</p>
+<pre><code class="language-python">def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+</code></pre>
+<p>观察上面的<code>log</code>，因为它是一个<code>装饰器(decorator)</code>，所以接受一个函数作为参数，并返回一个函数。我们要借助Python的@语法，把decorator置于函数的定义处：</p>
+<pre><code>@log
+def now():
+    print('2015-3-25')
+</code></pre>
+<p>调用<code>now()</code>函数，不仅会运行<code>now()</code>函数本身，还会在运行<code>now()</code>函数前打印一行日志：</p>
+<pre><code>&gt;&gt;&gt; now()
+call now():
+2015-3-25
+</code></pre>
+<p>把<code>@log</code>放到<code>now()</code>函数的定义处，相当于执行了语句：</p>
+<pre><code>now = log(now)
+</code></pre>
+<p>由于<code>log()</code>是一个decorator，返回一个函数，所以，原来的<code>now()</code>函数仍然存在，只是现在同名的<code>now</code>变量指向了新的函数，于是调用<code>now()</code>将执行新函数，即在<code>log()</code>函数中返回的<code>wrapper()</code>函数。</p>
+<p><code>wrapper()</code>函数的参数定义是<code>(*args, **kw)</code>，因此，<code>wrapper()</code>函数可以接受任意参数的调用。在<code>wrapper()</code>函数内，首先打印日志，再紧接着调用原始函数。</p>
+<p>如果decorator本身需要传入参数，那就需要编写一个返回decorator的高阶函数，写出来会更复杂。比如，要自定义log的文本：</p>
+<pre><code>def log(text):
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+</code></pre>
+<p>这个3层嵌套的decorator用法如下：</p>
+<pre><code>@log('execute')
+def now():
+    print('2015-3-25')
+</code></pre>
+<p>执行结果如下：</p>
+<pre><code>&gt;&gt;&gt; now()
+execute now():
+2015-3-25
+</code></pre>
+<p>和两层嵌套的decorator相比，3层嵌套的效果是这样的：</p>
+<pre><code>&gt;&gt;&gt; now = log('execute')(now)
+</code></pre>
+<p>我们来剖析上面的语句，首先执行<code>log('execute')</code>，返回的是<code>decorator</code>函数，再调用返回的函数，参数是<code>now</code>函数，返回值最终是<code>wrapper</code>函数。</p>
+<p>以上两种decorator的定义都没有问题，但还差最后一步。因为我们讲了函数也是对象，它有<code>__name__</code>等属性，但你去看经过decorator装饰之后的函数，它们的<code>__name__</code>已经从原来的<code>'now'</code>变成了<code>'wrapper'</code>：</p>
+<pre><code>&gt;&gt;&gt; now.__name__
+'wrapper'
+</code></pre>
+<p>因为返回的那个<code>wrapper()</code>函数名字就是<code>'wrapper'</code>，所以，需要把原始函数的<code>__name__</code>等属性复制到<code>wrapper()</code>函数中，否则，有些依赖函数签名的代码执行就会出错。</p>
+<p>不需要编写<code>wrapper.__name__ = func.__name__</code>这样的代码，Python内置的<code>functools.wraps</code>就是干这个事的，所以，一个完整的decorator的写法如下：</p>
+<pre><code class="language-python">import functools
+
+def log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+</code></pre>
+<p>或者针对带参数的decorator：</p>
+<pre><code class="language-python">import functools
+
+def log(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+</code></pre>
+<p>参考链接1：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">穆雪峰的Python3教程</a></p>
+<p>参考链接2：<a href="https://eastlakeside.gitbooks.io/interpy-zh/content/">Intermediate Python</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="http://wangqunsong.top/post/python-xue-xi-bi-ji-02_-han-shu-shi-bian-cheng">
+              <h3 class="post-title">
+                下一篇：Python学习笔记02_函数式编程
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
