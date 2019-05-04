@@ -1,107 +1,98 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>渗透测试工具——SQLmap | 小小王的后花园</title>
-<meta name="description" content="小小王的后花园">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556977042773">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556976655503">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://wangqunsong.top">
-        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556976655503" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://wangqunsong.top">
-        <h1 class="site-title">小小王的后花园</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.top">
+  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556977042773" alt="">
+  </a>
+  <h1 class="site-title">
+    小小王的后花园
+  </h1>
+  <p class="site-description">
+    小小王的后花园
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://wangqunsong.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
       
-        
-          <a href="http://wangqunsong.top" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
-            关于
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu purple-link">
-            收藏链接
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          
-          <h2 class="post-title">渗透测试工具——SQLmap</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-02-02</span>
+          <article class="post">
+            <h2 class="post-title">
+              渗透测试工具——SQLmap
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-02-02 ·
+              </time>
+              
+                <a href="http://wangqunsong.top/tag/gmqBiNDvl" class="post-tags">
+                  # 安全测试
+                </a>
+              
+            </div>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="http://wangqunsong.top/tag/gmqBiNDvl">
-                    安全测试
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p>👏  欢迎使用 来到小小王的后花园！<br>
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>渗透测试工具——SQLmap</strong></p>
 <!-- more -->
 <h4 id="sqlmap介绍">sqlmap介绍</h4>
@@ -232,57 +223,32 @@
 <p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/75987305.jpg" alt="sqlmap获得表数据"></p>
 <p>目前为止，对<code>SQLmap</code>已有了基本的认识，更多的用法请访问<a href="https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-zh-CN.md">官网说明</a></p>
 
-          </div>
+            </div>
+          </article>
         </div>
-
+    
         
           <div class="next-post">
-            <a class="purple-link" href="http://wangqunsong.top/post/web-gong-ji-zhi-_xsszhuan">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.top/post/web-gong-ji-zhi-_xsszhuan">
               <h3 class="post-title">
-                下一篇：WEB攻击之_XSS「转]
+                WEB攻击之_XSS「转]
               </h3>
             </a>
-          </div>
-          
-      </div>
+          </div>  
+        
 
-      
-
-      <div class="site-footer">
-  <div class="slogan">小小王的后花园</div>
-  <div class="social-container">
+        
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+        <div class="site-footer">
   Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>

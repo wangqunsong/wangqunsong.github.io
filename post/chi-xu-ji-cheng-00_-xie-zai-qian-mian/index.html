@@ -1,107 +1,98 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>持续集成00_写在前面 | 小小王的后花园</title>
-<meta name="description" content="小小王的后花园">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556977042773">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556976655503">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://wangqunsong.top">
-        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556976655503" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://wangqunsong.top">
-        <h1 class="site-title">小小王的后花园</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.top">
+  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556977042773" alt="">
+  </a>
+  <h1 class="site-title">
+    小小王的后花园
+  </h1>
+  <p class="site-description">
+    小小王的后花园
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://wangqunsong.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
       
-        
-          <a href="http://wangqunsong.top" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
-            关于
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu purple-link">
-            收藏链接
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          
-          <h2 class="post-title">持续集成00_写在前面</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2018-07-25</span>
+          <article class="post">
+            <h2 class="post-title">
+              持续集成00_写在前面
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-07-25 ·
+              </time>
+              
+                <a href="http://wangqunsong.top/tag/AZvxNNEdR" class="post-tags">
+                  # CI/CD
+                </a>
+              
+            </div>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="http://wangqunsong.top/tag/AZvxNNEdR">
-                    CI/CD
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p>👏  欢迎使用 来到小小王的后花园！<br>
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成00_写在前面</strong></p>
 <!-- more --> 
 <p>​        学习了<a href="https://testerhome.com/cay">TesterHome@cay</a>大佬写的持续交付的系列文章后，刚好改造了下手头的项目，在此记录下工作的内容，以便后续完善改进，更多内容请观光<a href="https://testerhome.com/cay">@cay</a>的系列文章。</p>
@@ -140,57 +131,32 @@
 <p><a href="https://testerhome.com/topics/9977">TesterHome | @cay</a></p>
 <p><a href="https://tech.meituan.com/erp_cd_jenkins_pipeline.html">美团技术团队</a></p>
 
-          </div>
+            </div>
+          </article>
         </div>
-
+    
         
           <div class="next-post">
-            <a class="purple-link" href="http://wangqunsong.top/post/pipeline-can-kao-shou-ce-zhuan">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.top/post/pipeline-can-kao-shou-ce-zhuan">
               <h3 class="post-title">
-                下一篇：pipeline参考手册「转]
+                pipeline参考手册「转]
               </h3>
             </a>
-          </div>
-          
-      </div>
+          </div>  
+        
 
-      
-
-      <div class="site-footer">
-  <div class="slogan">小小王的后花园</div>
-  <div class="social-container">
+        
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+        <div class="site-footer">
   Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>

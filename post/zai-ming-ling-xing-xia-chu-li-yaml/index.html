@@ -1,137 +1,64 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>在命令行下处理 YAML | 小小王的后花园</title>
-<meta name="description" content="小小王的后花园">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556977042773">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556976655503">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://wangqunsong.top">
-        <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556976655503" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://wangqunsong.top">
-        <h1 class="site-title">小小王的后花园</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.top">
+  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556977042773" alt="">
+  </a>
+  <h1 class="site-title">
+    小小王的后花园
+  </h1>
+  <p class="site-description">
+    小小王的后花园
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://wangqunsong.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+      
+        <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
   </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="http://wangqunsong.top" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
-            关于
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu purple-link">
-            收藏链接
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">在命令行下处理 YAML</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2018-05-02</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="http://wangqunsong.top/tag/eH19MB6sE">
-                    yaml
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>在命令行下处理 YAML</strong></p>
-<!-- more --> 
-<h4 id="项目地址">项目地址</h4>
-<p><a href="https://github.com/0k/shyaml">项目Github</a></p>
-<p>​      最近使用Jenkins基于分支构建时，需要使用shell脚本来读取yml配置文件，使用了<a href="https://github.com/0k/shyaml">shyaml</a>，这是一个可以通过命令行读取yml配置文件的工具，使用方法可访问项目地址。</p>
-<p>​     这里仅记录下使用过程中碰到的问题：</p>
-<h4 id="碰到的问题">碰到的问题</h4>
-<p>1.<strong>安装完成后找不到shyaml命令(-bash: shyaml: command not found)</strong></p>
-<p><strong>原因</strong>：说明文档中使用python的pip工具进行安装，问题是这样安装只会将shyaml安装到python安装路径的site-packages目录下，并不能直接在shell脚本中使用</p>
-<p><strong>解决办法</strong>：将项目中的shyaml文件拷贝到/usr/bin目录下（注意没有后缀名），bi并使用chmod增加必要的权限，此时即可正常使用：</p>
-<p><img src="https://i.loli.net/2019/03/14/5c8a21809d895.png" alt="shyaml"></p>
-
-          </div>
-        </div>
-
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://wangqunsong.top/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">
-              <h3 class="post-title">
-                下一篇：Python 2.7.x 与 Python 3.x 的主要差异「转]
-              </h3>
-            </a>
-          </div>
-          
-      </div>
-
-      
-
-      <div class="site-footer">
-  <div class="slogan">小小王的后花园</div>
   <div class="social-container">
     
       
@@ -145,26 +72,65 @@
       
     
   </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              在命令行下处理 YAML
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-05-02 ·
+              </time>
+              
+                <a href="http://wangqunsong.top/tag/eH19MB6sE" class="post-tags">
+                  # yaml
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>在命令行下处理 YAML</strong></p>
+<!-- more --> 
+<h4 id="项目地址">项目地址</h4>
+<p><a href="https://github.com/0k/shyaml">项目Github</a></p>
+<p>​      最近使用Jenkins基于分支构建时，需要使用shell脚本来读取yml配置文件，使用了<a href="https://github.com/0k/shyaml">shyaml</a>，这是一个可以通过命令行读取yml配置文件的工具，使用方法可访问项目地址。</p>
+<p>​     这里仅记录下使用过程中碰到的问题：</p>
+<h4 id="碰到的问题">碰到的问题</h4>
+<p>1.<strong>安装完成后找不到shyaml命令(-bash: shyaml: command not found)</strong></p>
+<p><strong>原因</strong>：说明文档中使用python的pip工具进行安装，问题是这样安装只会将shyaml安装到python安装路径的site-packages目录下，并不能直接在shell脚本中使用</p>
+<p><strong>解决办法</strong>：将项目中的shyaml文件拷贝到/usr/bin目录下（注意没有后缀名），bi并使用chmod增加必要的权限，此时即可正常使用：</p>
+<p><img src="https://i.loli.net/2019/03/14/5c8a21809d895.png" alt="shyaml"></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.top/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">
+              <h3 class="post-title">
+                Python 2.7.x 与 Python 3.x 的主要差异「转]
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
   Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>
