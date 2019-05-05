@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>持续集成05_分层自动化测试 | 小小王的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556977602110">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1557015621752">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="http://wangqunsong.top">
-  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556977602110" alt="">
+  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1557015621752" alt="">
   </a>
   <h1 class="site-title">
     小小王的后花园
@@ -141,7 +141,7 @@
 <p><code>RobotFramework</code>的确不是一个好的选择，一是原生的RF排错很困难，二是太高度封装了不好二次定制，还有就是当碰到大型项目时很吃力。</p>
 <p>最初考虑的原因一个是成本，因为<code>RF</code>入门简单，适合不怎么熟悉编程的人，另一个是<code>RF</code>用的是<code>Python</code>开发，并且基于的是<code>Selenium2Library库</code>，我可以进行修改和二次定制开发，还有就是一些其他原因。这里UI自动化就不记录了，以后新的项目都应该会用<code>Selenium</code>了，移动端的话是<code>Appium</code>。</p>
 <h3 id="pipeline">PipeLine</h3>
-<pre><code class="language-groovy">stage ('接口自动化测试') {
+<pre><code class="language-shell">stage ('接口自动化测试') {
     when { expression {return isStage4 }}
     steps{
         echo '开始接口自动化测试'

@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>持续集成04_测试环境部署 | 小小王的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556977602110">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1557015621752">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="http://wangqunsong.top">
-  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556977602110" alt="">
+  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1557015621752" alt="">
   </a>
   <h1 class="site-title">
     小小王的后花园
@@ -135,7 +135,7 @@ choice(name:'environment',choices:'dev环境\ntest环境\ntst环境',description
 </code></pre>
 <h4 id="相关">相关</h4>
 <p>pipeline脚本：</p>
-<pre><code class="language-groovy">stage ('测试环境部署') {
+<pre><code class="language-shell">stage ('测试环境部署') {
     when { expression {return isStage3 } }
         steps{
               sh 'deploy.sh'

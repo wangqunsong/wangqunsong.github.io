@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>持续集成02_静态代码扫描 | 小小王的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1556977602110">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1557015621752">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="http://wangqunsong.top">
-  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1556977602110" alt="">
+  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1557015621752" alt="">
   </a>
   <h1 class="site-title">
     小小王的后花园
@@ -256,7 +256,7 @@ su - sonar
 <p><img src="https://i.loli.net/2019/01/16/5c3f4cd4af27b.png" alt=""></p>
 <p>配置文档参考<a href="https://docs.sonarqube.org/latest/project-administration/webhooks/">SonarQube配置webhooks</a>，配置时要注意，<code>name</code>随便取，<code>URL的</code>值为<code>你的jenkins地址 + sonarqube-webhook/</code>，即保证以<code>sonarqube-webhook/</code>结尾。</p>
 <h4 id="pipeline代码">Pipeline代码</h4>
-<pre><code class="language-groovy">stage ('静态代码扫描') {
+<pre><code class="language-shell">stage ('静态代码扫描') {
     //when指令允许Pipeline根据给定的条件确定是否执行该阶段,isStage1为真时，执行静态代码扫描
     when { expression {return isStage1 } }
     steps{
