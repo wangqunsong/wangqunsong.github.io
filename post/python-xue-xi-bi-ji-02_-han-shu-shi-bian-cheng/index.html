@@ -1,95 +1,104 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Python学习笔记02_函数式编程 | 小小王的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1557015621752">
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.top/favicon.ico?v=1558017062462">
 <link rel="stylesheet" href="http://wangqunsong.top/styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="http://wangqunsong.top">
-  <img class="avatar" src="http://wangqunsong.top/images/avatar.png?v=1557015621752" alt="">
-  </a>
-  <h1 class="site-title">
-    小小王的后花园
-  </h1>
-  <p class="site-description">
-    小小王的后花园
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://wangqunsong.top">
+        <img src="http://wangqunsong.top/images/avatar.png?v=1558017062462" class="site-logo">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="http://wangqunsong.top" class="menu">
-          首页
-        </a>
+        
+          <a href="http://wangqunsong.top" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="http://wangqunsong.top/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="http://wangqunsong.top/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="http://wangqunsong.top/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="http://wangqunsong.top/tags" class="menu">
-          标签
-        </a>
+        
+          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="site-nav">
+            收藏链接
+          </a>
+        
       
-    
-      
-        <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu">
-          关于
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu">
-          收藏链接
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      小小王的后花园
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
+    </div>
   </div>
 </div>
 
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Python学习笔记02_函数式编程
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2016-11-19 ·
-              </time>
-              
-                <a href="http://wangqunsong.top/tag/1sgoPsPP5" class="post-tags">
-                  # Python
-                </a>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Python学习笔记02_函数式编程</h2>
+            <div class="post-date">2016-11-19</div>
             
             <div class="post-content">
               <p>👏  欢迎使用 来到小小王的后花园！<br>
@@ -265,31 +274,53 @@ list(filter(not_empty, ['A', '', 'B', None, 'C', '  ']))
 <p>参考链接2：<a href="https://eastlakeside.gitbooks.io/interpy-zh/content/">Intermediate Python</a></p>
 
             </div>
-          </article>
+            
+              <div class="tag-container">
+                
+                  <a href="http://wangqunsong.top/tag/1sgoPsPP5" class="tag">
+                    Python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://wangqunsong.top/post/python-xue-xi-bi-ji-01_-ji-ben-shu-ju-jie-gou">
+                  <h3 class="post-title">
+                    Python学习笔记01_基本数据结构
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
         </div>
-    
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="http://wangqunsong.top/post/python-xue-xi-bi-ji-01_-ji-ben-shu-ju-jie-gou">
-              <h3 class="post-title">
-                Python学习笔记01_基本数据结构
-              </h3>
-            </a>
-          </div>  
-        
-
-        
-    
-        <div class="site-footer">
-  Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
       </div>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
   </body>
 </html>
