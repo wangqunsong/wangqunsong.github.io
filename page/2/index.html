@@ -1,15 +1,17 @@
-<!DOCTYPE html>
+
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
 <title>小小王的后花园</title>
 <meta name="description" content="小小王的后花园">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1560178997452">
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1560179097261">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
 
 
@@ -17,258 +19,353 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
 
 
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="http://wangqunsong.github.io">
-        <img src="http://wangqunsong.github.io/images/avatar.png?v=1560178997452" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://wangqunsong.github.io">
+        <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1560179097261" alt="" width="32px" height="32px">
+      </a>
+      <a href="http://wangqunsong.github.io">
         <h1 class="site-title">小小王的后花园</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="http://wangqunsong.top" class="site-nav">
+          <a href="http://wangqunsong.top" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="http://wangqunsong.top/archives" class="site-nav">
+          <a href="http://wangqunsong.top/archives" class="menu purple-link">
             归档
           </a>
         
       
         
-          <a href="http://wangqunsong.top/tags" class="site-nav">
+          <a href="http://wangqunsong.top/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="site-nav">
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
             关于
           </a>
         
       
         
-          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="site-nav">
+          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu purple-link">
             收藏链接
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      小小王的后花园
-    </div>
-    <div class="site-footer">
-      Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
-    </div>
-  </div>
-</div>
+</transition>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/liao-liao-linux-san-jian-ke">
-                  <h2 class="post-title">聊聊Linux三剑客</h2>
-                </a>
-                <div class="post-date">
-                  2018-10-12
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      <div class="content-container">
+        
+        
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/liao-liao-linux-san-jian-ke">
+        <h2 class="post-title">聊聊Linux三剑客</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>聊聊Linux三剑客</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi">
-                  <h2 class="post-title">持续集成05_分层自动化测试</h2>
-                </a>
-                <div class="post-date">
-                  2018-10-10
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-10-12</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/v36euej5h">
+                Linux
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi">
+        <h2 class="post-title">持续集成05_分层自动化测试</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成05_分层自动化测试</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">
-                  <h2 class="post-title">持续集成04_测试环境部署</h2>
-                </a>
-                <div class="post-date">
-                  2018-09-28
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-10-10</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">
+        <h2 class="post-title">持续集成04_测试环境部署</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成04_测试环境部署</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-03_-dan-yuan-ce-shi-ji-fu-gai-lu-tong-ji">
-                  <h2 class="post-title">持续集成03_单元测试及覆盖率统计</h2>
-                </a>
-                <div class="post-date">
-                  2018-09-04
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-09-28</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-03_-dan-yuan-ce-shi-ji-fu-gai-lu-tong-ji">
+        <h2 class="post-title">持续集成03_单元测试及覆盖率统计</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成03_单元测试及覆盖率统计</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao">
-                  <h2 class="post-title">持续集成02_静态代码扫描</h2>
-                </a>
-                <div class="post-date">
-                  2018-08-25
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-09-04</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao">
+        <h2 class="post-title">持续集成02_静态代码扫描</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成02_静态代码扫描</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-01_pipeline-xiang-mu-zong-lan">
-                  <h2 class="post-title">持续集成01_pipeline项目总览</h2>
-                </a>
-                <div class="post-date">
-                  2018-08-14
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-08-25</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-01_pipeline-xiang-mu-zong-lan">
+        <h2 class="post-title">持续集成01_pipeline项目总览</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成01_pipeline项目总览</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian">
-                  <h2 class="post-title">持续集成00_写在前面</h2>
-                </a>
-                <div class="post-date">
-                  2018-07-25
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-08-14</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian">
+        <h2 class="post-title">持续集成00_写在前面</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成00_写在前面</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/pipeline-can-kao-shou-ce-zhuan">
-                  <h2 class="post-title">pipeline参考手册「转]</h2>
-                </a>
-                <div class="post-date">
-                  2018-06-07
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-07-25</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/pipeline-can-kao-shou-ce-zhuan">
+        <h2 class="post-title">pipeline参考手册「转]</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>pipeline参考手册「转]</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml">
-                  <h2 class="post-title">在命令行下处理 YAML</h2>
-                </a>
-                <div class="post-date">
-                  2018-05-02
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-06-07</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
+                CI/CD
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml">
+        <h2 class="post-title">在命令行下处理 YAML</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>在命令行下处理 YAML</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="http://wangqunsong.github.io/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">
-                  <h2 class="post-title">Python 2.7.x 与 Python 3.x 的主要差异「转]</h2>
-                </a>
-                <div class="post-date">
-                  2017-02-16
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 来到小小王的后花园！<br>
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2018-05-02</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/eH19MB6sE">
+                yaml
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
+
+<section class="post-item">
+    <div class="content">
+      <a href="http://wangqunsong.github.io/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">
+        <h2 class="post-title">Python 2.7.x 与 Python 3.x 的主要差异「转]</h2>
+      </a>
+      <div class="post-abstract">
+        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python 2.7.x 与 Python 3.x 的主要差异「转]</strong></p>
 
-                </div>
-              </div>
-              
-            </article>
-          
+      </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2017-02-16</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="http://wangqunsong.github.io/tag/1sgoPsPP5">
+                Python
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
 
-          <div class="pagination-container">
+
+<div class="pagination-container">
   
     <a href="http://wangqunsong.github.io/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
   
@@ -277,15 +374,30 @@
   
 </div>
 
-        </div>
+
       </div>
+
+      <div class="site-footer">
+  <div class="slogan">小小王的后花园</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
+</div>
+
+
     </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
+    <script type="application/javascript">
 
 hljs.initHighlightingOnLoad()
 
