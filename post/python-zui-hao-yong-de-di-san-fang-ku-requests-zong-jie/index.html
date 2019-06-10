@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Python最好用的第三方库requests总结 | 小小王的后花园</title>
+<meta name="description" content="小小王的后花园">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1560178997452">
+<link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="http://wangqunsong.github.io">
+        <img src="http://wangqunsong.github.io/images/avatar.png?v=1560178997452" class="site-logo">
+        <h1 class="site-title">小小王的后花园</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="http://wangqunsong.top" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="site-nav">
+            收藏链接
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      小小王的后花园
+    </div>
+    <div class="site-footer">
+      Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Python最好用的第三方库requests总结</h2>
+            <div class="post-date">2019-05-12</div>
+            
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python最好用的第三方库requests总结</strong></p>
+<h4 id="写在前面">写在前面</h4>
+<p>强烈建议阅读<a href="https://2.python-requests.org//zh_CN/latest/index.html">官方文档</a>，本文按照<a href="https://2.python-requests.org//zh_CN/latest/index.html">官方文档</a>的顺序进行组织。</p>
+<!-- more -->
+<h4 id="1-发送请求">1. 发送请求</h4>
+<pre><code class="language-python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; r_get = requests.get('https://api.github.com/events')
+&gt;&gt;&gt; r_post = requests.post('http://httpbin.org/post', data = {'key':'value'})
+</code></pre>
+<h4 id="2-传递url参数">2. 传递URL参数</h4>
+<pre><code class="language-python">&gt;&gt;&gt; load_data = {'key1':'value1','key2':'value2'}
+# 方式一：URL + ? + 参数值： params（httpbin.org/get?key=val）
+&gt;&gt;&gt; r_get = requests.get(&quot;http://httpbin.org/get&quot;, params=load_data)
+# 方式二：form表单
+&gt;&gt;&gt; r = requests.post(&quot;http://httpbin.org/post&quot;, data=load_data)
+#方式三：json传输（实际上只是对data的参数进行了编码），以下2种方式的效果相同
+&gt;&gt;&gt; r = requests.post(&quot;http://httpbin.org/post&quot;, json=load_data)
+&gt;&gt;&gt; r = requests.post(&quot;http://httpbin.org/post&quot;, data=json.dumps(load_data))
+</code></pre>
+<h4 id="3响应内容">3.响应内容</h4>
+<pre><code class="language-python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; r = requests.get('https://api.github.com/events')
+&gt;&gt;&gt; r.text   #响应内容
+&gt;&gt;&gt; r.encoding  #编码
+</code></pre>
+<h4 id="4-二进制响应内容">4. 二进制响应内容</h4>
+<pre><code class="language-python">&gt;&gt;&gt; r.content #二进制响应内容
+
+#eg: 根据返回的二进制数据创建图片
+&gt;&gt;&gt; from PIL import Image
+&gt;&gt;&gt; from io import BytesIO
+&gt;&gt;&gt; i = Image.open(BytesIO(r.content))
+</code></pre>
+<h4 id="5-json-响应内容">5. JSON 响应内容</h4>
+<pre><code class="language-python">&gt;&gt;&gt; import requests
+&gt;&gt;&gt; r = requests.get('https://api.github.com/events')
+&gt;&gt;&gt; r.json()
+</code></pre>
+<h4 id="6-原始响应内容">6. 原始响应内容</h4>
+<pre><code class="language-python">#获取来自服务器的原始套接字响应
+&gt;&gt;&gt; r = requests.get('https://api.github.com/events', stream=True)
+&gt;&gt;&gt; r.raw
+&gt;&gt;&gt; r.raw.read(10)
+</code></pre>
+<h4 id="7-定制请求头">7. 定制请求头</h4>
+<pre><code class="language-python">&gt;&gt;&gt; url = 'https://api.github.com/some/endpoint'
+&gt;&gt;&gt; headers = {'user-agent': 'my-app/0.0.1'}
+&gt;&gt;&gt; r = requests.get(url, headers=headers)
+</code></pre>
+<h4 id="8-上传文件">8. 上传文件</h4>
+<pre><code class="language-python">&gt;&gt;&gt; files = {'file': open('report.xls', 'rb')}
+&gt;&gt;&gt; r = requests.post('http://httpbin.org/post', files=files)
+</code></pre>
+<h4 id="9-响应状态码">9 .响应状态码</h4>
+<pre><code class="language-python">&gt;&gt;&gt; r = requests.get('http://httpbin.org/get')
+&gt;&gt;&gt; r.status_code   #200
+&gt;&gt;&gt; r.status_code == requests.codes.ok   #True
+&gt;&gt;&gt; r.raise_for_status()   #抛出异常
+</code></pre>
+<h4 id="10响应头">10.响应头</h4>
+<pre><code class="language-python">&gt;&gt;&gt; r.headers
+&gt;&gt;&gt; r.headers['Content-Type']  或者 r.headers.get('content-type')
+'application/json'
+</code></pre>
+<h4 id="11cookie">11.Cookie</h4>
+<pre><code class="language-python">&gt;&gt;&gt; url = 'http://httpbin.org/get'
+#访问cookie
+&gt;&gt;&gt; r = requests.get(url)
+&gt;&gt;&gt; r.cookies['example_cookie_name']
+#发送cookie
+&gt;&gt;&gt; my_cookies = dict(cookies_are='upupup')
+&gt;&gt;&gt; r = requests.get(url, cookies=my_cookies)
+</code></pre>
+<h4 id="12重定向">12.重定向</h4>
+<pre><code class="language-python">&gt;&gt;&gt; url = 'http://httpbin.org/get'
+&gt;&gt;&gt; r = requests.get(url)
+#追踪重定向
+&gt;&gt;&gt; r.history
+</code></pre>
+<h4 id="13-超时">13. 超时</h4>
+<pre><code class="language-python">&gt;&gt;&gt; requests.get('http://github.com', timeout=0.001)
+</code></pre>
+<h4 id="14-错误与异常">14 .错误与异常</h4>
+<pre><code class="language-python">&gt;&gt;&gt; Response.raise_for_status()
+# 网络问题: ConnectionError 
+# 不成功的状态码: HTTPError 异常;
+# 请求超时: Timeout 异常;
+# 超过了设定的最大重定向次数: TooManyRedirects 异常;
+</code></pre>
+<h4 id="15会话对象session">15.会话对象Session</h4>
+<pre><code class="language-python"># 作用：
+#（1）跨请求保持某些参数；
+#（2）同一个session实例的所有请求之间保持cookie；
+#（3）对同一主机的多个请求，底层的 TCP 连接将会被重用，显著的性能提升。
+#（4）通过为会话对象属性提供数据，为请求方法提供缺省数据；
+&gt;&gt;&gt; s = requests.Session()    #会话层
+&gt;&gt;&gt; s.auth = ('user', 'pass')  #会话层
+&gt;&gt;&gt; s.headers.update({'x-test': 'true'})  #会话层
+&gt;&gt;&gt; s.get('http://httpbin.org/headers', headers={'x-test2': 'true'})   #方法层
+</code></pre>
+<h4 id="16请求与响应对象">16.请求与响应对象</h4>
+<pre><code class="language-python">&gt;&gt;&gt; requests.get() 
+#构建Request 对象发送到服务器，得到响应后生成Response 对象，该对象包含服务器返回的所有信息，也包括原来请求的Request 对象
+</code></pre>
+<h4 id="17-准备的请求">17. 准备的请求</h4>
+<pre><code class="language-python">#在发送请求之前，对 body 或者 header （或者别的什么东西）做一些额外处理
+from requests import Request,Session
+s = Session()
+req = Request('GET',url,data=data,headers=headers)
+prepped = s.prepare_request(req)
+resp = s.send(prepped,stream=stream,verify=verify,timeout=timeout)
+</code></pre>
+<h4 id="18ssl证书验证">18.SSL证书验证</h4>
+<pre><code class="language-python">#默认开启
+&gt;&gt;&gt; requests.get('https://github.com', verify=True)
+#制定CA证书文件路径
+&gt;&gt;&gt; requests.get('https://github.com', verify='/path/to/certfile')
+#保持在会话中
+&gt;&gt;&gt; s = requests.Session()
+&gt;&gt;&gt; s.verify = '/path/to/certfile'
+</code></pre>
+<h4 id="19-客户端证书">19. 客户端证书</h4>
+<pre><code class="language-python">&gt;&gt;&gt; requests.get('https://kennethreitz.org', cert=('/path/client.cert', '/path/client.key'))
+#或者保持在会话中
+&gt;&gt;&gt; s = requests.Session()
+&gt;&gt;&gt; s.cert = '/path/client.cert'
+</code></pre>
+<p><strong>注：本地证书的私有 key 必须是解密状态。目前，Requests 不支持使用加密的 key。</strong></p>
+<h4 id="20ca证书">20.CA证书</h4>
+<pre><code class="language-shell">$  Requests 默认附带了一套它信任的根证书，来自于 Mozilla trust store。然而它们在每次 Requests 更新时才会更新。这意味着如果你固定使用某一版本的 Requests，你的证书有可能已经 太旧了。
+   从 Requests 2.4.0 版之后，如果系统中装了 certifi 包，Requests 会试图使用它里边的 证书。这样用户就可以在不修改代码的情况下更新他们的可信任证书。
+   为了安全起见，我们建议你经常更新 certifi！
+</code></pre>
+<h4 id="21响应体内容工作流">21.响应体内容工作流</h4>
+<pre><code class="language-python"># 默认情况下，当你进行网络请求后，响应体会立即被下载。你可以通过 stream 参数覆盖这个行为，推迟下载响应体直到访问 Response.content 属性：
+tarball_url = 'https://github.com/kennethreitz/requests/tarball/master'
+r = requests.get(tarball_url, stream=True)
+if int(r.headers['content-length']) &lt; TOO_LONG:
+  content = r.content
+  ...
+</code></pre>
+<h4 id="22持久连接">22.持久连接</h4>
+<pre><code class="language-python"># 同一会话内的持久连接是完全自动处理的！同一会话内你发出的任何请求都会自动复用恰当的连接！
+</code></pre>
+<h4 id="23流式上传">23.流式上传</h4>
+<pre><code class="language-python"># Requests支持流式上传，无需先把它们读入内存，仅需要为请求体提供类文件：
+with open('massive-body') as f:
+    requests.post('http://some.url/streamed', data=f)
+</code></pre>
+<p>**注：强烈建议你用二进制模式（<a href="https://docs.python.org/2/tutorial/inputoutput.html#reading-and-writing-files">binary mode</a>）打开文件，requests 可能会为你提供 header 中的 <code>Content-Length</code>，在这种情况下该值会被设为文件的字节数 **</p>
+<h4 id="23-块编码请求">23. 块编码请求</h4>
+<pre><code class="language-python">def gen():
+    yield 'hi'
+    yield 'there'
+requests.post('http://some.url/chunked', data=gen())
+</code></pre>
+<h4 id="24-post多个文件">24. POST多个文件</h4>
+<pre><code class="language-python">&gt;&gt;&gt; url = 'http://httpbin.org/post'
+&gt;&gt;&gt; multiple_files = [
+        ('images', ('foo.png', open('foo.png', 'rb'), 'image/png')),
+        ('images', ('bar.png', open('bar.png', 'rb'), 'image/png'))]
+&gt;&gt;&gt; r = requests.post(url, files=multiple_files)
+</code></pre>
+<h4 id="25-钩子机制">25. 钩子机制</h4>
+<pre><code class="language-python">def print_url(r, *args, **kwargs):
+    print(r.url)
+&gt;&gt;&gt; requests.get('http://httpbin.org', hooks=dict(response=print_url))
+</code></pre>
+<h4 id="26代理">26.代理</h4>
+<pre><code class="language-python">proxies = {
+  &quot;http&quot;: &quot;http://10.10.1.10:3128&quot;,
+  &quot;https&quot;: &quot;http://10.10.1.10:1080&quot;,
+}
+requests.get(&quot;http://example.org&quot;, proxies=proxies)
+#或者通过设置环境变量
+$ export HTTP_PROXY=&quot;http://10.10.1.10:3128&quot;
+$ export HTTPS_PROXY=&quot;http://10.10.1.10:1080&quot;
+$ python
+&gt;&gt;&gt; import requests
+&gt;&gt;&gt; requests.get(&quot;http://example.org&quot;)
+</code></pre>
+<h4 id="27-超时">27. 超时</h4>
+<pre><code class="language-python">r = requests.get('https://github.com', timeout=5)  #timeout 值将会用作 connect 和 read 二者的 timeout
+
+r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="tag">
+                    Python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="http://wangqunsong.github.io/post/shen-tou-ce-shi-gong-ju-sqlmap">
+                  <h3 class="post-title">
+                    渗透测试工具——SQLmap
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
