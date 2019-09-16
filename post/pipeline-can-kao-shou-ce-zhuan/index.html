@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1565278526411">
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1568603814251">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="site-header">
     <div class="left">
       <a href="http://wangqunsong.github.io">
-        <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1565278526411" alt="" width="32px" height="32px">
+        <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1568603814251" alt="" width="32px" height="32px">
       </a>
       <a href="http://wangqunsong.github.io">
         <h1 class="site-title">小小王的后花园</h1>
@@ -62,12 +62,6 @@
         
           <a href="http://wangqunsong.top/tags" class="menu purple-link">
             标签
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
-            关于
           </a>
         
       
@@ -108,17 +102,17 @@
 <p>本pipeline中文版参考手册译者为<a href="https://testerhome.com/cay">TesterHome@cay</a>，所有权归原译者所有。</p>
 <p>英语好的建议直接移步官网阅读：<a href="https://jenkins.io/doc/book/pipeline/">Jenkins pipeline</a></p>
 <h2 id="二-语法简介">二、语法简介</h2>
-<p>Pipeline最基本的部分是“step”。基本上，step告诉Jenkins 要做什么，并且作为Declarative Pipeline和Scripted Pipeline语法的基本构建块。
-Pipeline支持两种语法：Declarative Pipeline（在Pipeline 2.5中引入，结构化方式）和Scripted Pipeline，两者都支持建立连续输送的Pipeline。
+<p>Pipeline最基本的部分是“step”。基本上，step告诉Jenkins 要做什么，并且作为Declarative Pipeline和Scripted Pipeline语法的基本构建块。<br>
+Pipeline支持两种语法：Declarative Pipeline（在Pipeline 2.5中引入，结构化方式）和Scripted Pipeline，两者都支持建立连续输送的Pipeline。<br>
 为与BlueOcean脚本编辑器兼容，通常建议使用Declarative Pipeline的方式进行编写,从jenkins社区的动向来看，很明显这种语法结构也会是未来的趋势。</p>
 <h2 id="三-declarative-pipeline">三、Declarative Pipeline</h2>
-<p>Declarative Pipeline是Jenkins Pipeline 的一个相对较新的补充， 它在Pipeline子系统之上提出了一种更为简化和有意义的语法。
-所有有效的Declarative Pipeline必须包含在一个pipeline块内，例如：
-pipeline { /* insert Declarative Pipeline here */ }
-Declarative Pipeline中的基本语句和表达式遵循与Groovy语法相同的规则 ，但有以下例外：
-a.Pipeline的顶层必须是块，具体来说是：pipeline { }
-b.没有分号作为语句分隔符。每个声明必须在自己的一行
-c.块只能包含Sections, Directives, Steps或赋值语句。
+<p>Declarative Pipeline是Jenkins Pipeline 的一个相对较新的补充， 它在Pipeline子系统之上提出了一种更为简化和有意义的语法。<br>
+所有有效的Declarative Pipeline必须包含在一个pipeline块内，例如：<br>
+pipeline { /* insert Declarative Pipeline here */ }<br>
+Declarative Pipeline中的基本语句和表达式遵循与Groovy语法相同的规则 ，但有以下例外：<br>
+a.Pipeline的顶层必须是块，具体来说是：pipeline { }<br>
+b.没有分号作为语句分隔符。每个声明必须在自己的一行<br>
+c.块只能包含Sections, Directives, Steps或赋值语句。<br>
 d.属性引用语句被视为无参方法调用。所以例如，输入被视为input（）</p>
 <h3 id="1sections章节">1.Sections（章节）</h3>
 <p>Declarative Pipeline里的Sections通常包含一个或多个Directives或 Steps</p>
@@ -135,15 +129,15 @@ agent {
     }
 }
 </code></pre>
-<p>dockerfile
-使用从Dockerfile源存储库中包含的容器来构建执行Pipeline或stage 。为了使用此选项，Jenkinsfile必须从Multibranch Pipeline或“Pipeline from SCM&quot;加载。
-默认是在Dockerfile源库的根目录：agent { dockerfile true }。如果Dockerfile需在另一个目录中建立，请使用以下dir选项：agent { dockerfile { dir 'someSubDir' } }。您可以通过docker build ...使用additionalBuildArgs选项，如agent { dockerfile { additionalBuildArgs '--build-arg foo=bar' } }。
-<strong>常用选项</strong>
-这些是可以应用于两个或多个agent的选项。除非明确定义，否则不需要。
-label
-一个字符串。标记在哪里运行pipeline或stage
-此选项适用于node，docker和dockerfile，并且 node是必需的。
-customWorkspace
+<p>dockerfile<br>
+使用从Dockerfile源存储库中包含的容器来构建执行Pipeline或stage 。为了使用此选项，Jenkinsfile必须从Multibranch Pipeline或“Pipeline from SCM&quot;加载。<br>
+默认是在Dockerfile源库的根目录：agent { dockerfile true }。如果Dockerfile需在另一个目录中建立，请使用以下dir选项：agent { dockerfile { dir 'someSubDir' } }。您可以通过docker build ...使用additionalBuildArgs选项，如agent { dockerfile { additionalBuildArgs '--build-arg foo=bar' } }。<br>
+<strong>常用选项</strong><br>
+这些是可以应用于两个或多个agent的选项。除非明确定义，否则不需要。<br>
+label<br>
+一个字符串。标记在哪里运行pipeline或stage<br>
+此选项适用于node，docker和dockerfile，并且 node是必需的。<br>
+customWorkspace<br>
 一个字符串。自定义运行的工作空间内。它可以是相对路径，在这种情况下，自定义工作区将位于节点上的工作空间根目录下，也可以是绝对路径。例如：</p>
 <pre><code>customWorkspace
 agent {
@@ -153,9 +147,9 @@ agent {
     }
 }
 </code></pre>
-<p>reuseNode
-一个布尔值，默认为false。如果为true，则在同一工作空间中。
-此选项适用于docker和dockerfile，并且仅在 individual stage中使用agent才有效。
+<p>reuseNode<br>
+一个布尔值，默认为false。如果为true，则在同一工作空间中。<br>
+此选项适用于docker和dockerfile，并且仅在 individual stage中使用agent才有效。<br>
 <strong>Example</strong></p>
 <pre><code>Jenkinsfile (Declarative Pipeline)
 pipeline {
@@ -234,8 +228,8 @@ pipeline {
 </code></pre>
 <h3 id="2directives-指令">2.Directives （指令）</h3>
 <h4 id="environment">environment</h4>
-<p>environment指令指定一系列键值对，这些键值对将被定义为所有step或stage-specific step的环境变量，具体取决于environment指令在Pipeline中的位置。
-该指令支持一种特殊的方法credentials()，可以通过其在Jenkins环境中的标识符来访问预定义的凭据。
+<p>environment指令指定一系列键值对，这些键值对将被定义为所有step或stage-specific step的环境变量，具体取决于environment指令在Pipeline中的位置。<br>
+该指令支持一种特殊的方法credentials()，可以通过其在Jenkins环境中的标识符来访问预定义的凭据。<br>
 对于类型为“Secret Text”的凭据，该 credentials()方法将确保指定的环境变量包含Secret Text内容；对于“标准用户名和密码”类型的凭证，指定的环境变量将被设置为username:password。</p>
 <p><a href="https://testerhome.com/uploads/photo/2017/61e1a1c8-ccaf-4e17-95a2-cf0fc874befb.png!large"><img src="https://testerhome.com/uploads/photo/2017/61e1a1c8-ccaf-4e17-95a2-cf0fc874befb.png!large" alt="img"></a></p>
 <p><strong>Example</strong></p>
@@ -260,20 +254,20 @@ pipeline {
 <h4 id="options">options</h4>
 <p>options指令允许在Pipeline本身内配置Pipeline专用选项。Pipeline本身提供了许多选项，例如buildDiscarder，但它们也可能由插件提供，例如 timestamps。</p>
 <p><a href="https://testerhome.com/uploads/photo/2017/62df009a-9155-4db0-b164-2cda48a08b81.png!large"><img src="https://testerhome.com/uploads/photo/2017/62df009a-9155-4db0-b164-2cda48a08b81.png!large" alt="img"></a></p>
-<p><strong>可用选项</strong>
-buildDiscarder
-pipeline保持构建的最大个数。例如：options { buildDiscarder(logRotator(numToKeepStr: '1')) }
-disableConcurrentBuilds
-不允许并行执行Pipeline,可用于防止同时访问共享资源等。例如：options { disableConcurrentBuilds() }
-skipDefaultCheckout
-默认跳过来自源代码控制的代码。例如：options { skipDefaultCheckout() }
-skipStagesAfterUnstable
-一旦构建状态进入了“Unstable”状态，就跳过此stage。例如：options { skipStagesAfterUnstable() }
-timeout
-设置Pipeline运行的超时时间。例如：options { timeout(time: 1, unit: 'HOURS') }
-retry
-失败后，重试整个Pipeline的次数。例如：options { retry(3) }
-timestamps
+<p><strong>可用选项</strong><br>
+buildDiscarder<br>
+pipeline保持构建的最大个数。例如：options { buildDiscarder(logRotator(numToKeepStr: '1')) }<br>
+disableConcurrentBuilds<br>
+不允许并行执行Pipeline,可用于防止同时访问共享资源等。例如：options { disableConcurrentBuilds() }<br>
+skipDefaultCheckout<br>
+默认跳过来自源代码控制的代码。例如：options { skipDefaultCheckout() }<br>
+skipStagesAfterUnstable<br>
+一旦构建状态进入了“Unstable”状态，就跳过此stage。例如：options { skipStagesAfterUnstable() }<br>
+timeout<br>
+设置Pipeline运行的超时时间。例如：options { timeout(time: 1, unit: 'HOURS') }<br>
+retry<br>
+失败后，重试整个Pipeline的次数。例如：options { retry(3) }<br>
+timestamps<br>
 预定义由Pipeline生成的所有控制台输出时间。例如：options { timestamps() }</p>
 <p><strong>Example</strong></p>
 <pre><code>options
@@ -294,12 +288,12 @@ pipeline {
 <h4 id="parameters">parameters</h4>
 <p>parameters指令提供用户在触发Pipeline时的参数列表。这些参数值通过该params对象可用于Pipeline步骤，具体用法如下</p>
 <p><a href="https://testerhome.com/uploads/photo/2017/a063f9e2-a6c6-41ea-b121-e1fc99acb112.png!large"><img src="https://testerhome.com/uploads/photo/2017/a063f9e2-a6c6-41ea-b121-e1fc99acb112.png!large" alt="img"></a></p>
-<p><strong>可用参数</strong>
-string
-A parameter of a string type, for example: parameters { string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '') }
-booleanParam
-A boolean parameter, for example: parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }
-目前只支持[booleanParam, choice, credentials, file, text, password, run, string]这几种参数类型，其他高级参数化类型还需等待社区支持。
+<p><strong>可用参数</strong><br>
+string<br>
+A parameter of a string type, for example: parameters { string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '') }<br>
+booleanParam<br>
+A boolean parameter, for example: parameters { booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '') }<br>
+目前只支持[booleanParam, choice, credentials, file, text, password, run, string]这几种参数类型，其他高级参数化类型还需等待社区支持。<br>
 <strong>Example</strong></p>
 <pre><code>params
 pipeline {
@@ -354,9 +348,9 @@ pipeline {
 <h4 id="tools">tools</h4>
 <p>通过tools可自动安装工具，并放置环境变量到PATH。如果agent none，这将被忽略。</p>
 <p><a href="https://testerhome.com/uploads/photo/2017/027fa60d-c999-477c-a333-172f92ec5f91.png!large"><img src="https://testerhome.com/uploads/photo/2017/027fa60d-c999-477c-a333-172f92ec5f91.png!large" alt="img"></a></p>
-<p><strong>Supported Tools</strong>
-maven
-jdk
+<p><strong>Supported Tools</strong><br>
+maven<br>
+jdk<br>
 gradle</p>
 <p><strong>Example</strong></p>
 <pre><code>tools
@@ -376,21 +370,21 @@ pipeline {
 }
 </code></pre>
 <h4 id="when">when</h4>
-<p>when指令允许Pipeline根据给定的条件确定是否执行该阶段。该when指令必须至少包含一个条件。如果when指令包含多个条件，则所有子条件必须为stage执行返回true。这与子条件嵌套在一个allOf条件中相同（见下面的例子）。
+<p>when指令允许Pipeline根据给定的条件确定是否执行该阶段。该when指令必须至少包含一个条件。如果when指令包含多个条件，则所有子条件必须为stage执行返回true。这与子条件嵌套在一个allOf条件中相同（见下面的例子）。<br>
 更复杂的条件结构可使用嵌套条件建：not，allOf或anyOf。嵌套条件可以嵌套到任意深度。</p>
 <p><a href="https://testerhome.com/uploads/photo/2017/e9d5d0eb-9855-4a72-a4a6-56c1fde975de.png!large"><img src="https://testerhome.com/uploads/photo/2017/e9d5d0eb-9855-4a72-a4a6-56c1fde975de.png!large" alt="img"></a></p>
-<p><strong>内置条件</strong>
-branch
-当正在构建的分支与给出的分支模式匹配时执行，例如：when { branch 'master' }。请注意，这仅适用于多分支Pipeline。
-environment
-当指定的环境变量设置为给定值时执行，例如： when { environment name: 'DEPLOY_TO', value: 'production' }
-expression
-当指定的Groovy表达式求值为true时执行，例如： when { expression { return params.DEBUG_BUILD } }
-not
-当嵌套条件为false时执行。必须包含一个条件。例如：when { not { branch 'master' } }
-allOf
-当所有嵌套条件都为真时执行。必须至少包含一个条件。例如：when { allOf { branch 'master'; environment name: 'DEPLOY_TO', value: 'production' } }
-anyOf
+<p><strong>内置条件</strong><br>
+branch<br>
+当正在构建的分支与给出的分支模式匹配时执行，例如：when { branch 'master' }。请注意，这仅适用于多分支Pipeline。<br>
+environment<br>
+当指定的环境变量设置为给定值时执行，例如： when { environment name: 'DEPLOY_TO', value: 'production' }<br>
+expression<br>
+当指定的Groovy表达式求值为true时执行，例如： when { expression { return params.DEBUG_BUILD } }<br>
+not<br>
+当嵌套条件为false时执行。必须包含一个条件。例如：when { not { branch 'master' } }<br>
+allOf<br>
+当所有嵌套条件都为真时执行。必须至少包含一个条件。例如：when { allOf { branch 'master'; environment name: 'DEPLOY_TO', value: 'production' } }<br>
+anyOf<br>
 当至少一个嵌套条件为真时执行。必须至少包含一个条件。例如：when { anyOf { branch 'master'; branch 'staging' } }</p>
 <p><strong>Example</strong></p>
 <pre><code>when
@@ -417,7 +411,7 @@ pipeline {
 }
 </code></pre>
 <h3 id="3parallel并行">3.Parallel(并行)</h3>
-<p>2017.9.25新增parallel stage支持。
+<p>2017.9.25新增parallel stage支持。<br>
 Declarative Pipeline近期新增了对并行嵌套stage的支持，对耗时长，相互不存在依赖的stage可以使用此方式提升运行效率。除了parallel stage，单个parallel里的多个step也可以使用并行的方式运行。</p>
 <p><strong>Example</strong></p>
 <pre><code>Jenkinsfile (Declarative Pipeline)
@@ -509,14 +503,14 @@ node {
 }
 </code></pre>
 <h3 id="2steps">2.Steps</h3>
-<p>正如文档开始所言，pipeline最核心和基本的部分就是“step”，从根本上来说，steps作为Declarative pipeline和Scripted pipeline语法的最基本的语句构建块来告诉jenkins应该执行什么操作。
+<p>正如文档开始所言，pipeline最核心和基本的部分就是“step”，从根本上来说，steps作为Declarative pipeline和Scripted pipeline语法的最基本的语句构建块来告诉jenkins应该执行什么操作。<br>
 Scripted pipeline没有专门将steps作为它的语法的一部分来介绍，但是在Pipeline Steps reference这篇文档中对pipeline及其插件涉及的steps做了很详细的介绍。如有需要可参考jenkins官网对该部分的介绍Pipeline Steps reference</p>
 <h3 id="3differences-from-plain-groovy">3.Differences from plain Groovy</h3>
 <p>由于pipeline的一些个性化需求，比如在重新启动jenkins后要求pipeline脚本仍然可以运行，那么pipeline脚本必须将相关数据做序列化，然而这一点 Groovy并不能完美的支持，例如collection.each { item -&gt; /* perform operation */ }</p>
 <h3 id="4declarative-pipeline和scripted-pipeline的比较">4.Declarative pipeline和Scripted pipeline的比较</h3>
-<p>共同点：
-两者都是pipeline代码的持久实现，都能够使用pipeline内置的插件或者插件提供的steps，两者都可以利用共享库扩展。
-区别：
+<p>共同点：<br>
+两者都是pipeline代码的持久实现，都能够使用pipeline内置的插件或者插件提供的steps，两者都可以利用共享库扩展。<br>
+区别：<br>
 两者不同之处在于语法和灵活性。Declarative pipeline对用户来说，语法更严格，有固定的组织结构，更容易生成代码段，使其成为用户更理想的选择。但是Scripted pipeline更加灵活，因为Groovy本身只能对结构和语法进行限制，对于更复杂的pipeline来说，用户可以根据自己的业务进行灵活的实现和扩展。</p>
 <p><a href="https://testerhome.com/cay">原文链接:TesterHome@cay</a></p>
 

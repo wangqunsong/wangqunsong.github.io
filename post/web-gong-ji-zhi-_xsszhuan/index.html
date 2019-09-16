@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1565278526411">
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1568603814251">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
 
 
@@ -29,7 +29,7 @@
   <div class="site-header">
     <div class="left">
       <a href="http://wangqunsong.github.io">
-        <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1565278526411" alt="" width="32px" height="32px">
+        <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1568603814251" alt="" width="32px" height="32px">
       </a>
       <a href="http://wangqunsong.github.io">
         <h1 class="site-title">小小王的后花园</h1>
@@ -62,12 +62,6 @@
         
           <a href="http://wangqunsong.top/tags" class="menu purple-link">
             标签
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/guan-yu-wo/" class="menu purple-link">
-            关于
           </a>
         
       
@@ -115,16 +109,16 @@
 <!--more-->
 <p>下面的GIF图展示的是一个XSS攻击的示意：</p>
 <p><img src="https://www.daguanren.cc/static/upload/20171116/xss-demo.gif" alt="XSS"></p>
-<p>​
+<p>​<br>
 上图先使用Chrome浏览器进行正常和非正常留言，Chrome浏览器自动检测出XSS攻击，屏蔽了请求。然后打开IE8，执行同样的操作，IE8成功受到了攻击。</p>
 <p><strong>2.XSS定义</strong></p>
-<p>​ 跨站脚本（英语：Cross-site
-scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。
+<p>​ 跨站脚本（英语：Cross-site<br>
+scripting，通常简称为：XSS）是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。<br>
 XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java，VBScript，ActiveX，Flash或者甚至是普通的HTML。攻击成功后，攻击者可能得到更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。</p>
-<p>​
+<p>​<br>
 简而言之，现在的网页基本是由html+css+javascript组成，普通用户输入的留言是文本信息，而黑客输入的留言内容则有可能是javascript代码。</p>
 <p><strong>3.代码解释</strong></p>
-<p>​
+<p>​<br>
 以上GIF所展示的，是一个用户将文本框的信息提交form表单到后台，后台反馈到前台进行留言展示的场景。表单提交代码如下：</p>
 <pre><code>&lt;form role=&quot;form&quot; method=&quot;post&quot;&gt;
     &lt;div class=&quot;form-group&quot;&gt;
@@ -185,7 +179,7 @@ module.exports = class extends Base {
 <p><strong>1、浏览器端主动进行XSS识别</strong></p>
 <p>如上述Chrome浏览器会自动识别XSS攻击代码，并进行请求的屏蔽</p>
 <p><strong>2、服务器端对于用户输入的内容进行过滤</strong></p>
-<p>a)将重要的cookie标记为http only, 这样的话Javascript
+<p>a)将重要的cookie标记为http only, 这样的话Javascript<br>
 中的document.cookie语句就不能获取到cookie了；</p>
 <p>b)只允许用户输入我们希望的数据，进行数据格式校验，例如年龄就只能输入0-160的数字</p>
 <p>c)对数据进行html encode处理，过滤或移除特殊的Html标签， 例如:</p>
