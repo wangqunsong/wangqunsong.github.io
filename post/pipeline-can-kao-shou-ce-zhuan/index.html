@@ -1,101 +1,118 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>pipeline参考手册「转] | 小小王的后花园</title>
-<meta name="description" content="小小王的后花园">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1568603814251">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    pipeline参考手册「转] | utopia
+</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1568604340123">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+        
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="http://wangqunsong.github.io">
-        <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1568603814251" alt="" width="32px" height="32px">
-      </a>
-      <a href="http://wangqunsong.github.io">
-        <h1 class="site-title">小小王的后花园</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="http://wangqunsong.github.io">
+                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1568604340123" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    utopia
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="http://wangqunsong.top" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.top/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.top/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu">
+                                    收藏链接
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="http://wangqunsong.top" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="http://wangqunsong.top/post/shou-cang-lian-jie/" class="menu purple-link">
-            收藏链接
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">pipeline参考手册「转]</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2018-06-07</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="http://wangqunsong.github.io/tag/AZvxNNEdR">
-                    CI/CD
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p>👏  欢迎使用 来到小小王的后花园！<br>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            pipeline参考手册「转]
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-06-07</time>
+                            
+                                <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-">
+                            #CI/CD
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>pipeline参考手册「转]</strong></p>
 <!-- more --> 
 <h2 id="一-写在前面">一、写在前面</h2>
@@ -514,57 +531,132 @@ Scripted pipeline没有专门将steps作为它的语法的一部分来介绍，�
 两者不同之处在于语法和灵活性。Declarative pipeline对用户来说，语法更严格，有固定的组织结构，更容易生成代码段，使其成为用户更理想的选择。但是Scripted pipeline更加灵活，因为Groovy本身只能对结构和语法进行限制，对于更复杂的pipeline来说，用户可以根据自己的业务进行灵活的实现和扩展。</p>
 <p><a href="https://testerhome.com/cay">原文链接:TesterHome@cay</a></p>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml">
+                                <h3 class="post-title">
+                                    在命令行下处理 YAML
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">一、写在前面</a></li>
+<li><a href="#%E4%BA%8C-%E8%AF%AD%E6%B3%95%E7%AE%80%E4%BB%8B">二、语法简介</a></li>
+<li><a href="#%E4%B8%89-declarative-pipeline">三、Declarative Pipeline</a>
+<ul>
+<li><a href="#1sections%E7%AB%A0%E8%8A%82">1.Sections（章节）</a>
+<ul>
+<li><a href="#agent">agent</a></li>
+<li><a href="#post">post</a></li>
+<li><a href="#stages">stages</a></li>
+<li><a href="#steps">steps</a></li>
+</ul>
+</li>
+<li><a href="#2directives-%E6%8C%87%E4%BB%A4">2.Directives （指令）</a>
+<ul>
+<li><a href="#environment">environment</a></li>
+<li><a href="#options">options</a></li>
+<li><a href="#parameters">parameters</a></li>
+<li><a href="#triggers">triggers</a></li>
+<li><a href="#stage">stage</a></li>
+<li><a href="#tools">tools</a></li>
+<li><a href="#when">when</a></li>
+</ul>
+</li>
+<li><a href="#3parallel%E5%B9%B6%E8%A1%8C">3.Parallel(并行)</a></li>
+<li><a href="#4steps%E6%AD%A5%E9%AA%A4">4.Steps（步骤）</a>
+<ul>
+<li><a href="#script">script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-scripted-pipeline">四、Scripted Pipeline</a>
+<ul>
+<li><a href="#1%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6">1.流程控制</a></li>
+<li><a href="#2steps">2.Steps</a></li>
+<li><a href="#3differences-from-plain-groovy">3.Differences from plain Groovy</a></li>
+<li><a href="#4declarative-pipeline%E5%92%8Cscripted-pipeline%E7%9A%84%E6%AF%94%E8%BE%83">4.Declarative pipeline和Scripted pipeline的比较</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
 
-        
-          <div class="next-post">
-            <a class="purple-link" href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml">
-              <h3 class="post-title">
-                下一篇：在命令行下处理 YAML
-              </h3>
-            </a>
-          </div>
-          
-      </div>
+                </div>
 
-      
 
-      <div class="site-footer">
-  <div class="slogan">小小王的后花园</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a>
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="http://wangqunsong.top/" target="_blank">小小王</a> | 
+  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-
-  </body>
 </html>
