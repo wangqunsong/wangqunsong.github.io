@@ -1,86 +1,110 @@
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WEB攻击之_CSRF「转] | zootopia的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569401405524">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<title>
+    WEB攻击之_CSRF「转] | zootopia的后花园
+</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569401796045">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  </head>
-  <body>
+        
+</head>
+
+<body>
     <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="http://wangqunsong.github.io">
-  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569401405524" alt="">
-  </a>
-  <h1 class="site-title">
-    zootopia的后花园
-  </h1>
-  <p class="site-description">
-    zootopia
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="http://wangqunsong.github.io" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.github.io/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.github.io/tags" class="menu">
-          标签
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="http://wangqunsong.github.io">
+                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569401796045" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    zootopia的后花园
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
 </div>
 
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              WEB攻击之_CSRF「转]
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-12-13 ·
-              </time>
-              
-                <a href="http://wangqunsong.github.io/tag/gmqBiNDvl" class="post-tags">
-                  # 安全测试
-                </a>
-              
-            </div>
-            
-            <div class="post-content">
-              <p>👏  欢迎使用 来到小小王的后花园！<br>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            WEB攻击之_CSRF「转]
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2018-12-13</time>
+                            
+                                <a href="http://wangqunsong.github.io/tag/gmqBiNDvl" class="post-tag i-tag
+                            i-tag-other_4">
+                            #安全测试
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>WEB攻击之_CSRF「转]</strong></p>
 <!-- more --> 
 <p>CSRF（Cross-site request forgery，中文为<strong>跨站请求伪造</strong>）是一种利用网站可信用户的权限去执行未授权的命令的一种恶意攻击。通过<strong>伪装可信用户的请求来利用信任该用户的网站</strong>，这种攻击方式虽然不是很流行，但是却难以防范，其危害也不比其他安全漏洞小。</p>
@@ -245,32 +269,95 @@ request被加上去。即a标签、form表单和XMLHttpRequest提交的内容，
 但一定注意将重要的请求方式改成POST，否则GET仍然会被攻击。<br>
 PS：该方式目前仅Chrome支持。</p>
 
-            </div>
-          </article>
-        </div>
-    
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="http://wangqunsong.github.io/post/android_-chu-shi-android-activity-de-sheng-ming-zhou-qi">
-              <h3 class="post-title">
-                Android_初识Android Activity的生命周期
-              </h3>
-            </a>
-          </div>  
-        
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="http://wangqunsong.github.io/post/android_-chu-shi-android-activity-de-sheng-ming-zhou-qi">
+                                <h3 class="post-title">
+                                    Android_初识Android Activity的生命周期
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%9D%E8%AF%86csrf">初识CSRF</a></li>
+<li><a href="#%E5%BD%93%E5%89%8D%E9%98%B2%E5%BE%A1-csrf-%E7%9A%84%E5%87%A0%E7%A7%8D%E7%AD%96%E7%95%A5">当前防御 CSRF 的几种策略</a></li>
+</ul>
+</li>
+</ul>
 
-        
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
     
-        <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
+  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-      </div>
+
     </div>
-  </body>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
 </html>

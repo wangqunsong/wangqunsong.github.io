@@ -1,156 +1,247 @@
 <html>
-  <head>
-  <meta charset="utf-8" />
+
+<head>
+    <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Android | zootopia的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569401405524">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<title>
+    Android | zootopia的后花园
+</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569401796045">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="http://wangqunsong.github.io">
-  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569401405524" alt="">
-  </a>
-  <h1 class="site-title">
-    zootopia的后花园
-  </h1>
-  <p class="site-description">
-    zootopia
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="http://wangqunsong.github.io" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.github.io/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.github.io/tags" class="menu">
-          标签
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="http://wangqunsong.github.io">
+                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569401796045" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    zootopia的后花园
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
 </div>
 
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：#Android
-            </h2> 
-        </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="http://wangqunsong.github.io/post/android_-chu-shi-android-activity-de-sheng-ming-zhou-qi">
-        <h2 class="post-title">Android_初识Android Activity的生命周期</h2>
-      </a>
-      <div class="post-info">
-        <time class="post-time">
-          · 2018-12-05 ·
-        </time>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        Android</b>
+    </div>
+    
         
-          <a href="http://wangqunsong.github.io/tag/4RNdnWg1u" class="post-tag">
-            # Android
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 来到小小王的后花园！<br>
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/android_-chu-shi-android-activity-de-sheng-ming-zhou-qi">
+                        Android_初识Android Activity的生命周期
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-12-05</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/4RNdnWg1u" class="post-tag i-tag
+                            i-tag-success">
+            #Android
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>初识Android Activity的生命周期</strong></p>
 
-      </di>
-    </article>
-  
-    <article class="post">
-      <a href="http://wangqunsong.github.io/post/android_-chu-shi-android-service">
-        <h2 class="post-title">Android_初识Android Service</h2>
-      </a>
-      <div class="post-info">
-        <time class="post-time">
-          · 2018-11-24 ·
-        </time>
-        
-          <a href="http://wangqunsong.github.io/tag/4RNdnWg1u" class="post-tag">
-            # Android
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 来到小小王的后花园！<br>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/android_-chu-shi-android-activity-de-sheng-ming-zhou-qi">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/android_-chu-shi-android-service">
+                        Android_初识Android Service
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-11-24</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/4RNdnWg1u" class="post-tag i-tag
+                            i-tag-warning">
+            #Android
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Android_初识Android Service</strong></p>
 
-      </di>
-    </article>
-  
-    <article class="post">
-      <a href="http://wangqunsong.github.io/post/android_adb-cao-zuo-shi-yong-shou-ce">
-        <h2 class="post-title">Android_ADB操作使用手册</h2>
-      </a>
-      <div class="post-info">
-        <time class="post-time">
-          · 2018-11-02 ·
-        </time>
-        
-          <a href="http://wangqunsong.github.io/tag/4RNdnWg1u" class="post-tag">
-            # Android
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 来到小小王的后花园！<br>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/android_-chu-shi-android-service">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/android_adb-cao-zuo-shi-yong-shou-ce">
+                        Android_ADB操作使用手册
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-11-02</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/4RNdnWg1u" class="post-tag i-tag
+                            i-tag-other_3">
+            #Android
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>ADB操作使用手册</strong></p>
 
-      </di>
-    </article>
-  
-</div>
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/android_adb-cao-zuo-shi-yong-shou-ce">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
 
-        <div class="pagination-container">
-  
-  
-</div>
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(http://wangqunsong.github.io/images/avatar.png?v=1569401796045)">
+        </div>
+        <h1 class="id_card-title">
+            zootopia的后花园
+        </h1>
+        <h2 class="id_card-description">
+            zootopia
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
-        <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
+  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-      </div>
     </div>
-  </body>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
 </html>

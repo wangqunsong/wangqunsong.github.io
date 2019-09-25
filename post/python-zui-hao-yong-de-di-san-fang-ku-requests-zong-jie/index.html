@@ -1,86 +1,110 @@
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Python最好用的第三方库requests总结 | zootopia的后花园</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569401405524">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<title>
+    Python最好用的第三方库requests总结 | zootopia的后花园
+</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569401796045">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  </head>
-  <body>
+        
+</head>
+
+<body>
     <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="http://wangqunsong.github.io">
-  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569401405524" alt="">
-  </a>
-  <h1 class="site-title">
-    zootopia的后花园
-  </h1>
-  <p class="site-description">
-    zootopia
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="http://wangqunsong.github.io" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.github.io/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="http://wangqunsong.github.io/tags" class="menu">
-          标签
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="http://wangqunsong.github.io">
+                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569401796045" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    zootopia的后花园
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
 </div>
 
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Python最好用的第三方库requests总结
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-05-12 ·
-              </time>
-              
-                <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="post-tags">
-                  # Python
-                </a>
-              
-            </div>
-            
-            <div class="post-content">
-              <p>👏  欢迎使用 来到小小王的后花园！<br>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Python最好用的第三方库requests总结
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-05-12</time>
+                            
+                                <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="post-tag i-tag
+                            i-tag-other_2">
+                            #Python
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python最好用的第三方库requests总结</strong></p>
 <!-- more -->
 <h4 id="写在前面">写在前面</h4>
@@ -268,32 +292,130 @@ $ python
 r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 </code></pre>
 
-            </div>
-          </article>
-        </div>
-    
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="http://wangqunsong.github.io/post/shen-tou-ce-shi-gong-ju-sqlmap">
-              <h3 class="post-title">
-                渗透测试工具——SQLmap
-              </h3>
-            </a>
-          </div>  
-        
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="http://wangqunsong.github.io/post/shen-tou-ce-shi-gong-ju-sqlmap">
+                                <h3 class="post-title">
+                                    渗透测试工具——SQLmap
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
+<li><a href="#1-%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82">1. 发送请求</a></li>
+<li><a href="#2-%E4%BC%A0%E9%80%92url%E5%8F%82%E6%95%B0">2. 传递URL参数</a></li>
+<li><a href="#3%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9">3.响应内容</a></li>
+<li><a href="#4-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9">4. 二进制响应内容</a></li>
+<li><a href="#5-json-%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9">5. JSON 响应内容</a></li>
+<li><a href="#6-%E5%8E%9F%E5%A7%8B%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9">6. 原始响应内容</a></li>
+<li><a href="#7-%E5%AE%9A%E5%88%B6%E8%AF%B7%E6%B1%82%E5%A4%B4">7. 定制请求头</a></li>
+<li><a href="#8-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6">8. 上传文件</a></li>
+<li><a href="#9-%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81">9 .响应状态码</a></li>
+<li><a href="#10%E5%93%8D%E5%BA%94%E5%A4%B4">10.响应头</a></li>
+<li><a href="#11cookie">11.Cookie</a></li>
+<li><a href="#12%E9%87%8D%E5%AE%9A%E5%90%91">12.重定向</a></li>
+<li><a href="#13-%E8%B6%85%E6%97%B6">13. 超时</a></li>
+<li><a href="#14-%E9%94%99%E8%AF%AF%E4%B8%8E%E5%BC%82%E5%B8%B8">14 .错误与异常</a></li>
+<li><a href="#15%E4%BC%9A%E8%AF%9D%E5%AF%B9%E8%B1%A1session">15.会话对象Session</a></li>
+<li><a href="#16%E8%AF%B7%E6%B1%82%E4%B8%8E%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1">16.请求与响应对象</a></li>
+<li><a href="#17-%E5%87%86%E5%A4%87%E7%9A%84%E8%AF%B7%E6%B1%82">17. 准备的请求</a></li>
+<li><a href="#18ssl%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81">18.SSL证书验证</a></li>
+<li><a href="#19-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6">19. 客户端证书</a></li>
+<li><a href="#20ca%E8%AF%81%E4%B9%A6">20.CA证书</a></li>
+<li><a href="#21%E5%93%8D%E5%BA%94%E4%BD%93%E5%86%85%E5%AE%B9%E5%B7%A5%E4%BD%9C%E6%B5%81">21.响应体内容工作流</a></li>
+<li><a href="#22%E6%8C%81%E4%B9%85%E8%BF%9E%E6%8E%A5">22.持久连接</a></li>
+<li><a href="#23%E6%B5%81%E5%BC%8F%E4%B8%8A%E4%BC%A0">23.流式上传</a></li>
+<li><a href="#23-%E5%9D%97%E7%BC%96%E7%A0%81%E8%AF%B7%E6%B1%82">23. 块编码请求</a></li>
+<li><a href="#24-post%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6">24. POST多个文件</a></li>
+<li><a href="#25-%E9%92%A9%E5%AD%90%E6%9C%BA%E5%88%B6">25. 钩子机制</a></li>
+<li><a href="#26%E4%BB%A3%E7%90%86">26.代理</a></li>
+<li><a href="#27-%E8%B6%85%E6%97%B6">27. 超时</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-        
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
     
-        <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
+  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-      </div>
+
     </div>
-  </body>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
 </html>
