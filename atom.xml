@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://wangqunsong.github.io</id>
     <title>zootopia的后花园</title>
-    <updated>2019-09-25T06:04:28.190Z</updated>
+    <updated>2019-09-25T06:39:16.073Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://wangqunsong.github.io"/>
     <link rel="self" href="http://wangqunsong.github.io/atom.xml"/>
@@ -231,7 +231,7 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 <p><a href="https://github.com/ethicalhack3r/DVWA">DVWA的项目主页</a></p>
 <h5 id="安装php集成环境">安装PHP集成环境</h5>
 <p>​        建议使用模拟渗透系统演练sqlmap，这里为了简单使用了<code>phpstudy2016</code>，下载地址：<a href="http://www.phpstudy.net/phpstudy/phpStudy20161103.zip">phpstudy2016下载</a>。在<code>windows</code>上安装过程很简单，一直下一步即可，如下即安装成功：</p>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/66019603.jpg" alt="phpstudy2016"></p>
+<figure data-type="image" tabindex="1"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/66019603.jpg" alt="phpstudy2016"></figure>
 <h5 id="安装dvwa">安装DVWA</h5>
 <p><a href="https://github.com/ethicalhack3r/DVWA">DVWA下载地址</a></p>
 <ul>
@@ -241,21 +241,21 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 </ol>
 </li>
 </ul>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/95561310.jpg" alt="DVWA路径"></p>
+<figure data-type="image" tabindex="2"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/95561310.jpg" alt="DVWA路径"></figure>
 <ul>
 <li>
 <ol>
 <li>
 <p>进入<code>DWVA</code>的<code>config</code>文件夹，将其中的配置文件重命名为<code>config.inc.php</code>，并编辑<code>db_password</code>字段为 <code>root</code> 。(集成环境默认的<code>MYSQL</code>链接用户名和密码为 root/root)</p>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/128296.jpg" alt="DWVA配置文件"></p>
+<figure data-type="image" tabindex="3"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/128296.jpg" alt="DWVA配置文件"></figure>
 </li>
 </ol>
 </li>
 </ul>
 <h5 id="创建数据库">创建数据库</h5>
 <p>​        用浏览器访问<code>http://你的IP/DVWA-master/index.php</code>，并创建数据库，看到<code>successful</code>即创建成功。</p>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/71775498.jpg" alt="DVWA创建数据库"></p>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/74490603.jpg" alt="DVWA数据库创建结果"></p>
+<figure data-type="image" tabindex="4"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/71775498.jpg" alt="DVWA创建数据库"></figure>
+<figure data-type="image" tabindex="5"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/74490603.jpg" alt="DVWA数据库创建结果"></figure>
 <h5 id="重新登录">重新登录</h5>
 <p>​        数据库创建成果后，再次访问<code>http://你的IP/DVWA-master/index.php</code>，此时需要登录，默认用户名 <code>admin，</code> 默认密码 <code>password</code>。至此安装完成。</p>
 <h4 id="sqlmap">SQLmap</h4>
@@ -313,7 +313,7 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 <ul>
 <li>
 <h5 id="获取请求地址和cookie">获取请求地址和Cookie</h5>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/25523699.jpg" alt="获取cookie"></p>
+<figure data-type="image" tabindex="9"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/25523699.jpg" alt="获取cookie"></figure>
 <p>​</p>
 </li>
 <li>
@@ -323,13 +323,13 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 <blockquote>
 <p>URL和cookie需替换为自己的值，URL的请求地址不需要token值;并将security值置为 low</p>
 </blockquote>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/724974.jpg" alt="sqlmap获取数据库名称"></p>
+<figure data-type="image" tabindex="10"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/724974.jpg" alt="sqlmap获取数据库名称"></figure>
 </li>
 <li>
 <h5 id="获取表-tables">获取表（--tables）</h5>
 <pre><code class="language-shell">python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4bb; security=low&quot; -D dvwa --tables
 </code></pre>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/23195206.jpg" alt="sqlmap获得表"></p>
+<figure data-type="image" tabindex="11"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/23195206.jpg" alt="sqlmap获得表"></figure>
 </li>
 <li>
 <h5 id="获取字段-columns">获取字段（--columns）</h5>
@@ -337,7 +337,7 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 </ul>
 <pre><code class="language-shell">python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4bb; security=low&quot; -D dvwa --tables  -T users --columns
 </code></pre>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/29715330.jpg" alt="sqlmap获得表字段"></p>
+<figure data-type="image" tabindex="12"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/29715330.jpg" alt="sqlmap获得表字段"></figure>
 <ul>
 <li>
 <h5 id="获取数据-dump">获取数据（--dump）</h5>
@@ -345,7 +345,7 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 </ul>
 <pre><code class="language-shell">python sqlmap.py  -u &quot;http://192.168.50.39/DVWA-master/vulnerabilities/sqli/?id=wang&amp;Submit=Submit&quot; --cookie=&quot;PHPSESSID=r9opl1ud6krq966l3cj7mnd4j4; security=low&quot; -D dvwa --tables  -T users --columns -C user_id --dump
 </code></pre>
-<p><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/75987305.jpg" alt="sqlmap获得表数据"></p>
+<figure data-type="image" tabindex="13"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-18/75987305.jpg" alt="sqlmap获得表数据"></figure>
 <p>目前为止，对<code>SQLmap</code>已有了基本的认识，更多的用法请访问<a href="https://github.com/sqlmapproject/sqlmap/blob/master/doc/translations/README-zh-CN.md">官网说明</a></p>
 ]]></content>
     </entry>
@@ -371,7 +371,7 @@ r = requests.get('https://github.com', timeout=(3.05, 27))  #分别指定
 <p>随着互联网的发展，网站经历由单纯的只读模式到web2.0兴起的交互模式变迁，而正在向完美融合了人工智能的web3.0的道路发展。目前用户访问的大多数网站均有交互的功能，例如是电商网站的评论，微博网站的转发，论坛的发帖等等。对于正常用户而言，他们是遵守发帖和留言规范的，但对于黑客，他们是不会老老实实的按规矩办事的。</p>
 <!--more-->
 <p>下面的GIF图展示的是一个XSS攻击的示意：</p>
-<p><img src="https://www.daguanren.cc/static/upload/20171116/xss-demo.gif" alt="XSS"></p>
+<figure data-type="image" tabindex="1"><img src="https://www.daguanren.cc/static/upload/20171116/xss-demo.gif" alt="XSS"></figure>
 <p>​<br>
 上图先使用Chrome浏览器进行正常和非正常留言，Chrome浏览器自动检测出XSS攻击，屏蔽了请求。然后打开IE8，执行同样的操作，IE8成功受到了攻击。</p>
 <p><strong>2.XSS定义</strong></p>
@@ -498,7 +498,7 @@ Automation预存程序等）</li>
 <li>太过于信任用户所输入的数据，未限制输入的字符数，以及未对用户输入的数据做潜在指令的检查。</li>
 </ul>
 <p>下面的GIF展示的是SQL注入的示意：</p>
-<p><img src="https://www.daguanren.cc/static/upload/20171116/sql-injection.gif" alt="sql-injection"></p>
+<figure data-type="image" tabindex="1"><img src="https://www.daguanren.cc/static/upload/20171116/sql-injection.gif" alt="sql-injection"></figure>
 <p><strong>3.解释</strong></p>
 <p>假设某个网站的登录验证的SQL查询代码为</p>
 <pre><code>SELECT * FROM `user` WHERE (username = 'username') and (password = 'password');
@@ -560,7 +560,7 @@ riding，缩写为：CSRF/XSRF。</p>
 <p><strong>二.CSRF可以做什么？</strong></p>
 <p>你这可以这么理解CSRF攻击：攻击者盗用了你的身份，以你的名义发送恶意请求。CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账......造成的问题包括：个人隐私泄露以及财产安全。</p>
 <p><strong>三.CSRF的原理</strong></p>
-<p><img src="https://www.daguanren.cc/static/upload/20171116/bwft5NhCP-bobvCOWOCrZb5q.png" alt="web-CSRF"></p>
+<figure data-type="image" tabindex="1"><img src="https://www.daguanren.cc/static/upload/20171116/bwft5NhCP-bobvCOWOCrZb5q.png" alt="web-CSRF"></figure>
 <p>从上图可以看出，要完成一次CSRF攻击，受害者必须依次完成两个步骤：</p>
 <p>1.登录受信任网站A，并在本地生成Cookie。</p>
 <p>2.在不登出A的情况下，访问危险网站B。</p>
@@ -725,7 +725,7 @@ PS：该方式目前仅Chrome支持。</p>
 <!-- more -->
 <h5 id="序">序</h5>
 <p>先放一张Google的经典<code>Android Activity</code>生命周期图：</p>
-<p><img src="https://i.loli.net/2019/04/01/5ca1b516ae754.png" alt="Android Activity生命周期"></p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/04/01/5ca1b516ae754.png" alt="Android Activity生命周期"></figure>
 <h5 id="activity生命周期解释">Activity生命周期解释</h5>
 <pre><code class="language-java">//1.onCreate()
     首次创建activity时调用，通常会在该函数中进行一些初始化操作：如创建视图，数据绑定到列表等。系统会向此方法传递一个Bundle对象，其中会包含activity的上一状态，onCreate()后始终接onStart()。
@@ -852,7 +852,7 @@ onPause() -&gt; onStop() -&gt; onDestory()，Activity处于被销毁状态。
 <p><a href="https://developer.android.com/guide/components/services.html">安卓开发者中心</a></p>
 <h4 id="序">序</h4>
 <p>先放一张<code>Google</code>的<code>service</code>生命周期图：</p>
-<p><img src="https://i.loli.net/2019/04/01/5ca1cd02dea92.png" alt="service生命周期"></p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/04/01/5ca1cd02dea92.png" alt="service生命周期"></figure>
 <h4 id="service的生命周期解释">Service的生命周期解释</h4>
 <pre><code class="language-shell">#1.onCreate()
     首次创建服务时，系统将调用此方法来执行一次性设置程序（在调用 onStartCommand()或 onBind()之前）。如果服务已在运行，则不会调用此方法。
@@ -2359,7 +2359,7 @@ The commands and default sources are:
 <td>过滤只显示 Verbose 及以上级别(优先级最低)</td>
 </tr>
 <tr>
-<td>*:D</td>
+<td>*😄</td>
 <td>过滤只显示 Debug 及以上级别</td>
 </tr>
 <tr>

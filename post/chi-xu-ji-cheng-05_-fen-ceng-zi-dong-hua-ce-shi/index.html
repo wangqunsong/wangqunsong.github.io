@@ -1,118 +1,92 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    持续集成05_分层自动化测试 | zootopia的后花园
-</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569390970497">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>持续集成05_分层自动化测试 | zootopia的后花园</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569393534940">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-        
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="http://wangqunsong.github.io">
-                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569390970497" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    zootopia的后花园
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="http://zootopia.top" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
-                                    收藏链接
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.github.io">
+  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569393534940" alt="">
+  </a>
+  <h1 class="site-title">
+    zootopia的后花园
+  </h1>
+  <p class="site-description">
+    zootopia
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://zootopia.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
-                <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            持续集成05_分层自动化测试
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2018-10-10</time>
-                            
-                                <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
-                            i-tag-primary">
-                            #CI/CD
-                        </a>
-                                
-                        </div>
-                        
-                                <div class="post-content">
-                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              持续集成05_分层自动化测试
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-10 ·
+              </time>
+              
+                <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tags">
+                  # CI/CD
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成05_分层自动化测试</strong></p>
 <!-- more --> 
 <h5 id="写在前面">写在前面</h5>
@@ -120,7 +94,7 @@
 <p>更新：新的项目使用了一个非常好的开源接口自动化框架<a href="https://github.com/HttpRunner/HttpRunner"><code>HttpRunner</code></a>，该项目由<em>DebugTalk</em>大佬开发，使用抓包并转换为<code>yml</code>或<code>json</code>的方式整理用例，并结合了<code>Locust</code>，同时兼顾了接口测试和性能测试。开发使用文档见<a href="https://cn.httprunner.org/">这里</a>。</p>
 </blockquote>
 <p>刚开始进行接口自动化的时候，并没有找到一个适合的接口自动化框架，初衷是希望能提供<code>command line</code>方便持续集成，最好是用<code>Pyhon</code>编写方便二次开发(菜鸡只懂点Java的基础语法和基本使用)。就自己用<code>Python + unittest + requests + HTMLtestRunner</code>开发了个简单框架，起了个简单的名字叫<code>JYTest</code>，项目结构如下：</p>
-<p><img src="https://i.loli.net/2019/02/14/5c651fd0e19cd.png" alt="JYTest项目结构.png"></p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/02/14/5c651fd0e19cd.png" alt="JYTest项目结构.png"></figure>
 <h5 id="加密-解密和签名">加密、解密和签名</h5>
 <p>公司技术栈为<code>Java</code>，交易接口都需要经过加密和签名，加密和签名的内容如下：</p>
 <pre><code class="language-shell">1.  报文加密算法：DES/CBC/PKCS5Padding
@@ -152,9 +126,9 @@
 </ul>
 <h5 id="用例管理">用例管理</h5>
 <p>测试用例使用<code>yaml</code>格式管理，每个<code>yml</code>文件为一个<code>testsuite</code>,格式组织如下：</p>
-<p><img src="https://i.loli.net/2019/02/14/5c65228c53545.png" alt="JYTest用例管理.png"></p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/02/14/5c65228c53545.png" alt="JYTest用例管理.png"></figure>
 <h5 id="集成jenkins">集成Jenkins</h5>
-<p><img src="https://i.loli.net/2019/02/14/5c652a27e7b03.png" alt="JYTest_run.png"></p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/02/14/5c652a27e7b03.png" alt="JYTest_run.png"></figure>
 <p>由于<code>JYTest</code>有一个唯一的入口，所有集成Jenkins时就比较方便，直接运行<code>run.py</code>即可。</p>
 <h3 id="ui自动化测试">UI自动化测试</h3>
 <p>在对比了两个很火的自动化测试框架<a href="https://www.seleniumhq.org/">Selenium</a>和<a href="https://macacajs.github.io/zh/">Macaca</a>之后，我选择了<a href="https://robotframework.org/">RobotFramework</a>——O(∩_∩)O。</p>
@@ -207,112 +181,32 @@ stage('接口自动化测试') {
   }
 </code></pre>
 
-                                </div>
-                    </article>
-                    <!--  -->
-                    
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">
-                                <h3 class="post-title">
-                                    持续集成04_测试环境部署
-                                </h3>
-                            </a>
-                        </div>
-                        
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
-                </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
-                    
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E5%8A%A0%E5%AF%86-%E8%A7%A3%E5%AF%86%E5%92%8C%E7%AD%BE%E5%90%8D">加密、解密和签名</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87">数据准备</a></li>
-<li><a href="#%E7%94%A8%E4%BE%8B%E7%AE%A1%E7%90%86">用例管理</a></li>
-<li><a href="#%E9%9B%86%E6%88%90jenkins">集成Jenkins</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#ui%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95">UI自动化测试</a></li>
-<li><a href="#pipeline">PipeLine</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-        </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
-    </div>
-    
-                            
-
-                </div>
-
-
-
-
             </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">
+              <h3 class="post-title">
+                持续集成04_测试环境部署
+              </h3>
+            </a>
+          </div>  
+        
 
-
-            <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
-  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
+        
+    
+        <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-
+      </div>
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-    
-</body>
-
+  </body>
 </html>

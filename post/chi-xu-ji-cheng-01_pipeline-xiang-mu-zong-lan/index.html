@@ -1,118 +1,92 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    持续集成01_pipeline项目总览 | zootopia的后花园
-</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569390970497">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>持续集成01_pipeline项目总览 | zootopia的后花园</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569393534940">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-        
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="http://wangqunsong.github.io">
-                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569390970497" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    zootopia的后花园
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="http://zootopia.top" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
-                                    收藏链接
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.github.io">
+  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569393534940" alt="">
+  </a>
+  <h1 class="site-title">
+    zootopia的后花园
+  </h1>
+  <p class="site-description">
+    zootopia
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://zootopia.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
-                <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            持续集成01_pipeline项目总览
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2018-08-14</time>
-                            
-                                <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
-                            i-tag-">
-                            #CI/CD
-                        </a>
-                                
-                        </div>
-                        
-                                <div class="post-content">
-                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              持续集成01_pipeline项目总览
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-08-14 ·
+              </time>
+              
+                <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tags">
+                  # CI/CD
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成01_pipeline项目总览</strong></p>
 <!-- more --> 
 <h4 id="概述">概述</h4>
@@ -124,11 +98,11 @@
 </ul>
 <h4 id="例子">例子</h4>
 <p><strong>跳过某些场景</strong></p>
-<p><img src="https://i.loli.net/2019/01/16/5c3f4c2c83499.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/01/16/5c3f4c2c83499.png" alt=""></figure>
 <p><strong>SonarQube扫描未通过质量阀</strong></p>
-<p><img src="https://i.loli.net/2019/01/16/5c3f4c602a15c.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/01/16/5c3f4c602a15c.png" alt=""></figure>
 <p><strong>单元测试覆盖率过低</strong></p>
-<p><img src="https://i.loli.net/2019/01/16/5c3f4c7b942f0.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2019/01/16/5c3f4c7b942f0.png" alt=""></figure>
 <h4 id="项目jenkinsfile">项目jenkinsfile</h4>
 <pre><code class="language-shell">#!groovy
 library 'Shared-Library'
@@ -389,105 +363,32 @@ def call(String type,Map map) {
 }
 </code></pre>
 
-                                </div>
-                    </article>
-                    <!--  -->
-                    
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian">
-                                <h3 class="post-title">
-                                    持续集成00_写在前面
-                                </h3>
-                            </a>
-                        </div>
-                        
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
-                </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
-                    
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
-<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
-<li><a href="#%E9%A1%B9%E7%9B%AEjenkinsfile">项目jenkinsfile</a></li>
-<li><a href="#%E5%85%A8%E5%B1%80%E5%85%B1%E4%BA%AB%E5%BA%93%E6%A8%A1%E6%9D%BF">全局共享库模板</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-        </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
-    </div>
-    
-                            
-
-                </div>
-
-
-
-
             </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian">
+              <h3 class="post-title">
+                持续集成00_写在前面
+              </h3>
+            </a>
+          </div>  
+        
 
-
-            <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
-  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
+        
+    
+        <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-
+      </div>
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-    
-</body>
-
+  </body>
 </html>

@@ -1,118 +1,92 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    WEB攻击之_XSS「转] | zootopia的后花园
-</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569390970497">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>WEB攻击之_XSS「转] | zootopia的后花园</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569393534940">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-        
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="http://wangqunsong.github.io">
-                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569390970497" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    zootopia的后花园
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="http://zootopia.top" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
-                                    收藏链接
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.github.io">
+  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569393534940" alt="">
+  </a>
+  <h1 class="site-title">
+    zootopia的后花园
+  </h1>
+  <p class="site-description">
+    zootopia
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://zootopia.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
-                <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            WEB攻击之_XSS「转]
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2019-01-05</time>
-                            
-                                <a href="http://wangqunsong.github.io/tag/gmqBiNDvl" class="post-tag i-tag
-                            i-tag-primary">
-                            #安全测试
-                        </a>
-                                
-                        </div>
-                        
-                                <div class="post-content">
-                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              WEB攻击之_XSS「转]
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-01-05 ·
+              </time>
+              
+                <a href="http://wangqunsong.github.io/tag/gmqBiNDvl" class="post-tags">
+                  # 安全测试
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>WEB攻击之_XSS「转]</strong></p>
 <!-- more --> 
 <p>XSS又称CSS，全称Cross SiteScript，跨站脚本攻击，是Web程序中常见的漏洞，其原理是攻击者向有XSS漏洞的网站中输入(传入)恶意的HTML代码，当其它用户浏览该网站时，这段HTML代码会自动执行，从而达到攻击的目的。如，盗取用户Cookie、破坏页面结构、重定向到其它网站等。</p>
@@ -125,7 +99,7 @@
 <p>随着互联网的发展，网站经历由单纯的只读模式到web2.0兴起的交互模式变迁，而正在向完美融合了人工智能的web3.0的道路发展。目前用户访问的大多数网站均有交互的功能，例如是电商网站的评论，微博网站的转发，论坛的发帖等等。对于正常用户而言，他们是遵守发帖和留言规范的，但对于黑客，他们是不会老老实实的按规矩办事的。</p>
 <!--more-->
 <p>下面的GIF图展示的是一个XSS攻击的示意：</p>
-<p><img src="https://www.daguanren.cc/static/upload/20171116/xss-demo.gif" alt="XSS"></p>
+<figure data-type="image" tabindex="1"><img src="https://www.daguanren.cc/static/upload/20171116/xss-demo.gif" alt="XSS"></figure>
 <p>​<br>
 上图先使用Chrome浏览器进行正常和非正常留言，Chrome浏览器自动检测出XSS攻击，屏蔽了请求。然后打开IE8，执行同样的操作，IE8成功受到了攻击。</p>
 <p><strong>2.XSS定义</strong></p>
@@ -218,96 +192,32 @@ module.exports = class extends Base {
 <h2 id="总结">总结</h2>
 <p>XSS攻击相比于CSRF攻击，还是比较容易防范的，只要同时限制用户输入数据的格式和进行数据转义，基本可以杜绝此类攻击。</p>
 
-                                </div>
-                    </article>
-                    <!--  -->
-                    
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="http://wangqunsong.github.io/post/web-gong-ji-zhi-_sql-zhu-ru-zhuan">
-                                <h3 class="post-title">
-                                    WEB攻击之_SQL注入「转]
-                                </h3>
-                            </a>
-                        </div>
-                        
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
-                </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
-                    
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#xss%E7%9A%84%E8%83%8C%E6%99%AF%E4%B8%8E%E4%BB%8B%E7%BB%8D">XSS的背景与介绍</a></li>
-<li><a href="#%E5%BD%93%E5%89%8D%E9%98%B2%E5%BE%A1-xss-%E7%9A%84%E5%87%A0%E7%A7%8D%E7%AD%96%E7%95%A5">当前防御 XSS 的几种策略</a></li>
-<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
-</ul>
-</li>
-</ul>
-
-        </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
-    </div>
-    
-                            
-
-                </div>
-
-
-
-
             </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.github.io/post/web-gong-ji-zhi-_sql-zhu-ru-zhuan">
+              <h3 class="post-title">
+                WEB攻击之_SQL注入「转]
+              </h3>
+            </a>
+          </div>  
+        
 
-
-            <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
-  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
+        
+    
+        <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-
+      </div>
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-    
-</body>
-
+  </body>
 </html>

@@ -1,118 +1,92 @@
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>
-    Python学习笔记01_基本数据结构 | zootopia的后花园
-</title>
-<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569390970497">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
-<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<title>Python学习笔记01_基本数据结构 | zootopia的后花园</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569393534940">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-<!-- js -->
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-        
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="main">
-        <div class="header">
-    <div class="nav">
-        <div class="logo">
-            <a href="http://wangqunsong.github.io">
-                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569390970497" alt="">
-            </a>
-            <div class="site-title">
-                <h1>
-                    zootopia的后花园
-                </h1>
-            </div>
-        </div>
-        <span class="menu-btn fa fa-align-justify"></span>
-        <div class="menu-container">
-            <ul>
-                
-                    
-                            <li>
-                                <a href="http://zootopia.top" class="menu">
-                                    首页
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/archives" class="menu">
-                                    归档
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/tags" class="menu">
-                                    标签
-                                </a>
-                            </li>
-                            
-                                
-                    
-                            <li>
-                                <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
-                                    收藏链接
-                                </a>
-                            </li>
-                            
-                                
-            </ul>
-        </div>
-    </div>
+      <div class="main-content">
+        <div class="site-header">
+  <a href="http://wangqunsong.github.io">
+  <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569393534940" alt="">
+  </a>
+  <h1 class="site-title">
+    zootopia的后花园
+  </h1>
+  <p class="site-description">
+    zootopia
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="http://zootopia.top" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="http://zootopia.top/post/shou-cang-lian-jie/" class="menu">
+          收藏链接
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $(".menu-btn").click(function() {
-            $(".menu-container").slideToggle();
-        });
-        $(window).resize(function() {
-
-            if (window.matchMedia('(min-width: 960px)').matches) {
-                $(".menu-container").css('display', 'block')
-            } else {
-                $(".menu-container").css('display', 'none')
-            }
-
-        });
-    });
-</script>
-
-            <div id="main-content" class="post-detail main-container">
-                <!-- left -->
-                <div id="content" class="main-container-left">
-                    <article class="post i-card">
-                        <h2 class="post-title">
-                            Python学习笔记01_基本数据结构
-                        </h2>
-                        <div class="post-info">
-                            <time class="post-time">2016-11-07</time>
-                            
-                                <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="post-tag i-tag
-                            i-tag-other_4">
-                            #Python
-                        </a>
-                                
-                        </div>
-                        
-                                <div class="post-content">
-                                    <p>👏  欢迎使用 来到小小王的后花园！<br>
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Python学习笔记01_基本数据结构
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2016-11-07 ·
+              </time>
+              
+                <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="post-tags">
+                  # Python
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>👏  欢迎使用 来到小小王的后花园！<br>
 ✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python学习笔记01_基本数据结构</strong></p>
 <!-- more -->
 <h4 id="1字符编码">1.字符编码</h4>
@@ -344,120 +318,32 @@ Generator return value: done
 <p>参考链接1：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">穆雪峰的Python3教程</a></p>
 <p>参考链接2：<a href="https://eastlakeside.gitbooks.io/interpy-zh/content/">Intermediate Python</a></p>
 
-                                </div>
-                    </article>
-                    <!--  -->
-                    
-                        <div class="next-post">
-                            <div class="next">下一篇</div>
-                            <a href="http://wangqunsong.github.io/post/chu-shi-markdown">
-                                <h3 class="post-title">
-                                    初识MarkDown
-                                </h3>
-                            </a>
-                        </div>
-                        
-                            <div id="disqus_thread"></div>
-                            <div id="gitalk-container"></div>
-                </div>
-                <!-- middle -->
-                <div class="main-container-middle"></div>
-                <!-- right -->
-                <div id="sidebar" class="main-container-right">
-                    
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#1%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81">1.字符编码</a></li>
-<li><a href="#2list%E5%92%8Ctuple">2.list和tuple</a></li>
-<li><a href="#3dict%E5%92%8Cset">3.dict和set</a></li>
-<li><a href="#4%E5%88%87%E7%89%87">4.切片</a></li>
-<li><a href="#5%E8%BF%AD%E4%BB%A3">5.迭代</a></li>
-<li><a href="#6%E8%BF%AD%E4%BB%A3%E5%99%A8">6.迭代器</a>
-<ul>
-<li><a href="#a%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1">【a】可迭代对象</a></li>
-<li><a href="#b%E8%BF%AD%E4%BB%A3%E5%99%A8">【b】迭代器</a></li>
-<li><a href="#c%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1-%E8%BF%AD%E4%BB%A3%E5%99%A8">【c】可迭代对象 → 迭代器</a></li>
-</ul>
-</li>
-<li><a href="#7%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%BC%8F">7.列表生成式</a></li>
-<li><a href="#8%E7%94%9F%E6%88%90%E5%99%A8">8.生成器</a>
-<ul>
-<li><a href="#%E5%88%9B%E5%BB%BA%E7%94%9F%E6%88%90%E5%99%A8_%E6%96%B9%E5%BC%8F1">创建生成器_方式1</a></li>
-<li><a href="#%E5%88%9B%E5%BB%BA%E7%94%9F%E6%88%90%E5%99%A8_%E6%96%B9%E5%BC%8F2">创建生成器_方式2</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-        </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
-    </div>
-    
-                            
-
-                </div>
-
-
-
-
             </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://wangqunsong.github.io/post/chu-shi-markdown">
+              <h3 class="post-title">
+                初识MarkDown
+              </h3>
+            </a>
+          </div>  
+        
 
-
-            <div class="site-footer">
-  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
-  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
+        
+    
+        <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
 </script>
 
-
+      </div>
     </div>
-    <script>
-        $('#sidebar').stickySidebar({
-            topSpacing: 80,
-            // bottomSpacing: 60
-        });
-    </script>
-    
-</body>
-
+  </body>
 </html>
