@@ -1,539 +1,461 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
-<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
-<meta HTTP-EQUIV="expires" CONTENT="0"> 
-<title>zootopia的后花园</title>	
-
-<link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
-<script type="text/javascript">
-function getCSS()
-{
-        datetoday = new Date();
-        timenow=datetoday.getTime();
-        datetoday.setTime(timenow);
-        thehour = datetoday.getHours();
-
-        if (thehour<18)
-
-            display = "http://wangqunsong.github.io/media/css/night.css";
-
-       else if (thehour>09)
-
-            display = "http://wangqunsong.github.io/media/css/night.css";   
-
-        else if (thehour>18)
-           
-            display = "http://wangqunsong.github.io/media/css/day.css";
-
-        else if (thehour<09)
-
-            display = "http://wangqunsong.github.io/media/css/day.css";
-      
-
-var css = '<';
-        css+='link rel="stylesheet" href='+display+' \/';
-        css+='>';
-        document.write(css);
-}
-</script>
-<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Noto+Sans+SC:300|Montserrat&display=swap" rel="stylesheet">
-<link href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css" rel="stylesheet" />
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    zootopia的后花园
+</title>
+<link rel="shortcut icon" href="http://wangqunsong.github.io/favicon.ico?v=1569414773603">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<script type='text/javascript' src='http://wangqunsong.github.io/media/scripts/script.js'></script>
-<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
-  <script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
-  <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <script>wow=new WOW({boxClass:'wow',animateClass:'animated',offset:0,mobile:true,live:true});wow.init();</script>
-
-<script type="text/javascript">
-window.onload=getCSS();
-</script>
+<link rel="stylesheet" href="http://wangqunsong.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://wangqunsong.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
 </head>
-<body class="home blog">
-    <div id="wrapper">
-        
-		<header id="header" class="site-header" >
-			<div class="site-branding">
-									<h1 class="site-title"><a href="http://wangqunsong.github.io" rel="home">zootopia的后花园</a></h1>
-										
-					<h2 class="site-description">zootopia</h2>
-										
-							</div>
-			<nav id="nav-wrapper">
-				<div class="container">
-					<div class="nav-toggle">
-						<div class="bars">
-							<div class="bar"></div>
-							<div class="bar"></div>
-							<div class="bar"></div>
-						</div>
-					</div>
-					<div class="clear"></div>
-					<ul class="dove">
-		 
-     			
-<li>
-	 
-	<a  href="http://wangqunsong.github.io"> 首页</a></li>
-	
-    
-     			
-<li>
-	 
-	<a  href="http://wangqunsong.github.io/archives"> 归档</a></li>
-	
-    
-     			
-<li>
-	 
-	<a  href="http://wangqunsong.github.io/tags"> 标签</a></li>
-	
-    
 
-</ul>
-</li>		
-		
-</ul>				</div>
-			</nav>
-
-<div class="jingge">
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        </header>
-
-		<div id="content" class="container">
-			<div class="row">
-	<div class="col-md-8 site-main">
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi" rel="bookmark">持续集成05_分层自动化测试</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-10-10 22:13:35" itemprop="datePublished" pubdate="">2018-10-10</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成05_分层自动化测试</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu" rel="bookmark">持续集成04_测试环境部署</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-09-28 22:12:03" itemprop="datePublished" pubdate="">2018-09-28</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成04_测试环境部署</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-03_-dan-yuan-ce-shi-ji-fu-gai-lu-tong-ji" rel="bookmark">持续集成03_单元测试及覆盖率统计</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-09-04 22:10:10" itemprop="datePublished" pubdate="">2018-09-04</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成03_单元测试及覆盖率统计</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-03_-dan-yuan-ce-shi-ji-fu-gai-lu-tong-ji" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao" rel="bookmark">持续集成02_静态代码扫描</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-08-25 18:12:05" itemprop="datePublished" pubdate="">2018-08-25</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成02_静态代码扫描</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-01_pipeline-xiang-mu-zong-lan" rel="bookmark">持续集成01_pipeline项目总览</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-08-14 18:08:37" itemprop="datePublished" pubdate="">2018-08-14</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成01_pipeline项目总览</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-01_pipeline-xiang-mu-zong-lan" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian" rel="bookmark">持续集成00_写在前面</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-07-25 18:09:56" itemprop="datePublished" pubdate="">2018-07-25</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成00_写在前面</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/pipeline-can-kao-shou-ce-zhuan" rel="bookmark">pipeline参考手册「转]</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-06-07 18:07:14" itemprop="datePublished" pubdate="">2018-06-07</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>pipeline参考手册「转]</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/pipeline-can-kao-shou-ce-zhuan" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml" rel="bookmark">在命令行下处理 YAML</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2018-05-02 18:04:57" itemprop="datePublished" pubdate="">2018-05-02</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>在命令行下处理 YAML</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan" rel="bookmark">Python 2.7.x 与 Python 3.x 的主要差异「转]</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2017-02-16 18:03:18" itemprop="datePublished" pubdate="">2017-02-16</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python 2.7.x 与 Python 3.x 的主要差异「转]</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 						
-<article class="wow zoomIn post post-index  post-318 type-post status-publish format-standard hentry category-uncategorized tag-40 tag-39">
-	
-	 
-	   
-	<div class="entry-content">
-		<h1 class="entry-title"><a href="http://wangqunsong.github.io/post/python-xue-xi-bi-ji-09_socket-bian-cheng" rel="bookmark">Python学习笔记09_Socket编程</a></h1>
-		<div class="entry-meta">
-		<i class="iconfont icon-rili"> <time class="lately-a" datetime="2017-02-10 22:15:38" itemprop="datePublished" pubdate="">2017-02-10</time></i>
-	 
-			
-		</div>
-
-		<div class="entry-summary jia">
-			<p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python学习笔记09_Socket编程</strong></p>
-
-			<p class="readmore">
-				<a href="http://wangqunsong.github.io/post/python-xue-xi-bi-ji-09_socket-bian-cheng" class="link-more">Read more</a>
-			</p>
-		</div>
-		
-	</div>
-	
-</article>
-		
- 
-
-											   
-	</div>
-            
-		
-
-			</div>
-														   
-			<nav class="navigation pagination" role="navigation">
-	
-														   
-		<div class="nav-links">
-			
-<a class="next page-numbers" href="http://wangqunsong.github.io/page/3/">点击查看更多</a></div>
-		
-	</nav>	
-    	<script type="text/javascript">
-//点击加载更多
-jQuery(document).ready(function($) {
-    //点击下一页的链接(即那个a标签)
-    $(' .next').click(function() {
-        $this = $(this);
-        $this.addClass('loading').text('正在努力加载'); //给a标签加载一个loading的class属性，用来添加加载效果
-        var href = $this.attr('href'); //获取下一页的链接地址
-        if (href != undefined) { //如果地址存在
-            $.ajax({ //发起ajax请求
-                url: href,
-                //请求的地址就是下一页的链接
-                type: 'get',
-                //请求类型是get
-                error: function(request) {
-                    //如果发生错误怎么处理
-                },
-                success: function(data) { //请求成功
-                    $this.removeClass('loading').text('点击查看更多'); //移除loading属性
-                    var $res = $(data).find('.post-318 '); //从数据中挑出文章数据，请根据实际情况更改
-                    $('.col-md-8').append($res.fadeIn(500)); //将数据加载加进posts-loop的标签中。
-                    var newhref = $(data).find(' .next').attr('href'); //找出新的下一页链接
-                    if (newhref != undefined) {
-                        $('.next').attr('href', newhref);
-                    } else {
-                        $('.next').remove(); //如果没有下一页了，隐藏
-                    }
-                }
-            });
-        }
-        return false;
-    });
-});
-</script>
-									 
-		</div>
-
-		
-	 	<footer id="colophon" class="site-footer">
-
-			<div class="container">
-	
-				<div class="copyright">Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a><br>Theme:   <a href="https://github.com/alterfang/gridea-theme-pan" target="_blank" title="Pan"><span>Pan</span></a>. Powered by <a href="https://gridea.dev/" target="_blank" title="Gridea"><span>Gridea</span></a></div>		
-			</div>
-		
-		</footer>
-
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="http://wangqunsong.github.io">
+                <img class="avatar" src="http://wangqunsong.github.io/images/avatar.png?v=1569414773603" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    zootopia的后花园
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="http://wangqunsong.github.io/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
 </div>
 
-<script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
-<script type='text/javascript' src='http://wangqunsong.github.io/media/scripts/marlin-scripts.js'></script>
- <script src="//tokinx.github.io/lately/lately.min.js"></script>
-  <script>jQuery(document).ready(function(){$.lately({'target':'.lately-a,.lately-b,.lately-c'})});</script>
-  <style type="text/css">a.back_to_top {
-    text-decoration: none;
-    position: fixed;
-    bottom: 40px;
-    right: 30px;
-    background: #f0f0f0;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    line-height: 36px;
-    font-size: 18px;
-    text-align: center;
-    transition-duration: .5s;
-    transition-propety: background-color;
-    display: none;
-}
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-a.back_to_top span {
-    color: #888;
-}
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-a.back_to_top:hover {
-    cursor: pointer;
-    background: #dfdfdf;
-}
-
-a.back_to_top:hover span {
-    color: #555;
-}
-
-@media print, screen and (max-width: 580px) {
-    .back_to_top {
-        display: none !important;
-    }
-}
-
-
-
-</style><a id="back_to_top" href="#" class="back_to_top"><span><i class="iconfont icon-xiangshang"></i></span>
-</a>
-
-
-<script>$(document).ready((function(_this) {
-  return function() {
-    var bt;
-    bt = $('#back_to_top');
-    if ($(document).width() > 480) {
-      $(window).scroll(function() {
-        var st;
-        st = $(window).scrollTop();
-        if (st > 30) {
-          return bt.css('display', 'block');
-        } else {
-          return bt.css('display', 'none');
-        }
-      });
-      return bt.click(function() {
-        $('body,html').animate({
-          scrollTop: 0
-        }, 800);
-        return false;
-      });
-    }
-  };
-})(this));
+        });
+    });
 </script>
 
-	
-	
-														   
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi">
+                        持续集成05_分层自动化测试
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-10-10</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-success">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成05_分层自动化测试</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-05_-fen-ceng-zi-dong-hua-ce-shi">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">
+                        持续集成04_测试环境部署
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-09-28</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-error">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成04_测试环境部署</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-04_-ce-shi-huan-jing-bu-shu">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-03_-dan-yuan-ce-shi-ji-fu-gai-lu-tong-ji">
+                        持续集成03_单元测试及覆盖率统计
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-09-04</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-warning">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成03_单元测试及覆盖率统计</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-03_-dan-yuan-ce-shi-ji-fu-gai-lu-tong-ji">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao">
+                        持续集成02_静态代码扫描
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-08-25</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-other_2">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成02_静态代码扫描</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-02_-jing-tai-dai-ma-sao-miao">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-01_pipeline-xiang-mu-zong-lan">
+                        持续集成01_pipeline项目总览
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-08-14</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成01_pipeline项目总览</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-01_pipeline-xiang-mu-zong-lan">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian">
+                        持续集成00_写在前面
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-07-25</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-error">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成00_写在前面</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/chi-xu-ji-cheng-00_-xie-zai-qian-mian">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/pipeline-can-kao-shou-ce-zhuan">
+                        pipeline参考手册「转]
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-06-07</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/AZvxNNEdR" class="post-tag i-tag
+                            i-tag-other_4">
+            #CI/CD
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>pipeline参考手册「转]</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/pipeline-can-kao-shou-ce-zhuan">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml">
+                        在命令行下处理 YAML
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2018-05-02</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/eH19MB6sE" class="post-tag i-tag
+                            i-tag-other_1">
+            #yaml
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>在命令行下处理 YAML</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/zai-ming-ling-xing-xia-chu-li-yaml">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">
+                        Python 2.7.x 与 Python 3.x 的主要差异「转]
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2017-02-16</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="post-tag i-tag
+                            i-tag-">
+            #Python
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python 2.7.x 与 Python 3.x 的主要差异「转]</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/python-27x-yu-python-3x-de-zhu-yao-chai-yi-zhuan">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="http://wangqunsong.github.io/post/python-xue-xi-bi-ji-09_socket-bian-cheng">
+                        Python学习笔记09_Socket编程
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2017-02-10</time>
+                    
+                        <a href="http://wangqunsong.github.io/tag/1sgoPsPP5" class="post-tag i-tag
+                            i-tag-warning">
+            #Python
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>👏  欢迎使用 来到小小王的后花园！<br>
+✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>Python学习笔记09_Socket编程</strong></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="http://wangqunsong.github.io/post/python-xue-xi-bi-ji-09_socket-bian-cheng">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+    <div class="pagination-container">
+        
+            <a href="http://wangqunsong.github.io/" class="page-btn btn">上一页</a>
+            
+                
+                    <a href="http://wangqunsong.github.io/page/3/" class="page-btn btn">下一页</a>
+                    
+    </div>
+    
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(http://wangqunsong.github.io/images/avatar.png?v=1569414773603)">
+        </div>
+        <h1 class="id_card-title">
+            zootopia的后花园
+        </h1>
+        <h2 class="id_card-description">
+            zootopia
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="http://www.zootopia.top/" target="_blank">zootopia</a> | 
+  <a class="rss" href="http://wangqunsong.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
 </body>
+
 </html>
