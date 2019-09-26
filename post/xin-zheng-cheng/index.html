@@ -6,7 +6,7 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <meta name="renderer" content="webkit">
-    <title>持续集成00_写在前面 | zootopia</title>
+    <title>新征程 | zootopia</title>
 <link href="https://wangqunsong.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="https://wangqunsong.github.io/media/scripts/jquery.js"></script>
 <script type="text/javascript" src="https://wangqunsong.github.io/media/scripts/basic.js"></script>
@@ -19,7 +19,7 @@
      <div class="header">
       <div class="logo_title">
 		  
-        <div class="title animated fadeInDown"><img src="https://wangqunsong.github.io/images/avatar.png?v=1569485509281"/>
+        <div class="title animated fadeInDown"><img src="https://wangqunsong.github.io/images/avatar.png?v=1569513263759"/>
 
           <h1 title="zootopia" class="weaklink"><a href="/">zootopia</a>
 
@@ -156,7 +156,7 @@
 
 <div class="post">
   <div class="post_title sm_margin">
-    <h2><a>持续集成00_写在前面</a>
+    <h2><a>新征程</a>
 
 
 
@@ -165,7 +165,7 @@
 
   <div class="post_details">
     <div class="info"><i class="fa fa-clock-o"></i>
-<span class="date_info">2018-07-25</span>
+<span class="date_info">2019-09-26</span>
 <i class="fa fa-eye"></i>
 
 <span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
@@ -174,7 +174,7 @@
 <i class="fa fa-bookmark-o"></i>
 <span class="tags_info weaklink">
 	
-	<a href="https://wangqunsong.github.io/tag/AZvxNNEdR" class="tag">CI/CD</a>
+	<a href="https://wangqunsong.github.io/tag/FPUiUObNT" class="tag">成长</a>
 
 
 </span>
@@ -189,44 +189,12 @@
 
 
   <div class="post_content markdown"><p class="md_block">
-    <span class="md_line md_line_start md_line_end"><p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>持续集成00_写在前面</strong></p>
-<!-- more --> 
-<p>​        学习了<a href="https://testerhome.com/cay">TesterHome@cay</a>大佬写的持续交付的系列文章后，刚好改造了下手头的项目，在此记录下工作的内容，以便后续完善改进，更多内容请观光<a href="https://testerhome.com/cay">@cay</a>的系列文章。</p>
-<h3 id="pipeline">Pipeline</h3>
-<p><strong>Pipeline</strong>和<strong>自动化测试</strong>是持续集成的两驾马车，自从16年4月发布的Jenkins 2.0中引入了<code>Pipeline as Code</code>的概念以后，Jenkins迎来了从CI到CD转变的巨大契机。</p>
-<hr>
-<p><strong>什么是Pipeline?</strong></p>
-<p>简单来说，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂发布流程。Pipeline的实现方式是一套<code>Groovy DSL</code>，任何发布流程都可以表述为一段<code>Groovy</code>脚本，并且Jenkins支持从代码库直接读取脚本，从而实现了<code>Pipeline as Code</code>的理念。</p>
-<hr>
-<p>如果你使用过Jenkins，那么你也许了解pipeline中的几个重要概念：</p>
-<ul>
-<li><strong>Stage：</strong> 一个Pipeline可以划分为若干个Stage，每个Stage代表一组操作。注意，Stage是一个逻辑分组的概念，可以跨多个Node。</li>
-<li><strong>Node:</strong> 一个Node就是一个Jenkins节点，或者是Master，或者是Agent，是执行Step的具体运行期环境。</li>
-<li><strong>Step:</strong> Step是最基本的操作单元，小到创建一个目录，大到构建一个Docker镜像，由各类Jenkins Plugin提供。</li>
-</ul>
-<p>关于Pipeline的相关介绍，可直接访问@cay大神写的文章：</p>
-<ul>
-<li>1.<a href="https://testerhome.com/topics/10003">pipeline使用-快速入门</a></li>
-<li>2.<a href="https://testerhome.com/topics/10033">pipeline使用-语法详解</a></li>
-<li>3.<a href="https://testerhome.com/topics/10010">pipeline使用-项目样例</a></li>
-<li>4.<a href="https://testerhome.com/topics/10146">pipeline使用-Multibranch Pipeline</a></li>
-<li>5.<a href="https://testerhome.com/topics/10782">pipeline使用-Shared Libraries</a></li>
-</ul>
-<h3 id="分层自动化测试">分层自动化测试</h3>
-<figure data-type="image" tabindex="1"><a href="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/66113362.jpg"><img src="http://xiaoxiaowang-image.oss-cn-shanghai.aliyuncs.com/18-12-9/66113362.jpg" alt="分层自动化测试"></a></figure>
-<p>你对上面的图一定不会感到陌生。上图中Unit代表单元测试，Service代表服务集成测试，UI代表页面级的系统测试，并且倡导合理的成本比例为7:2:1，即70%的精力和工作量应花在最底层的单元测试上，20%应花在服务集成测试上，最上层的GUI测试比例最小，仅为10%。</p>
-<h3 id="实际情况">实际情况</h3>
-<p>结合手中的实际项目，持续集成的内容计划为：</p>
-<ul>
-<li>静态代码检查</li>
-<li>单元测试和覆盖率统计</li>
-<li>测试部署</li>
-<li>分层自动化测试（UI自动化测试、接口自动化测试）</li>
-</ul>
-<p>参考连接：</p>
-<p><a href="https://testerhome.com/topics/9977">TesterHome | @cay</a></p>
-<p><a href="https://tech.meituan.com/erp_cd_jenkins_pipeline.html">美团技术团队</a></p>
+    <span class="md_line md_line_start md_line_end"><p>  这算是一个全新的开始吧，新的域名，新的风格。<br>
+  回顾之前的技术文章，实际上并没有什么特别的地方，更多的是一些学习笔记和技术内容的陈述。目前为止碰到的这些问题，其实善用搜索引擎与技术论坛，基本上大部分都能解决。所以，这个博客以后基本就不记录技术类文章了，计划将这里转变为一个记录自己想法和生活的休闲式博客。<br>
+  细细想来，其实想好好坚持的事情还蛮多的，摄影、阅读、锻炼，这些断断续续都做了一点，但都没有很好的坚持下来。也该重新梳理行囊，找几件事情认认真真地做下去了。最后，还是希望你能成为心中憧憬的那副模样：</p>
+<blockquote>
+<p>宠辱不惊，看庭前花开花落。</p>
+</blockquote>
 </p>
 
      <p class="md_block">

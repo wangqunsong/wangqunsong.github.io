@@ -1,12 +1,12 @@
 
 <html>
-  <head lang="zh">
+<head lang="zh">
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
         <meta content="yes" name="apple-mobile-web-app-capable"/>
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <meta name="renderer" content="webkit">
-    <title>WEB攻击之_SQL注入「转] | zootopia</title>
+    <title>zootopia</title>
 <link href="https://wangqunsong.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
 <script type="text/javascript" src="https://wangqunsong.github.io/media/scripts/jquery.js"></script>
 <script type="text/javascript" src="https://wangqunsong.github.io/media/scripts/basic.js"></script>
@@ -16,10 +16,10 @@
   </head>
 
   <body>
-     <div class="header">
+    <div class="header">
       <div class="logo_title">
 		  
-        <div class="title animated fadeInDown"><img src="https://wangqunsong.github.io/images/avatar.png?v=1569485509281"/>
+        <div class="title animated fadeInDown"><img src="https://wangqunsong.github.io/images/avatar.png?v=1569513263759"/>
 
           <h1 title="zootopia" class="weaklink"><a href="/">zootopia</a>
 
@@ -144,7 +144,6 @@
     <div class="main">
       <div class="main-inner">
 
-
 <div class="content">
 
 
@@ -152,29 +151,25 @@
 
 
 
-  <div class="post_page" >
+  <div class="post_list" >
 
+	
 <div class="post">
-  <div class="post_title sm_margin">
-    <h2><a>WEB攻击之_SQL注入「转]</a>
-
-
-
+  <div class="post_title weaklink">
+    <h2><a href="https://wangqunsong.github.io/post/xin-zheng-cheng" >新征程</a>
     </h2>
   </div>
-
-  <div class="post_details">
-    <div class="info"><i class="fa fa-clock-o"></i>
-<span class="date_info">2018-12-26</span>
-<i class="fa fa-eye"></i>
-
-<span class="date_info"><span id="busuanzi_value_page_pv"></span> Views</span>
-
+  <div class="post_content markdown"><div class="p_part"><p></p></div></div>
+  <div class="post_footer">
+    <div class="info weaklink"><i class="fa fa-clock-o"></i>
+<span class="date_info">2019-09-26</span>
 
 <i class="fa fa-bookmark-o"></i>
+	
 <span class="tags_info weaklink">
 	
-	<a href="https://wangqunsong.github.io/tag/gmqBiNDvl" class="tag">安全测试</a>
+	<a href="https://wangqunsong.github.io/tag/FPUiUObNT" class="tag">成长</a>
+
 
 
 </span>
@@ -184,85 +179,19 @@
 
   </div>
 
-
-
-
-
-  <div class="post_content markdown"><p class="md_block">
-    <span class="md_line md_line_start md_line_end"><p>👏  欢迎使用 来到小小王的后花园！<br>
-✍️  这里仅仅是一个记录个人成长的地方，现在所处的位置是<strong>WEB攻击之_SQL注入「转]</strong></p>
-<!-- more --> 
-<p>​        SQL注入看起来很复杂，其实很简单就能解释，SQL注入就是一种通过操作输入来修改后台SQL语句达到代码执行进行攻击目的的技术。</p>
-<blockquote>
-<p><a href="https://www.daguanren.cc/post/sql-injection.html">原文链接</a></p>
-</blockquote>
-<h2 id="sql注入的定义与诱因">SQL注入的定义与诱因</h2>
-<p>1.<strong>定义</strong></p>
-<p>​ SQL攻击（英语：SQL<br>
-injection），简称注入攻击，是发生于应用程序之数据库层的安全漏洞。简而言之，是在输入的字符串之中注入SQL指令，在设计不良的程序当中忽略了检查，那么这些注入进去的指令就会被数据库服务器误认为是正常的SQL指令而运行，因此遭到破坏或是入侵。</p>
-<p>只要是支持批处理SQL指令的数据库服务器，都有可能受到此种手法的攻击。</p>
-<p><strong>2.诱因</strong></p>
-<p>​ 在应用程序中若有下列状况，则可能应用程序正暴露在SQL<br>
-Injection的高风险情况下：</p>
-<ul>
-<li>在应用程序中使用字符串联结方式组合SQL指令。</li>
-<li>在应用程序链接数据库时使用权限过大的账户（例如很多开发人员都喜欢用最高权限的系统管理员账户（如常见的root，sa等）连接数据库）。</li>
-<li>在数据库中开放了不必要但权力过大的功能（例如在Microsoft SQL<br>
-Server数据库中的xp_cmdshell延伸预存程序或是OLE<br>
-Automation预存程序等）</li>
-<li>太过于信任用户所输入的数据，未限制输入的字符数，以及未对用户输入的数据做潜在指令的检查。</li>
-</ul>
-<p>下面的GIF展示的是SQL注入的示意：</p>
-<figure data-type="image" tabindex="1"><img src="https://www.daguanren.cc/static/upload/20171116/sql-injection.gif" alt="sql-injection"></figure>
-<p><strong>3.解释</strong></p>
-<p>假设某个网站的登录验证的SQL查询代码为</p>
-<pre><code>SELECT * FROM `user` WHERE (username = 'username') and (password = 'password');
-</code></pre>
-<p>如果恶意将username和password传入的值设置为：</p>
-<pre><code>username = '1' OR '1'='1';
-password = '1' OR '1'='1';
-</code></pre>
-<p>即为：</p>
-<pre><code>SELECT * FROM user WHERE (username = '1' OR '1'='1') and (password = '1' OR '1'='1');
-</code></pre>
-<p>由于OR 1=1 总是为真（true），原SQL语句等同于：</p>
-<pre><code>SELECT * FROM user;
-</code></pre>
-<h2 id="sql注入的危害与防护">SQL注入的危害与防护</h2>
-<p><strong>4.危害</strong></p>
-<ol>
-<li>数据表中的数据外泄，例如个人机密数据，账户数据，密码等。</li>
-<li>数据结构被黑客探知，得以做进一步攻击（例如SELECT * FROM<br>
-sys.tables）。</li>
-<li>数据库服务器被攻击，系统管理员账户被窜改（例如ALTER LOGIN sa WITH<br>
-PASSWORD='xxxxxx'）。</li>
-<li>获取系统较高权限后，有可能得以在网页加入恶意链接、恶意代码以及<a href="https://www.daguanren.cc/post/xss-introduction.html">XSS</a>等。</li>
-<li>经由数据库服务器提供的操作系统支持，让黑客得以修改或控制操作系统（例如xp_cmdshell<br>
-&quot;net stop iisadmin&quot;可停止服务器的IIS服务）。</li>
-<li>破坏硬盘数据，瘫痪全系统（例如xp_cmdshell &quot;FORMAT C:&quot;）。</li>
-</ol>
-<p><strong>5.防护</strong></p>
-<ol>
-<li>在设计应用程序时，完全使用参数化查询（Parameterized<br>
-Query）来设计数据访问功能。</li>
-<li>在组合SQL字符串时，先针对所传入的参数作字符取代（将单引号字符取代为连续2个单引号字符）。</li>
-<li>使用其他更安全的方式连接SQL数据库。例如已修正过SQL注入问题的数据库连接组件。</li>
-<li>使用SQL防注入框架开发。</li>
-</ol>
-</p>
-
-     <p class="md_block">
-    <div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="https://wangqunsong.github.io/media/images/alipay.png"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="https://wangqunsong.github.io/media/images/wechat.png"><b>微信打赏</b> </span> </span></div></div>
-</p> 
 </div>
+	
+	
 
-</div>
+<div class="paginator pager pagination" >
+	
 
 
 
-<link href="https://wangqunsong.github.io/styles/main.css" type="text/css" rel="stylesheet"/>
+    <div style="clear:both;height:0;"></div>
 
-<div class="doc_comments">
+
+  </div>
 
 </div>
 
@@ -275,12 +204,9 @@ Query）来设计数据访问功能。</li>
 
       </div>
 
-
-
-
     </div>
 
-   <div class="footer">
+    <div class="footer">
 <link href="https://wangqunsong.github.io/styles/main.css" type="text/css" rel="stylesheet"/><div class="site_footer_wrap"><div class="site_footer">
 
       <div class="mysocials"><div class="my_socials">
