@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wangqunsong.github.io</id>
-    <title>zootopia</title>
-    <updated>2019-09-30T07:09:51.461Z</updated>
+    <title>木君羊</title>
+    <updated>2019-10-05T03:06:46.497Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wangqunsong.github.io"/>
     <link rel="self" href="https://wangqunsong.github.io/atom.xml"/>
-    <subtitle>zootopia</subtitle>
+    <subtitle>木君羊</subtitle>
     <logo>https://wangqunsong.github.io/images/avatar.png</logo>
     <icon>https://wangqunsong.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, zootopia</rights>
+    <rights>All rights reserved 2019, 木君羊</rights>
     <entry>
         <title type="html"><![CDATA[新征程]]></title>
         <id>https://wangqunsong.github.io/post/xin-zheng-cheng</id>
