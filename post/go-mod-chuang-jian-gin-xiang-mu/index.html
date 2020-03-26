@@ -3,7 +3,7 @@
         <head>
         <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
         <meta charset="utf-8">
-        <title>新征程 | 木君羊</title>
+        <title>使用Go mod创建Gin项目 | 木君羊</title>
         <link rel="stylesheet" href="https://wangqunsong.github.io/styles/main.css">
         <link rel="stylesheet" href="https://at.alicdn.com/t/font_1423691_1fcfxbwa79n.css">
         <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -56,20 +56,74 @@
                 <div class="mdui-row">
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="post-title  mdui-m-b-1">新征程</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2019-09-26 23:22:43">2019-09-26 / 1 min read</div>
-                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>  这算是一个全新的开始吧，新的域名，新的风格。🤡🤡🤡<br>
-  回顾之前的技术文章，实际上并没有什么特别的地方，更多的是一些学习笔记和技术内容的陈述。目前为止碰到的这些问题，其实善用搜索引擎与技术论坛，基本上大部分都能解决。所以，这个博客以后基本就不记录技术类文章了，计划将这里转变为一个记录自己想法和生活的休闲式博客。<br>
-  细细想来，其实想好好坚持的事情还蛮多的，摄影、阅读、锻炼，这些断断续续都做了一点，但都没有很好的坚持下来。也该重新梳理行囊，找几件事情认认真真地做下去了。最后，老本行自然不能丢，之后的技术内容会整理放到<a href="https://www.yuque.com/books/share/07780db3-a33d-45a9-9149-beb70bf4841c#">语雀</a>上，作为自己的参考。🍀🍀</p>
+                                    <div class="post-title  mdui-m-b-1">使用Go mod创建Gin项目</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-01-01 17:57:47">2020-01-01 / 2 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><blockquote>
+<p>模块是相关Go包的集合。modules是源代码交换和版本控制的单元。 go命令直接支持使用modules，包括记录和解析对其他模块的依赖性。modules替换旧的基于GOPATH的方法来指定在给定构建中使用哪些源文件。</p>
+</blockquote>
+<h4 id="前提">前提</h4>
+<p><a href="https://learnku.com/go/wikis/38122">Go 国内加速镜像</a><br>
+<a href="https://studygolang.com/articles/11819?fr=sidebar">Go 微框架 Gin 简介</a><br>
+<a href="https://juejin.im/post/5c8e503a6fb9a070d878184a">Go mod简介</a><br>
+<code>go version</code> &gt;= 11</p>
+<h4 id="go-mod配置">Go mod配置</h4>
+<h5 id="1-开启go-mod">1. 开启GO mod</h5>
+<p>在 Linux 或 macOS 上，执行开启命令（也可以直接写入<code>~/.bashrc</code>或者<code>~/.zshrc</code> 后，再<code>source</code>使其生效）<br>
+<code>go env -w GO111MODULE=on</code></p>
+<h5 id="2-配置go-modules-proxy">2. 配置Go Modules Proxy</h5>
+<p><code>go env -w GOPROXY=https://goproxy.io</code></p>
+<h5 id="3-初始化go-mod">3. 初始化Go mod</h5>
+<p>由于使用了Go mod 进行包管理，可以在$GOPATH/src 之外创建项目：</p>
+<pre><code class="language-shell">➜ cd ~/code/go
+➜ mkdir myblog &amp;&amp; cd myblog
+➜ go mod init myblog
+</code></pre>
+<h4 id="配置gin项目">配置Gin项目</h4>
+<h5 id="1-新建mybloggo">1. 新建<code>myblog.go</code></h5>
+<pre><code class="language-go">package main
+
+import (
+	&quot;github.com/gin-gonic/gin&quot;
+	&quot;net/http&quot;
+)
+
+func main() {
+	router := gin.Default()
+
+	router.GET(&quot;/&quot;, func(c *gin.Context) {
+		c.String(http.StatusOK, &quot;Hello Gin&quot;)
+	})
+
+	router.Run(&quot;:8080&quot;)
+}
+</code></pre>
+<h5 id="2-go-build">2. go build</h5>
+<pre><code class="language-shell">➜ go build myblog.go
+go: finding github.com/gin-gonic/gin v1.6.1
+go: downloading github.com/gin-gonic/gin v1.6.1
+go: extracting github.com/gin-gonic/gin v1.6.1
+......
+</code></pre>
+<h5 id="3-执行">3. 执行</h5>
+<pre><code class="language-shell">➜ ./blog
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in &quot;debug&quot; mode. Switch to &quot;release&quot; mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --&gt; main.main.func1 (3 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+</code></pre>
 </div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">
                                        
-                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://wangqunsong.github.io/post/go-mod-chuang-jian-gin-xiang-mu/">使用Go mod创建Gin项目</a></div></div>
+                                        <div class="mdui-col"> </div>
                                         
 
                                         
-                                        <div class="mdui-col"></div>
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://wangqunsong.github.io/post/xin-zheng-cheng/">新征程</a></div> </div>
                                        
                                       </div>
                                    
