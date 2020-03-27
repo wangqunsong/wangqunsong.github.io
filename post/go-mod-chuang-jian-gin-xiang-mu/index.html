@@ -19,7 +19,7 @@
      <div class="header">
       <div class="logo_title">
 		  
-        <div class="title animated fadeInDown"><img src="https://wangqunsong.github.io/images/avatar.png?v=1585290807159"/>
+        <div class="title animated fadeInDown"><img src="https://wangqunsong.github.io/images/avatar.png?v=1585299641915"/>
 
           <h1 title="木君羊" class="weaklink"><a href="/">木君羊</a>
 
@@ -212,16 +212,24 @@
 <h4 id="配置gin项目">配置Gin项目</h4>
 <h5 id="1-新建mybloggo">1. 新建<code>myblog.go</code></h5>
 <pre><code>package main
+
 import (
 	&quot;github.com/gin-gonic/gin&quot;
 	&quot;net/http&quot;
 )
+
 func main() {
 	router := gin.Default()
-	router.GET(&quot;/&quot;, func(c *gin.Context) {
-		c.String(http.StatusOK, &quot;Hello Gin&quot;)
-	})
+
+	router.GET(&quot;/&quot;, hello)
 	router.Run(&quot;:8080&quot;)
+}
+
+/*
+  func hello
+*/
+func hello(c *gin.Context) {
+	c.String(http.StatusOK, &quot;Hello Gin&quot;)
 }
 </code></pre>
 <h5 id="2-go-build">2. go build</h5>
