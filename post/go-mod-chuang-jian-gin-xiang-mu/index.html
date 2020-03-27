@@ -81,19 +81,15 @@
 <h4 id="配置gin项目">配置Gin项目</h4>
 <h5 id="1-新建mybloggo">1. 新建<code>myblog.go</code></h5>
 <pre><code>package main
-
 import (
 	&quot;github.com/gin-gonic/gin&quot;
 	&quot;net/http&quot;
 )
-
 func main() {
 	router := gin.Default()
-
 	router.GET(&quot;/&quot;, func(c *gin.Context) {
 		c.String(http.StatusOK, &quot;Hello Gin&quot;)
 	})
-
 	router.Run(&quot;:8080&quot;)
 }
 </code></pre>
