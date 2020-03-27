@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>使用Go mod创建Gin项目 | 木君羊</title>
         <link rel="stylesheet" href="https://wangqunsong.github.io/styles/main.css">
-        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1423691_1fcfxbwa79n.css">
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
         <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
         <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
@@ -74,13 +74,13 @@
 <p><code>go env -w GOPROXY=https://goproxy.io</code></p>
 <h5 id="3-初始化go-mod">3. 初始化Go mod</h5>
 <p>由于使用了Go mod 进行包管理，可以在$GOPATH/src 之外创建项目：</p>
-<pre><code class="language-shell">➜ cd ~/code/go
+<pre><code>➜ cd ~/code/go
 ➜ mkdir myblog &amp;&amp; cd myblog
 ➜ go mod init myblog
 </code></pre>
 <h4 id="配置gin项目">配置Gin项目</h4>
 <h5 id="1-新建mybloggo">1. 新建<code>myblog.go</code></h5>
-<pre><code class="language-go">package main
+<pre><code>package main
 
 import (
 	&quot;github.com/gin-gonic/gin&quot;
@@ -98,14 +98,14 @@ func main() {
 }
 </code></pre>
 <h5 id="2-go-build">2. go build</h5>
-<pre><code class="language-shell">➜ go build myblog.go
+<pre><code>➜ go build myblog.go
 go: finding github.com/gin-gonic/gin v1.6.1
 go: downloading github.com/gin-gonic/gin v1.6.1
 go: extracting github.com/gin-gonic/gin v1.6.1
 ......
 </code></pre>
 <h5 id="3-执行">3. 执行</h5>
-<pre><code class="language-shell">➜ ./blog
+<pre><code>➜ ./blog
 [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
 
 [GIN-debug] [WARNING] Running in &quot;debug&quot; mode. Switch to &quot;release&quot; mode in production.
@@ -192,8 +192,8 @@ go: extracting github.com/gin-gonic/gin v1.6.1
                            
                       </ul>
                     </nav>
-                  <div class="copyright">
-                      <p> <br/> Power by <a href="https://zootopia.top/">木君羊</a> </p>
+                    <div class="copyright">
+                      <p> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song" target="_blank"  title="宋"  >Song</a> by <a href="https://shanbu.fun/" target="_blank"  title="山卜方" >shanbufun</a> </p>
                   </div>
                   
               </footer>
